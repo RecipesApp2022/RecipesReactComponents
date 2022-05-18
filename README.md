@@ -116,7 +116,9 @@ Sección de los planes, donde se trae información de los planes como imagen, t�
 ### CategoriesVideo
  
 Toda la sección de categorías con videos. 
+
 ![](https://i.imgur.com/OcBFt3l.jpg)
+
 [Subir](#top)
 
 
@@ -125,10 +127,11 @@ Toda la sección de categorías con videos.
 
 <a name="item13"></a>
 * ### SesionCategory
-* 
+
 Select de las categorías.
 
 ![](https://i.imgur.com/lVviHpJ.jpg)
+
 [Subir](#top)
 
 
@@ -136,7 +139,7 @@ Select de las categorías.
 
 <a name="item14"></a>
 * ### VideoCategory
-* 
+
 Descripción del video, contiene imagen y nombre del vendedor, nombre de la receta. 
 
 ![](https://i.imgur.com/BlF8cca.jpg) 
