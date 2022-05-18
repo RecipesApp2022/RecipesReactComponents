@@ -104,32 +104,38 @@ Rectángulo con estilos específicos donde se agrega la información, imagen y t
 ### WeightPlan
  
 Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve. 
+![](https://i.imgur.com/XTwqKMq.jpg)
  
 [Subir](#top)
+
+
+
 
 
 <a name="item12"></a>
 ### CategoriesVideo
  
 Toda la sección de categorías con videos. 
- 
+![](https://i.imgur.com/OcBFt3l.jpg)
 [Subir](#top)
+
+
 
 
 
 <a name="item13"></a>
 * ### SesionCategory
- 
 Select de las categorías.
-
+![](https://i.imgur.com/lVviHpJ.jpg)
 [Subir](#top)
+
+
 
 
 <a name="item14"></a>
 * ### VideoCategory
- 
 Descripción del video, contiene imagen y nombre del vendedor, nombre de la receta. 
- 
+![](https://i.imgur.com/BlF8cca.jpg) 
 [Subir](#top)
 
 
@@ -137,28 +143,34 @@ Descripción del video, contiene imagen y nombre del vendedor, nombre de la rece
 
 <a name="item15"></a>
 * ### Video
- 
+![](https://i.imgur.com/ZbqvqxU.jpg)
 Modelo de la estructura de la card donde se muestra el video.
  
 [Subir](#top)
 
 
 
+
+
 <a name="item16"></a>
 ### Recipes
- 
+![](https://i.imgur.com/R1kSxvW.jpg) 
 Componente que contiene la estructura de la plantilla de como se muestra la receta en el home. 
  
 [Subir](#top)
 
 
 
+
+
 <a name="item17"></a>
 ### ChefsCountries
- 
+![](https://i.imgur.com/s8M3PYt.jpg) 
 Contiene sección de chefs populares por países. 
  
 [Subir](#top)
+
+
 
 
 
