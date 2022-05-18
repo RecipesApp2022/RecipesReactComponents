@@ -125,7 +125,9 @@ Toda la sección de categorías con videos.
 
 <a name="item13"></a>
 * ### SesionCategory
+* 
 Select de las categorías.
+
 ![](https://i.imgur.com/lVviHpJ.jpg)
 [Subir](#top)
 
@@ -134,8 +136,11 @@ Select de las categorías.
 
 <a name="item14"></a>
 * ### VideoCategory
+* 
 Descripción del video, contiene imagen y nombre del vendedor, nombre de la receta. 
+
 ![](https://i.imgur.com/BlF8cca.jpg) 
+
 [Subir](#top)
 
 
@@ -143,8 +148,11 @@ Descripción del video, contiene imagen y nombre del vendedor, nombre de la rece
 
 <a name="item15"></a>
 * ### Video
-![](https://i.imgur.com/ZbqvqxU.jpg)
+
 Modelo de la estructura de la card donde se muestra el video.
+
+![](https://i.imgur.com/ZbqvqxU.jpg)
+
  
 [Subir](#top)
 
@@ -154,19 +162,24 @@ Modelo de la estructura de la card donde se muestra el video.
 
 <a name="item16"></a>
 ### Recipes
-![](https://i.imgur.com/R1kSxvW.jpg) 
+
 Componente que contiene la estructura de la plantilla de como se muestra la receta en el home. 
+
+![](https://i.imgur.com/R1kSxvW.jpg) 
+
  
 [Subir](#top)
 
 
 
 
-
 <a name="item17"></a>
 ### ChefsCountries
-![](https://i.imgur.com/s8M3PYt.jpg) 
+
 Contiene sección de chefs populares por países. 
+
+![](https://i.imgur.com/s8M3PYt.jpg) 
+
  
 [Subir](#top)
 
