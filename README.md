@@ -5,31 +5,24 @@
  
 AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
 
- 
-[Subir](#top)
 
-
- 
 <a name="item2"></a>
 * ### NavBar
  
 Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores e inicio de sesión.  
 
- 
+
+![](https://i.imgur.com/RK1zhGy.jpg)
 [Subir](#top)
 
 
-
- 
 <a name="item3"></a>
 * ### NavInfo
- 
 Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos. 
 
- 
+
+![](https://i.imgur.com/PkK97Pb.jpg)
 [Subir](#top)
-
-
 
 
  
@@ -37,9 +30,9 @@ Contiene la barra inferior del header, está compuesto por la localización, dir
 * ### Footer
  
 Almacena toda la información del pié de página.
- 
-[Subir](#top)
 
+
+![](https://i.imgur.com/LundOua.jpg) 
 
 
 
@@ -48,17 +41,18 @@ Almacena toda la información del pié de página.
  
 Vista del login donde el usuario agrega datos para validar su acceso a la plataforma.
 
+
+![](https://i.imgur.com/oEplWmR.jpg)
  
-[Subir](#top)
 
 
 <a name="item6"></a>
 ### RegisterForm
  
 Página en la cual el usuario puede rellenar los campos requeridos para el registro en la aplicación. 
- 
-[Subir](#top)
 
+
+![](https://i.imgur.com/oQwg5rG.jpg)
 
 
 
@@ -66,7 +60,10 @@ Página en la cual el usuario puede rellenar los campos requeridos para el regis
 ### SwiperHome
  
 Contiene las imágenes de portada modo slider. 
- 
+
+
+![](https://i.imgur.com/Glk2nCD.jpg) 
+
 [Subir](#top)
 
 
@@ -75,6 +72,7 @@ Contiene las imágenes de portada modo slider.
 ### Card
  
 Titulación de las secciones. Recibe parámetro de texto modificable, debido a que se utiliza en varias secciones del home.
+![](https://i.imgur.com/oKX0UsN.jpg)
 
  
 [Subir](#top)
@@ -85,6 +83,7 @@ Titulación de las secciones. Recibe parámetro de texto modificable, debido a q
 ### CategorySectionCard
  
 Componente utilizado para las imágenes de las categorías.
+![](https://i.imgur.com/X0b6gXh.jpg)
 
 [Subir](#top)
 
@@ -95,7 +94,8 @@ Componente utilizado para las imágenes de las categorías.
 ### PopularSearch
  
 Rectángulo con estilos específicos donde se agrega la información, imagen y texto de una sección publicitaria. 
- 
+![](https://i.imgur.com/epl8lQh.jpg)
+
 [Subir](#top)
 
 
