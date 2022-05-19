@@ -199,7 +199,7 @@ Contiene sección de chefs populares por países.
 Este componente es el encargado de la validación de escuchar el clic al seleccionar el Button de inicio de sesión donde nos permite iniciar en la vista del login o en la vista del registro.
 
 
-![]()  
+![](https://i.imgur.com/sv9LjAY.jpg)  
  
 [Subir](#top)
 
@@ -210,7 +210,7 @@ Este componente es el encargado de la validación de escuchar el clic al selecci
  
 Componente con las dos opciones de vista (Grid View, ListView). en las pantallas de resultados de busqueda.
 
-![]()
+![](https://i.imgur.com/oblMl0x.jpg)
 
 [Subir](#top)
 
@@ -221,7 +221,7 @@ Componente con las dos opciones de vista (Grid View, ListView). en las pantallas
 
 Este componente es el encargado de la estructura del sistema de filtrado que aparece en el lateral izquierdo en las pantallas de resultados de búsqueda.  A su vez contiene 6 componentes.   
 
-![]() 
+![](https://i.imgur.com/4iNFTtX.jpg) 
  
 [Subir](#top)
 
@@ -232,7 +232,7 @@ Este componente es el encargado de la estructura del sistema de filtrado que apa
  
 Componente encargado del filtrado por categorías.
 
-![]() 
+![](https://i.imgur.com/nodHnhR.jpg) 
  
 [Subir](#top)
 
@@ -243,7 +243,7 @@ Componente encargado del filtrado por categorías.
  
 Componente encargado del filtrado por Types.
 
-![]()
+![](https://i.imgur.com/czTDiK6.jpg)
  
 [Subir](#top)
 
@@ -254,7 +254,7 @@ Componente encargado del filtrado por Types.
  
 Componente encargado del filtrado por Ranking. 
 
-![]()
+![](https://i.imgur.com/qb1jAl5.jpg)
  
 [Subir](#top)
 
@@ -265,7 +265,7 @@ Componente encargado del filtrado por Ranking.
  
 Componente con botones para aplicar o resetear los filtros.
 
-![]()
+![](https://i.imgur.com/SSGvOPm.jpg)
 
 [Subir](#top)
 
@@ -276,7 +276,7 @@ Componente con botones para aplicar o resetear los filtros.
  
 Este componente contiene la estructura de las cards con la información mostrada de cada vendedor desde la vitrina de vendedores y el home.
 
-![]()
+![](https://i.imgur.com/KQQe1Zd.jpg)
  
 [Subir](#top)
 
@@ -287,7 +287,7 @@ Este componente contiene la estructura de las cards con la información mostrada
  
 Componente con botones de paginación que se repite en varias secciones.
 
-![]()
+![](https://i.imgur.com/7UNmpRB.jpg)
  
 [Subir](#top)
 
@@ -301,7 +301,7 @@ Componente con botones de paginación que se repite en varias secciones.
 
 Componentes con la vista de las imagenes en el detalle del producto
 
-![]()
+![](https://i.imgur.com/6KCthjp.jpg)
  
 [Subir](#top)
 
@@ -316,7 +316,7 @@ Componentes con la vista de las imagenes en el detalle del producto
  
 Botones de interaccion con funcionalidades para hacer match, agregar a favoritos o descartar un producto.
 
-![]()
+![](https://i.imgur.com/VrVdiMo.jpg)
 
 [Subir](#top)
 
@@ -327,7 +327,7 @@ Botones de interaccion con funcionalidades para hacer match, agregar a favoritos
  
 Componente padre del menu desplegable del panel de usuario con iconos e item.
 
-![]()
+![](https://i.imgur.com/15MaLOu.jpg)
 
 [Subir](#top)
 
@@ -338,7 +338,7 @@ Componente padre del menu desplegable del panel de usuario con iconos e item.
  
 Panel de herramientas del usuario vista con iconos.
 
-![]()
+![](https://i.imgur.com/yG20mk5.jpg)
  
 [Subir](#top)
 
@@ -350,7 +350,7 @@ Panel de herramientas del usuario vista con iconos.
  
 Componente con el logo de la app que se adapta al tamaño adecuado.
 
-![]()
+![](https://i.imgur.com/2sY7Kq7.jpg)
  
 [Subir](#top)
 
@@ -375,7 +375,7 @@ Select de los tipos que encontramos en el header.
  
 Componente con informacion profesional del vendedor desde su perfil.
 
-![]()
+![](https://i.imgur.com/0FU20yz.jpg)
  
 [Subir](#top)
 
@@ -389,7 +389,7 @@ Componente con informacion profesional del vendedor desde su perfil.
  
 Entradas del blog del vendedor ubicadas en el lateral izquierdo del perfil del vendedor.
 
-![]()
+![](https://i.imgur.com/k4IAEZ8.jpg)
  
 [Subir](#top)
 
@@ -403,7 +403,7 @@ Entradas del blog del vendedor ubicadas en el lateral izquierdo del perfil del v
  
 Descripcion escrita por el vendedor en su perfil
 
-![]()
+![](https://i.imgur.com/lOrkBhB.jpg)
  
 [Subir](#top)
 
