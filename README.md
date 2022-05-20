@@ -37,7 +37,19 @@
 * [CertificationChef](#item33)
 * [Post](#item34)
 * [DescriptionChef](#item35)
-* 
+* [ButtonImage](#item36)
+* [Details](#item37)
+* [ButtonComprar](#item38)
+* [Tab](#item39)
+* [TabButton](#item40)
+* [TabPanel](#item41)
+* [TabsContainer](#item42)
+* [TotalShopping](#item43)
+* [TotalShoppingPrice](#item44)
+* [InformationChef](#item45)
+* [DescriptionPost](#item46)
+* [CalendarDay](#item47)
+* [calendar](#item48)
 
 
 
