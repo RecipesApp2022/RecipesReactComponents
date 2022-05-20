@@ -1,5 +1,45 @@
 # 🚀 Frontend
+
  
+## Índice de contenidos
+* [AppLayout](#item1)
+	 * [NavBar](#item2)
+	 * [NavInfo](#item3)
+	 * [Footer](#item4)
+* [LoginForm](#item5)
+* [RegisterForm](#item6)
+* [SwiperHome](#item7)
+* [Card](#item8)
+* [CategorySectionCard](#item9)
+* [PopularSearch](#item10)
+* [WeightPlan](#item11)
+* [CategoriesVideo](#item12)
+	* [SesionCategory](#item13)
+	* [VideoCategory](#item14)
+	* [Video](#item15)
+* [Recipes](#item16)
+* [ChefsCountries](#item17)
+* [AuthModal](#item18)
+* [ButtonSupr](#item19)
+* [MenuLeft](#item20)
+* [CategoriesRecipes](#item21)
+* [SelectCategory](#item22)
+* [SelectRank](#item23)
+* [ButtonRank](#item24)
+* [BannerChef](#item25)
+* [ButtomButton](#item26)
+* [ProductImagenCarousel](#item27)
+* [Matches](#item28)
+* [MenuConfig](#item29)
+* [MyAccountLayout](#item30)
+* [PageLogo](#item31)
+* [NavSearchBar](#item32)
+* [CertificationChef](#item33)
+* [Post](#item34)
+* [DescriptionChef](#item35)
+
+
+
 <a name="item1"></a>
 ### AppLayout
  
@@ -293,9 +333,6 @@ Componente con botones de paginación que se repite en varias secciones.
 
 
 
-
-
-
 <a name="item27"></a>
 ### ProductImagenCarousel
 
@@ -304,9 +341,6 @@ Componentes con la vista de las imagenes en el detalle del producto
 ![](https://i.imgur.com/6KCthjp.jpg)
  
 [Subir](#top)
-
-
-
 
 
 
@@ -322,6 +356,7 @@ Botones de interaccion con funcionalidades para hacer match, agregar a favoritos
 
 
 
+
 <a name="item29"></a>
 ### MenuConfig
  
@@ -330,6 +365,7 @@ Componente padre del menu desplegable del panel de usuario con iconos e item.
 ![](https://i.imgur.com/15MaLOu.jpg)
 
 [Subir](#top)
+
 
 
 
@@ -357,7 +393,6 @@ Componente con el logo de la app que se adapta al tamaño adecuado.
 
 
 
-
 <a name="item32"></a>
 ### NavSearchBar
  
@@ -366,6 +401,7 @@ Select de los tipos que encontramos en el header.
 ![]()
 
 [Subir](#top)
+
 
 
 
