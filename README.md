@@ -37,6 +37,7 @@
 * [CertificationChef](#item33)
 * [Post](#item34)
 * [DescriptionChef](#item35)
+* 
 
 
 
@@ -448,12 +449,11 @@ Descripcion escrita por el vendedor en su perfil
 
 
 <a name="item36"></a>
-### AppLayout
+### ButtonImage
  
-AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+Este componente contiene los botones de opcion de compra de ingredientes en Wallmart, Insta card y Amazon Fresh, los cuales redireccionan hacia estos sitios para realizar la compra con esos supermercados. Asi mismo se encuentra dentro de este el boton de pago del producto (receta, plan o combo) a traves de pay pal. 
 
-![]()
-
+ 
 [Subir](#top)
 
 
@@ -461,11 +461,328 @@ AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo
 
 
 <a name="item37"></a>
+### Details
+ 
+components que encargado de mostrar esta informacion que se encuentra en la vista de detalle de recetas, combos y planes (Level, categoria, time, igredientes)
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+<a name="item38"></a>
+### ButtonComprar
+ 
+Componentes de boton de comprar (desde la caja blanca hasta el boton en la vista del detalle del producto(recetas....) 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item39"></a>
+### Tab
+ 
+Componente dinamico encargado del movimiento del cambio de las lista seleccionada.
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+<a name="item40"></a>
+### TabButton
+ 
+componente creado del diseño de dos botones stores y the best offer (ya no se utiliza pero esta alli por si se llega a necesitar)
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item41"></a>
+### TabPanel
+ 
+componente encargado de mostar o ocultar la informacion de sus hijos dependiendo de la pestaña seleccionada.
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+<a name="item42"></a>
+### TabsContainer
+ 
+chequea que sus hijos si es 1 lo muestra si son muchos lo rederiza.
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item43"></a>
+### TotalShopping
+ 
+componente encargado de mostrar imagen de un tamaño en particular para la vista del producto
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+<a name="item44"></a>
+### TotalShoppingPrice
+ 
+Componente  encargado de mostrar precio en la vista del detalle del producto unico
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item45"></a>
+### InformationChef
+ 
+componente encargado de Mostrar las redes sociales de chef
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+<a name="item46"></a>
+### DescriptionPost
+ 
+Componente encargado de mostra del detalle de la descripcion de post del blog
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item47"></a>
+### CalendarDay
+ 
+Componente encargado de recibir el dia correspondiente del calendar
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+
+<a name="item48"></a>
+### calendar
+ 
+Componente encargado del diseño del calendario 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item49"></a>
 ### AppLayout
  
 AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
 
-![]()
  
 [Subir](#top)
+
+
+
+
+
+
+
+
+<a name="item50"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item51"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+
+<a name="item52"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item53"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+<a name="item54"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item55"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+
+
+<a name="item56"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item57"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+
+<a name="item58"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item59"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+
+
+<a name="item50"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
+
+
+
+<a name="item51"></a>
+### AppLayout
+ 
+AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+
+ 
+[Subir](#top)
+
+
 
