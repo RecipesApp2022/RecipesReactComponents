@@ -12,7 +12,7 @@
 * [Card](#item8)
 * [CategorySectionCard](#item9)
 * [PopularSearch](#item10)
-* [WeightPlan](#item11)
+* [SwiperWeightPlan](#item11)
 * [CategoriesVideo](#item12)
 	* [SesionCategory](#item13)
 	* [VideoCategory](#item14)
@@ -154,7 +154,7 @@ Rectángulo con estilos específicos donde se agrega la información, imagen y t
 
 
 <a name="item11"></a>
-### WeightPlan
+### SwiperWeightPlan
  
 Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve. 
 ![](https://i.imgur.com/XTwqKMq.jpg)
