@@ -518,20 +518,6 @@ Componente dinamico encargado del movimiento del cambio de las lista seleccionad
 
 
 
-<a name="item40"></a>
-### TabButton
- 
-componente creado del diseño de dos botones stores y the best offer (ya no se utiliza pero esta alli por si se llega a necesitar)
-
-
-![]()
- 
-[Subir](#top)
-
-
-
-
-
 <a name="item41"></a>
 ### TabPanel
  
