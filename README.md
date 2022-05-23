@@ -583,8 +583,7 @@ componente encargado de mostrar imagen de un tamaño en particular para la vista
  
 Componente  encargado de mostrar precio en la vista del detalle del producto unico
 
-
-![](https://i.imgur.com/fUptzyn.jpg)
+![](https://i.imgur.com/W5vbfBG.jpg)
  
 [Subir](#top)
 
