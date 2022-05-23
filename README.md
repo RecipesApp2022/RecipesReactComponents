@@ -510,7 +510,7 @@ Componentes de boton de comprar (desde la caja blanca hasta el boton en la vista
 Componente dinamico encargado del movimiento del cambio de las lista seleccionada.
 
 
-![](https://live.staticflickr.com/65535/52093943224_00059e1998_m.jpg)
+![](https://i.imgur.com/EjGCgq4.jpg)
 
 [Subir](#top)
 
@@ -524,7 +524,7 @@ Componente dinamico encargado del movimiento del cambio de las lista seleccionad
 componente encargado de mostar o ocultar la informacion de sus hijos dependiendo de la pestaña seleccionada.
 
 
-![](https://live.staticflickr.com/65535/52093943224_00059e1998_m.jpg)
+![](https://i.imgur.com/EjGCgq4.jpg)
 
 [Subir](#top)
 
@@ -540,7 +540,7 @@ componente encargado de mostar o ocultar la informacion de sus hijos dependiendo
 chequea que sus hijos si es 1 lo muestra si son muchos lo rederiza.
 
 
-![](https://live.staticflickr.com/65535/52092685012_6c54d2a2b8_m.jpg)
+![](https://i.imgur.com/XmcMSTW.jpg)
  
 [Subir](#top)
 
