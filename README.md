@@ -510,7 +510,7 @@ Componentes de boton de comprar (desde la caja blanca hasta el boton en la vista
 Componente dinamico encargado del movimiento del cambio de las lista seleccionada.
 
 
-![](https://i.imgur.com/DokV7J2.jpg)
+![](https://live.staticflickr.com/65535/52093943224_00059e1998_m.jpg)
 
 [Subir](#top)
 
@@ -538,7 +538,7 @@ componente creado del diseño de dos botones stores y the best offer (ya no se u
 componente encargado de mostar o ocultar la informacion de sus hijos dependiendo de la pestaña seleccionada.
 
 
-![]()
+![](https://live.staticflickr.com/65535/52093943224_00059e1998_m.jpg)
 
 [Subir](#top)
 
@@ -554,7 +554,7 @@ componente encargado de mostar o ocultar la informacion de sus hijos dependiendo
 chequea que sus hijos si es 1 lo muestra si son muchos lo rederiza.
 
 
-![]()
+![](https://live.staticflickr.com/65535/52092685012_6c54d2a2b8_m.jpg)
  
 [Subir](#top)
 
@@ -627,7 +627,7 @@ Componente encargado de mostra del detalle de la descripcion de post del blog
 Componente encargado de recibir el dia correspondiente del calendar
 
 
-![](https://i.imgur.com/pPh6blH.jpg)
+![](https://live.staticflickr.com/65535/52094212550_2251271785_m.jpg)
  
 [Subir](#top)
 
