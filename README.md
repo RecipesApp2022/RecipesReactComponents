@@ -677,6 +677,8 @@ Componente encargado del diseño del calendario
  
 Componente de autenticacion del login de usuario. Envuelve MyAccountLayout.
 
+
+![]() 
  
 [Subir](#top)
 
@@ -690,7 +692,9 @@ Componente de autenticacion del login de usuario. Envuelve MyAccountLayout.
  
 Componente encargado de contener el diseño circular. componente principal ButtonButton(ScrollNavegacion)
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -702,6 +706,8 @@ Componente encargado de contener el diseño circular. componente principal Butto
  
 Componente encargado de motor de Busqueda en el home contiene el componente ButtonSearch
 
+
+![]()
  
 [Subir](#top)
 
@@ -712,7 +718,9 @@ Componente encargado de motor de Busqueda en el home contiene el componente Butt
  
 Componente encargado del selector de busqueda por sus categorias.
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -723,7 +731,9 @@ Componente encargado del selector de busqueda por sus categorias.
 ### WeightPlan
  
 Componente de la vista de cuadro de planes. 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -737,7 +747,9 @@ Componente de la vista de cuadro de planes.
  
 CategoryCard, Combos, Home, Overview, Popular, Recipes, WeightPlan
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -749,7 +761,9 @@ CategoryCard, Combos, Home, Overview, Popular, Recipes, WeightPlan
  
 Componente de la parte del usuario en la vista de configuracion 
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -761,6 +775,8 @@ Componente de la parte del usuario en la vista de configuracion
  
 Componente encargado del chef de la description del menu lateral
 
+
+![]()
  
 [Subir](#top)
 
@@ -772,7 +788,10 @@ Componente encargado del chef de la description del menu lateral
 ### DescriptionPost
  
 Componente encargado de mostrar la informacion de post de Anya del menu lateral
- 
+
+
+![]()
+
 [Subir](#top)
 
 
@@ -787,7 +806,9 @@ Componente encargado de mostrar la informacion de post de Anya del menu lateral
  
 Componente de la iformacion personal de user en la vista de usuario (my personal informayion)
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -799,7 +820,9 @@ Componente de la iformacion personal de user en la vista de usuario (my personal
  
 Datos de la redes sociales del cheft que aparece en el menu lateral
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -813,6 +836,8 @@ Datos de la redes sociales del cheft que aparece en el menu lateral
  
 Componente encargado del diseño del cuadro de la lista de ingredientes.
 
+
+![]()
  
 [Subir](#top)
 
@@ -825,7 +850,9 @@ Componente encargado del diseño del cuadro de la lista de ingredientes.
 
 Componente encargado del detalle que lleva cada vista de la lista de ingrediente
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -835,7 +862,10 @@ Componente encargado del detalle que lleva cada vista de la lista de ingrediente
 ### LyOverview
 
 Componente encargado del siseño de las letras de la vista overview
- 
+
+
+![]()
+
 [Subir](#top)
 
 
@@ -846,7 +876,9 @@ Componente encargado del siseño de las letras de la vista overview
 
 componente del scroll de la vista por dia.
 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -856,7 +888,9 @@ componente del scroll de la vista por dia.
 ### MealDetailOverviewImages
 
 Componete encargado de mostrar la imagenes al seleccionar un cuadro de la vista de overview.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -867,6 +901,7 @@ Componete encargado de mostrar la imagenes al seleccionar un cuadro de la vista 
 
 Componente donde permite al usuario agregar contraseña en la vista paypal user
 
+![]()
  
 [Subir](#top)
 
@@ -877,7 +912,9 @@ Componente donde permite al usuario agregar contraseña en la vista paypal user
 ### PaypalLogin
 
 Componente  creado para la vista de login de paypal (no se usara) 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -887,7 +924,10 @@ Componente  creado para la vista de login de paypal (no se usara)
 ### PaypalUser
 
 Componente donde se encarga de colocar la informacion de my paypal en la vista de user.
- 
+
+
+![]()
+
 [Subir](#top)
 
 
@@ -897,7 +937,9 @@ Componente donde se encarga de colocar la informacion de my paypal en la vista d
 ### ProductInfo
 
 Componente que se encarga mnostar todo el contenido de la vista de detalle del producto.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -907,7 +949,9 @@ Componente que se encarga mnostar todo el contenido de la vista de detalle del p
 ### BannerPage
 
 componente del banner de las diferente vista (revision).
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -917,7 +961,9 @@ componente del banner de las diferente vista (revision).
 ### BoxCalendar
 
 Componente encargado del diseño del cuadro del calendario de la vista del usuario
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -927,7 +973,9 @@ Componente encargado del diseño del cuadro del calendario de la vista del usuar
 ### BoxName
 
 componente que recibe el texto del diade la semana (Sunday, Monday, Tuesday, Wednesday, Thursday, Friday).
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -937,7 +985,9 @@ componente que recibe el texto del diade la semana (Sunday, Monday, Tuesday, Wed
 ### ButtonCart
 
 Componente del boton de carrito
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -947,7 +997,9 @@ Componente del boton de carrito
 ### ButtonChange
 
 Componente del boton de change
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -957,7 +1009,9 @@ Componente del boton de change
 ### ButtonItems
 
 Componente que se encarga del siseño del boton de seleccion de (recipes, plans y combos?
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -967,7 +1021,9 @@ Componente que se encarga del siseño del boton de seleccion de (recipes, plans 
 ### SelectOrder
 
 Componente del diseño de lista de ordenar por del vendedor.	
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -977,7 +1033,9 @@ Componente del diseño de lista de ordenar por del vendedor.
 ### CardChef
 
 Componente del vendedor. Vista sellers.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -987,7 +1045,9 @@ Componente del vendedor. Vista sellers.
 ### CardGym
 
 Componente repetido mejorar.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -997,7 +1057,9 @@ Componente repetido mejorar.
 ### CardOrder
 
 Componente donde aparece foto de nombre del vendedor, order, sellers.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1007,7 +1069,9 @@ Componente donde aparece foto de nombre del vendedor, order, sellers.
 ### CardPaypal
 
 Componente que se encuentra en la vista de la forma de pago de paypal (logo y modificar).
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1017,7 +1081,9 @@ Componente que se encuentra en la vista de la forma de pago de paypal (logo y mo
 ### CardProduct
 
 Componente que contiene imagen y tirulo del producto en al vista de paypal.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1027,7 +1093,9 @@ Componente que contiene imagen y tirulo del producto en al vista de paypal.
 ### CardRecipes
 
 Componente de las recetas. 
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1037,7 +1105,9 @@ Componente de las recetas.
 ### CardResum
 
 Componente de orden de resum en paypal.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1047,7 +1117,9 @@ Componente de orden de resum en paypal.
 ### CardWithTitle
 
 Componente que fue realizado para la parte de configuraciones de My servings en la vista de usuario.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1059,7 +1131,9 @@ Componente que fue realizado para la parte de configuraciones de My servings en 
 ### Checkbox
 
 Componente del checkbok cuadrado.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1069,7 +1143,9 @@ Componente del checkbok cuadrado.
 ### CheckboxConfig
 
 Componente del checkbok circular.
- 
+
+![]()
+
 [Subir](#top)
 
 
@@ -1079,7 +1155,9 @@ Componente del checkbok circular.
 ### WaPay
 
 Componente encargado de mostrar la informacion de la lista de comparador de precio
- 
+
+![]()
+
 [Subir](#top)
 
 
