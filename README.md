@@ -675,7 +675,7 @@ Componente encargado del diseño del calendario
 <a name="item49"></a>
 ### RequireAuth
  
-Componente de autenticacion del login de usuario. Envuelve MyAccountLayout.
+Componente de autenticacion del login de usuario. Envuelve MyAccountLayou.
 
 
 ![]() 
@@ -690,7 +690,7 @@ Componente de autenticacion del login de usuario. Envuelve MyAccountLayout.
 <a name="item50"></a>
 ### ScrollNavegacion
  
-Componente encargado de contener el diseño circular. componente principal ButtonButton(ScrollNavegacion)
+Componente encargado de contener el diseño circular. Componente principal ButtonButton(ScrollNavegacion)
 
 
 ![]()
@@ -707,7 +707,7 @@ Componente encargado de contener el diseño circular. componente principal Butto
 Componente encargado de motor de Busqueda en el home contiene el componente ButtonSearch
 
 
-![]()
+![](https://i.imgur.com/VUipCHj.jpg)
  
 [Subir](#top)
 
@@ -719,7 +719,7 @@ Componente encargado de motor de Busqueda en el home contiene el componente Butt
 Componente encargado del selector de busqueda por sus categorias.
 
 
-![]()
+![](https://i.imgur.com/ZcvnIqL.jpg)
 
 [Subir](#top)
 
@@ -732,7 +732,7 @@ Componente encargado del selector de busqueda por sus categorias.
  
 Componente de la vista de cuadro de planes. 
 
-![]()
+![](https://i.imgur.com/zz5z3jo.jpg)
 
 [Subir](#top)
 
@@ -759,10 +759,10 @@ CategoryCard, Combos, Home, Overview, Popular, Recipes, WeightPlan
 <a name="item55"></a>
 ### config
  
-Componente de la parte del usuario en la vista de configuracion 
+Componente de la parte del usuario en la vista de configuracion.
 
 
-![]()
+![](https://i.imgur.com/1j32401.jpg)
 
 [Subir](#top)
 
@@ -776,7 +776,7 @@ Componente de la parte del usuario en la vista de configuracion
 Componente encargado del chef de la description del menu lateral
 
 
-![]()
+![](https://i.imgur.com/Z317Uop.jpg)
  
 [Subir](#top)
 
@@ -790,13 +790,9 @@ Componente encargado del chef de la description del menu lateral
 Componente encargado de mostrar la informacion de post de Anya del menu lateral
 
 
-![]()
+![](https://i.imgur.com/lbnWbfI.jpg)
 
 [Subir](#top)
-
-
-
-
 
 
 
@@ -804,10 +800,10 @@ Componente encargado de mostrar la informacion de post de Anya del menu lateral
 <a name="item58"></a>
 ### FormAccount
  
-Componente de la iformacion personal de user en la vista de usuario (my personal informayion)
+Componente de la informacion personal de user en la vista de usuario (my personal informayion)
 
 
-![]()
+![](https://i.imgur.com/oBI4w4l.jpg)
 
 [Subir](#top)
 
@@ -818,10 +814,10 @@ Componente de la iformacion personal de user en la vista de usuario (my personal
 <a name="item59"></a>
 ### InformacionChef
  
-Datos de la redes sociales del cheft que aparece en el menu lateral
+Datos de los canales de venta del chef que aparece en el menu lateral.
 
 
-![]()
+![](https://i.imgur.com/KmzMHy8.jpg)
 
 [Subir](#top)
 
@@ -837,7 +833,7 @@ Datos de la redes sociales del cheft que aparece en el menu lateral
 Componente encargado del diseño del cuadro de la lista de ingredientes.
 
 
-![]()
+![](https://i.imgur.com/NZWLwnL.jpg)
  
 [Subir](#top)
 
@@ -848,10 +844,10 @@ Componente encargado del diseño del cuadro de la lista de ingredientes.
 <a name="item61"></a>
 ### ingredientRowDetails
 
-Componente encargado del detalle que lleva cada vista de la lista de ingrediente
+Componente encargado del detalle que lleva cada vista de la lista de ingredientes.
 
 
-![]()
+![](https://i.imgur.com/NZWLwnL.jpg)
 
 [Subir](#top)
 
@@ -861,10 +857,10 @@ Componente encargado del detalle que lleva cada vista de la lista de ingrediente
 <a name="item62"></a>
 ### LyOverview
 
-Componente encargado del siseño de las letras de la vista overview
+Componente encargado del diseño de las letras de la vista overview
 
 
-![]()
+![](https://i.imgur.com/PwvSgsV.jpg)
 
 [Subir](#top)
 
@@ -899,7 +895,7 @@ Componete encargado de mostrar la imagenes al seleccionar un cuadro de la vista 
 <a name="item65"></a>
 ### PasswordUser
 
-Componente donde permite al usuario agregar contraseña en la vista paypal user
+Componente donde permite al usuario agregar contraseña en la vista paypal user.
 
 ![]()
  
@@ -907,26 +903,13 @@ Componente donde permite al usuario agregar contraseña en la vista paypal user
 
 
 
-
-<a name="item66"></a>
-### PaypalLogin
-
-Componente  creado para la vista de login de paypal (no se usara) 
-
-![]()
-
-[Subir](#top)
-
-
-
-
 <a name="item67"></a>
 ### PaypalUser
 
-Componente donde se encarga de colocar la informacion de my paypal en la vista de user.
+Componente que se encarga de colocar la informacion de my paypal en la vista de user.
 
 
-![]()
+![](https://i.imgur.com/Ua3GKRL.jpg)
 
 [Subir](#top)
 
@@ -936,9 +919,9 @@ Componente donde se encarga de colocar la informacion de my paypal en la vista d
 <a name="item68"></a>
 ### ProductInfo
 
-Componente que se encarga mnostar todo el contenido de la vista de detalle del producto.
+Componente que se encarga mostrar todo el contenido de la vista de detalle del producto.
 
-![]()
+![](https://i.imgur.com/oaZUbKe.jpg)
 
 [Subir](#top)
 
@@ -962,7 +945,7 @@ componente del banner de las diferente vista (revision).
 
 Componente encargado del diseño del cuadro del calendario de la vista del usuario
 
-![]()
+![](https://i.imgur.com/9gQbIlN.jpg)
 
 [Subir](#top)
 
@@ -972,7 +955,7 @@ Componente encargado del diseño del cuadro del calendario de la vista del usuar
 <a name="item71"></a>
 ### BoxName
 
-componente que recibe el texto del diade la semana (Sunday, Monday, Tuesday, Wednesday, Thursday, Friday).
+Componente que recibe el texto del dia de la semana (Sunday, Monday, Tuesday, Wednesday, Thursday, Friday).
 
 ![]()
 
@@ -984,9 +967,9 @@ componente que recibe el texto del diade la semana (Sunday, Monday, Tuesday, Wed
 <a name="item72"></a>
 ### ButtonCart
 
-Componente del boton de carrito
+Componente del boton de carrito.
 
-![]()
+![](https://i.imgur.com/xYF5GkZ.jpg)
 
 [Subir](#top)
 
@@ -1008,7 +991,7 @@ Componente del boton de change
 <a name="item74"></a>
 ### ButtonItems
 
-Componente que se encarga del siseño del boton de seleccion de (recipes, plans y combos?
+Componente que se encarga del diseño del boton de seleccion de (recipes, plans y combos)
 
 ![]()
 
@@ -1034,21 +1017,10 @@ Componente del diseño de lista de ordenar por del vendedor.
 
 Componente del vendedor. Vista sellers.
 
-![]()
+![](https://i.imgur.com/s4rgz6r.jpg)
 
 [Subir](#top)
 
-
-
-
-<a name="item77"></a>
-### CardGym
-
-Componente repetido mejorar.
-
-![]()
-
-[Subir](#top)
 
 
 
@@ -1070,7 +1042,7 @@ Componente donde aparece foto de nombre del vendedor, order, sellers.
 
 Componente que se encuentra en la vista de la forma de pago de paypal (logo y modificar).
 
-![]()
+![](https://i.imgur.com/d6CLn6k.jpg)
 
 [Subir](#top)
 
@@ -1080,9 +1052,9 @@ Componente que se encuentra en la vista de la forma de pago de paypal (logo y mo
 <a name="item80"></a>
 ### CardProduct
 
-Componente que contiene imagen y tirulo del producto en al vista de paypal.
+Componente que contiene imagen y titulo del producto en la vista de paypal.
 
-![]()
+![](https://i.imgur.com/x1FLAPG.jpg)
 
 [Subir](#top)
 
@@ -1106,7 +1078,7 @@ Componente de las recetas.
 
 Componente de orden de resum en paypal.
 
-![]()
+![](https://i.imgur.com/3fKcpYB.jpg)
 
 [Subir](#top)
 
@@ -1118,7 +1090,7 @@ Componente de orden de resum en paypal.
 
 Componente que fue realizado para la parte de configuraciones de My servings en la vista de usuario.
 
-![]()
+![](https://i.imgur.com/wv1BuLk.jpg)
 
 [Subir](#top)
 
@@ -1132,7 +1104,7 @@ Componente que fue realizado para la parte de configuraciones de My servings en 
 
 Componente del checkbok cuadrado.
 
-![]()
+![](https://i.imgur.com/D2ZuNwI.jpg)
 
 [Subir](#top)
 
@@ -1144,7 +1116,7 @@ Componente del checkbok cuadrado.
 
 Componente del checkbok circular.
 
-![]()
+![](https://i.imgur.com/tBic1Xs.jpg)
 
 [Subir](#top)
 
@@ -1156,7 +1128,7 @@ Componente del checkbok circular.
 
 Componente encargado de mostrar la informacion de la lista de comparador de precio
 
-![]()
+![](https://i.imgur.com/iyMsOjP.jpg)
 
 [Subir](#top)
 
