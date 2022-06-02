@@ -942,7 +942,7 @@ Componente que se encarga mostrar todo el contenido de la vista de detalle del p
 
 componente del banner de las diferente vista (revision).
 
-![]()
+![](https://i.imgur.com/aG1xRyc.png)
 
 [Subir](#top)
 
@@ -990,7 +990,7 @@ Componente del boton de carrito.
 
 Componente del boton de change
 
-![]()
+![](https://i.imgur.com/8FCip2e.png)
 
 [Subir](#top)
 
@@ -1002,7 +1002,7 @@ Componente del boton de change
 
 Componente que se encarga del diseño del boton de seleccion de (recipes, plans y combos)
 
-![]()
+![](https://i.imgur.com/O9JlBX9.png)
 
 [Subir](#top)
 
@@ -1014,7 +1014,7 @@ Componente que se encarga del diseño del boton de seleccion de (recipes, plans 
 
 Componente del diseño de lista de ordenar por del vendedor.	
 
-![]()
+![](https://i.imgur.com/Q31CQTS.png)
 
 [Subir](#top)
 
@@ -1039,7 +1039,7 @@ Componente del vendedor. Vista sellers.
 
 Componente donde aparece foto de nombre del vendedor, order, sellers.
 
-![]()
+![](https://i.imgur.com/IDxf85y.png)
 
 [Subir](#top)
 
@@ -1051,7 +1051,7 @@ Componente donde aparece foto de nombre del vendedor, order, sellers.
 
 Componente que se encuentra en la vista de la forma de pago de paypal (logo y modificar).
 
-![](https://i.imgur.com/d6CLn6k.jpg)
+![](https://i.imgur.com/HYISllZ.png)
 
 [Subir](#top)
 
@@ -1075,7 +1075,7 @@ Componente que contiene imagen y titulo del producto en la vista de paypal.
 
 Componente de las recetas. 
 
-![]()
+![](https://i.imgur.com/eJSBoxj.png)
 
 [Subir](#top)
 
@@ -1137,7 +1137,7 @@ Componente del checkbok circular.
 
 Componente encargado de mostrar la informacion de la lista de comparador de precio
 
-![](https://i.imgur.com/iyMsOjP.jpg)
+![](https://i.imgur.com/tvnn47v.png)
 
 [Subir](#top)
 
