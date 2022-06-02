@@ -897,7 +897,16 @@ Componete encargado de mostrar la imagenes al seleccionar un cuadro de la vista 
 
 Componente donde permite al usuario agregar contraseña en la vista paypal user.
 
-![]()
+![](https://i.imgur.com/R2OqFUW.png)
+ 
+[Subir](#top)
+
+<a name="item65"></a>
+### PaypalLogin
+
+Componente que fue creado para mostrar el diseño de PayPal de iniciar sesión de paypal.
+
+![](https://i.imgur.com/Ohu20I5.png)
  
 [Subir](#top)
 
@@ -1054,7 +1063,7 @@ Componente que se encuentra en la vista de la forma de pago de paypal (logo y mo
 
 Componente que contiene imagen y titulo del producto en la vista de paypal.
 
-![](https://i.imgur.com/x1FLAPG.jpg)
+![](https://i.imgur.com/fgykcjx.png)
 
 [Subir](#top)
 
