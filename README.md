@@ -678,7 +678,7 @@ Componente encargado del diseño del calendario
 Componente de autenticacion del login de usuario. Envuelve MyAccountLayou.
 
 
-![]() 
+![](https://i.imgur.com/H2GSeFq.png) 
  
 [Subir](#top)
 
@@ -693,7 +693,7 @@ Componente de autenticacion del login de usuario. Envuelve MyAccountLayou.
 Componente encargado de contener el diseño circular. Componente principal ButtonButton(ScrollNavegacion)
 
 
-![]()
+![](https://i.imgur.com/axBDP5H.png)
 
 [Subir](#top)
 
@@ -762,7 +762,7 @@ CategoryCard, Combos, Home, Overview, Popular, Recipes, WeightPlan
 Componente de la parte del usuario en la vista de configuracion.
 
 
-![](https://i.imgur.com/1j32401.jpg)
+![](https://i.imgur.com/EABaJmL.png)
 
 [Subir](#top)
 
