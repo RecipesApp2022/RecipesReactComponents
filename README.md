@@ -1,4 +1,4 @@
-# 🚀 Frontend
+# 🚀 Frontend Perfil del cliente
 
  
 ## Índice de contenidos
@@ -279,11 +279,6 @@ Contiene sección de chefs populares por países.
 
 
 
-
-
-------------
-
-
 <a name="item18"></a>
 ### AuthModal
  
@@ -293,7 +288,6 @@ Este componente es el encargado de la validación de escuchar el clic al selecci
 ![](https://i.imgur.com/sv9LjAY.jpg)  
  
 [Subir](#top)
-
 
 
 <a name="item19"></a>
