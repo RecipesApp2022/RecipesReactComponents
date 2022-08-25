@@ -211,9 +211,8 @@ Rectángulo con estilos específicos donde se agrega la información popular, im
 
 Este componente recibe dos parámetros tipo string:
 
-img: Imagen de la sesión de popular.
-
-title: Titulo de la publicidad.
+img: Imagen de la sesión de popular.  
+title: Titulo de la publicidad.  
 
 ![](https://i.imgur.com/epl8lQh.jpg)
 
