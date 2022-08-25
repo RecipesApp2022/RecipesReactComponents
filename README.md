@@ -192,10 +192,10 @@ Componente utilizado para las imágenes de las categorías.
 
 Este componente recibe los siguientes parámetros:  
 img: Imagen de fondo.  
-name: Nombre de la categoria.  
-categoryId: Id de la categoria.  
-withoutPaddingY: Son variables logicas que se encarga del Padding del diseño de la cajita de categoría.  
-withoutBgCover: Son variables logica que se encarga de escalar la imagen para que ocupe toda la caja. Sólo son llamadas si deseo que se muestre o no.  
+name: Nombre de la categoría.  
+categoryId: Id de la categoría.  
+withoutPaddingY: Son variables lógicas que se encarga del Padding del diseño de la cajita de categoría.  
+withoutBgCover: Son variables lógicas que se encarga de escalar la imagen para que ocupe toda la caja. Solo son llamadas si deseo que se muestre o no.  
 
 ![](https://i.imgur.com/X0b6gXh.jpg)
 
@@ -211,7 +211,7 @@ Rectángulo con estilos específicos donde se agrega la información popular, im
 
 Este componente recibe dos parámetros tipo string:  
 img: Imagen de la sesión de popular.  
-title: Titulo de la publicidad.  
+title: Título de la publicidad.  
 
 ![](https://i.imgur.com/epl8lQh.jpg)
 
