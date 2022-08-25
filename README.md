@@ -103,7 +103,7 @@ Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer.
 Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores, notificación e inicio de sesión. Por lo tanto este componente no recibe ningun parámetro. 
 
 
-![](https://i.imgur.com/LRqpOC6.png)
+![](https://i.imgur.com/5uM6FpB.png)
 [Subir](#top)
 
 
