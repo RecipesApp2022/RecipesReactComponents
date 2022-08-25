@@ -150,7 +150,7 @@ Página en la cual el usuario puede rellenar los campos requeridos para el regis
 <a name="item7"></a>
 ### SwiperHome
  
-Contiene las imágenes de portada modo slider. 
+Contiene las imágenes de portada modo slider, este componente no recibe parámetros. 
 
 
 ![](https://i.imgur.com/Glk2nCD.jpg) 
