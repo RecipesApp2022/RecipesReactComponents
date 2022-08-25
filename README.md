@@ -175,7 +175,7 @@ Contiene las imágenes de portada modo slider, este componente no recibe paráme
  
 Titulación de las secciones. Recibe parámetro de texto modificable, debido a que se utiliza en varias secciones del home.
 
-Cómo parámetros recibe una variable llamada props que es la encargada del nombre que se mostrara en el resultado de la ejecucion del componente en la plataforma.
+Cómo parámetros recibe una variable llamada props que es la encargada del nombre que se mostrará en el resultado de la ejecución del componente en la plataforma.
 
 ![](https://i.imgur.com/oKX0UsN.jpg)
 
