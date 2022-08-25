@@ -222,7 +222,8 @@ title: Título de la publicidad.
 <a name="item11"></a>
 ### SwiperWeightPlan
  ---
-Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve. 
+Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve.  
+No recibe ningún parámetro.
 
 ![](https://i.imgur.com/XTwqKMq.jpg)
  
@@ -236,6 +237,7 @@ Sección de los planes, donde se trae información de los planes como imagen, t�
 ### CategoriesVideo
  ---
 Toda la sección de categorías con videos. 
+No recibe ningún parámetro.
 
 ![](https://i.imgur.com/OcBFt3l.jpg)
 
@@ -248,7 +250,8 @@ Toda la sección de categorías con videos.
 <a name="item13"></a>
 * ### SesionCategory
  ---
-Select de las categorías.
+Select de las categorías.  
+No tiene ningún parámetro.
 
 ![](https://i.imgur.com/lVviHpJ.jpg)
 
@@ -260,7 +263,11 @@ Select de las categorías.
 <a name="item14"></a>
 * ### VideoCategory
  ---
-Descripción del video, contiene imagen y nombre del vendedor, nombre de la receta. 
+Descripción del vídeo, contiene imagen y nombre del vendedor, nombre de la receta.  
+Los siguientes parámetros que recibe son:
+name: Variable tipo string que se encarga 
+img:
+subname:
 
 ![](https://i.imgur.com/BlF8cca.jpg) 
 
