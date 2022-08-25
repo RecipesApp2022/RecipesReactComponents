@@ -93,7 +93,7 @@
 
 <a name="item1"></a>
 ### AppLayout
- 
+ ---
 Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. 
 
 Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
@@ -101,7 +101,7 @@ Este recibe por parametro {children} que permite agregar el contenido o cuerpo  
 
 <a name="item2"></a>
 * ### NavBar
- 
+ ---
 Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores, notificación e inicio de sesión. 
 
 No recibe ningun parámetro. 
@@ -113,6 +113,7 @@ No recibe ningun parámetro.
 
 <a name="item3"></a>
 * ### NavInfo
+ ---
 Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos.
 
 Cómo parémetro no recibe nada.
@@ -125,7 +126,7 @@ Cómo parémetro no recibe nada.
  
 <a name="item4"></a>
 * ### Footer
- 
+ ---
 Almacena toda la información del pié de página y no es necesario que reciba ningun parámetro ya que el componente consiste en el diseño del footer.
 
 
@@ -135,7 +136,7 @@ Almacena toda la información del pié de página y no es necesario que reciba n
 
 <a name="item5"></a>
 ### LoginForm
- 
+ ---
 La vista del login donde el usuario agrega datos para validar su acceso a la plataforma.
 
 Recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
@@ -148,7 +149,7 @@ Recibe como parámetro changeForm, lo que hace es avisar al componente padre en 
 
 <a name="item6"></a>
 ### RegisterForm
- 
+ ---
 Página en la cual el usuario puede rellenar los campos requeridos para el registro en la aplicación.
 
 Recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
@@ -160,7 +161,7 @@ Recibe como parámetro changeForm, lo que hace es avisar al componente padre en 
 
 <a name="item7"></a>
 ### SwiperHome
- 
+ ---
 Contiene las imágenes de portada modo slider, este componente no recibe parámetros. 
 
 
@@ -172,7 +173,7 @@ Contiene las imágenes de portada modo slider, este componente no recibe paráme
 
 <a name="item8"></a>
 ### Card
- 
+ ---
 Titulación de las secciones. Recibe parámetro de texto modificable, debido a que se utiliza en varias secciones del home.
 
 Cómo parámetros recibe una variable llamada props que es la encargada del nombre que se mostrará en el resultado de la ejecución del componente en la plataforma.
@@ -186,16 +187,15 @@ Cómo parámetros recibe una variable llamada props que es la encargada del nomb
 
 <a name="item9"></a>
 ### CategorySectionCard
- 
+ ---
 Componente utilizado para las imágenes de las categorías.
 
-Este componente recibe los siguientes parámetros:
-
-img: Imagen de fondo.
-name: Nombre de la categoria.
-categoryId: Id de la categoria.
-withoutPaddingY: Son variables logicas que se encarga del Padding del diseño de la cajita de categoría,
-withoutBgCover: Son variables logica que se encarga de escalar la imagen para que ocupe toda la caja. Sólo son llamadas si deseo que se muestre o no.
+Este componente recibe los siguientes parámetros:  
+img: Imagen de fondo.  
+name: Nombre de la categoria.  
+categoryId: Id de la categoria.  
+withoutPaddingY: Son variables logicas que se encarga del Padding del diseño de la cajita de categoría.  
+withoutBgCover: Son variables logica que se encarga de escalar la imagen para que ocupe toda la caja. Sólo son llamadas si deseo que se muestre o no.  
 
 ![](https://i.imgur.com/X0b6gXh.jpg)
 
@@ -209,8 +209,7 @@ withoutBgCover: Son variables logica que se encarga de escalar la imagen para qu
  ---
 Rectángulo con estilos específicos donde se agrega la información popular, imagen y texto de una sección publicitaria. 
 
-Este componente recibe dos parámetros tipo string:
-
+Este componente recibe dos parámetros tipo string:  
 img: Imagen de la sesión de popular.  
 title: Titulo de la publicidad.  
 
@@ -222,8 +221,9 @@ title: Titulo de la publicidad.
 
 <a name="item11"></a>
 ### SwiperWeightPlan
- 
+ ---
 Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve. 
+
 ![](https://i.imgur.com/XTwqKMq.jpg)
  
 [Subir](#top)
@@ -234,7 +234,7 @@ Sección de los planes, donde se trae información de los planes como imagen, t�
 
 <a name="item12"></a>
 ### CategoriesVideo
- 
+ ---
 Toda la sección de categorías con videos. 
 
 ![](https://i.imgur.com/OcBFt3l.jpg)
@@ -247,7 +247,7 @@ Toda la sección de categorías con videos.
 
 <a name="item13"></a>
 * ### SesionCategory
-
+ ---
 Select de las categorías.
 
 ![](https://i.imgur.com/lVviHpJ.jpg)
@@ -259,7 +259,7 @@ Select de las categorías.
 
 <a name="item14"></a>
 * ### VideoCategory
-
+ ---
 Descripción del video, contiene imagen y nombre del vendedor, nombre de la receta. 
 
 ![](https://i.imgur.com/BlF8cca.jpg) 
@@ -271,7 +271,7 @@ Descripción del video, contiene imagen y nombre del vendedor, nombre de la rece
 
 <a name="item15"></a>
 * ### Video
-
+ ---
 Modelo de la estructura de la card donde se muestra el video.
 
 ![](https://i.imgur.com/ZbqvqxU.jpg)
@@ -285,7 +285,7 @@ Modelo de la estructura de la card donde se muestra el video.
 
 <a name="item16"></a>
 ### Recipes
-
+ ---
 Componente que contiene la estructura de la plantilla de como se muestra la receta en el home. 
 
 ![](https://i.imgur.com/R1kSxvW.jpg) 
@@ -298,7 +298,7 @@ Componente que contiene la estructura de la plantilla de como se muestra la rece
 
 <a name="item17"></a>
 ### ChefsCountries
-
+ ---
 Contiene sección de chefs populares por países. 
 
 ![](https://i.imgur.com/s8M3PYt.jpg) 
@@ -310,7 +310,7 @@ Contiene sección de chefs populares por países.
 
 <a name="item18"></a>
 ### AuthModal
- 
+ ---
 Este componente es el encargado de la validación de escuchar el clic al seleccionar el Button de inicio de sesión donde nos permite iniciar en la vista del login o en la vista del registro.
 
 
@@ -321,7 +321,7 @@ Este componente es el encargado de la validación de escuchar el clic al selecci
 
 <a name="item19"></a>
 ### ButtonSupr
- 
+ ---
 Componente con las dos opciones de vista (Grid View, ListView). en las pantallas de resultados de busqueda.
 
 ![](https://i.imgur.com/oblMl0x.jpg)
@@ -332,7 +332,7 @@ Componente con las dos opciones de vista (Grid View, ListView). en las pantallas
 
 <a name="item20"></a>
 ### MenuLeft
-
+ ---
 Este componente es el encargado de la estructura del sistema de filtrado que aparece en el lateral izquierdo en las pantallas de resultados de búsqueda.  A su vez contiene 6 componentes.   
 
 ![](https://i.imgur.com/4iNFTtX.jpg) 
@@ -343,7 +343,7 @@ Este componente es el encargado de la estructura del sistema de filtrado que apa
 
 <a name="item21"></a>
 ### CategoriesRecipes
- 
+ ---
 Componente encargado del filtrado por categorías.
 
 ![](https://i.imgur.com/nodHnhR.jpg) 
@@ -354,7 +354,7 @@ Componente encargado del filtrado por categorías.
 
 <a name="item22"></a>
 ### SelectCategory
- 
+ ---
 Componente encargado del filtrado por Types.
 
 ![](https://i.imgur.com/czTDiK6.jpg)
