@@ -130,7 +130,7 @@ Almacena toda la información del pié de página y no es necesario que reciba n
 <a name="item5"></a>
 ### LoginForm
  
-La vista del login donde el usuario agrega datos para validar su acceso a la plataforma y recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde m encuentre.
+La vista del login donde el usuario agrega datos para validar su acceso a la plataforma y recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
 
 
 ![](https://i.imgur.com/hWaV5bx.pngg)
@@ -140,7 +140,7 @@ La vista del login donde el usuario agrega datos para validar su acceso a la pla
 <a name="item6"></a>
 ### RegisterForm
  
-Página en la cual el usuario puede rellenar los campos requeridos para el registro en la aplicación. 
+Página en la cual el usuario puede rellenar los campos requeridos para el registro en la aplicación y recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
 
 
 ![](https://i.imgur.com/T8lMgYk.png)
