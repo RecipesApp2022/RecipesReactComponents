@@ -190,6 +190,7 @@ Cómo parámetros recibe una variable llamada props que es la encargada del nomb
 Componente utilizado para las imágenes de las categorías.
 
 Este componente recibe los siguientes parámetros:
+
 img: Imagen de fondo.
 name: Nombre de la categoria.
 categoryId: Id de la categoria.
@@ -209,6 +210,7 @@ withoutBgCover: Son variables logica que se encarga de escalar la imagen para qu
 Rectángulo con estilos específicos donde se agrega la información popular, imagen y texto de una sección publicitaria. 
 
 Este componente recibe dos parámetros tipo string:
+
 img: Imagen de la sesión de popular.
 title: Titulo de la publicidad.
 
