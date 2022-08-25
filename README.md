@@ -94,13 +94,16 @@
 <a name="item1"></a>
 ### AppLayout
  
-Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
+Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. 
+
+Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
 
 <a name="item2"></a>
 * ### NavBar
  
-Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores, notificación e inicio de sesión. Por lo tanto este componente no recibe ningun parámetro. 
+Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores, notificación e inicio de sesión. 
+No recibe ningun parámetro. 
 
 
 ![](https://i.imgur.com/5uM6FpB.png)
@@ -109,7 +112,8 @@ Contiene la parte superior del header donde se ubican los items que direccionan 
 
 <a name="item3"></a>
 * ### NavInfo
-Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos; como parémetro no recibe nada.
+Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos.
+Cómo parémetro no recibe nada.
 
 
 ![](https://i.imgur.com/hP1OO0n.png)
@@ -120,7 +124,7 @@ Contiene la barra inferior del header, está compuesto por la localización, dir
 <a name="item4"></a>
 * ### Footer
  
-Almacena toda la información del pié de página y no es necesario que reciba ningun parametro ya que el componente consiste en el diseño del footer.
+Almacena toda la información del pié de página y no es necesario que reciba ningun parámetro ya que el componente consiste en el diseño del footer.
 
 
 ![](https://i.imgur.com/69B1bHz.png) 
@@ -130,7 +134,10 @@ Almacena toda la información del pié de página y no es necesario que reciba n
 <a name="item5"></a>
 ### LoginForm
  
-La vista del login donde el usuario agrega datos para validar su acceso a la plataforma y recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+La vista del login donde el usuario agrega datos para validar su acceso a la plataforma.
+Recibe como parámetro "changeForm y onClose".
+	changeForm, lo que hace es avisar al componente padre en que modal estoy.
+	onClose me permite cerrar el modal donde se encuentre.
 
 
 ![](https://i.imgur.com/hWaV5bx.pngg)
