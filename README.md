@@ -103,6 +103,7 @@ Este recibe por parametro {children} que permite agregar el contenido o cuerpo  
 * ### NavBar
  
 Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores, notificación e inicio de sesión. 
+
 No recibe ningun parámetro. 
 
 
@@ -113,6 +114,7 @@ No recibe ningun parámetro.
 <a name="item3"></a>
 * ### NavInfo
 Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos.
+
 Cómo parémetro no recibe nada.
 
 
@@ -135,9 +137,9 @@ Almacena toda la información del pié de página y no es necesario que reciba n
 ### LoginForm
  
 La vista del login donde el usuario agrega datos para validar su acceso a la plataforma.
-Recibe como parámetro "changeForm y onClose".
-	changeForm, lo que hace es avisar al componente padre en que modal estoy.
-	onClose me permite cerrar el modal donde se encuentre.
+
+Recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+
 
 
 ![](https://i.imgur.com/hWaV5bx.pngg)
@@ -147,7 +149,9 @@ Recibe como parámetro "changeForm y onClose".
 <a name="item6"></a>
 ### RegisterForm
  
-Página en la cual el usuario puede rellenar los campos requeridos para el registro en la aplicación y recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+Página en la cual el usuario puede rellenar los campos requeridos para el registro en la aplicación.
+
+Recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
 
 
 ![](https://i.imgur.com/T8lMgYk.png)
