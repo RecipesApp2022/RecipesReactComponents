@@ -130,7 +130,7 @@ Almacena toda la información del pié de página y no es necesario que reciba n
 <a name="item5"></a>
 ### LoginForm
  
-Vista del login donde el usuario agrega datos para validar su acceso a la plataforma.
+Vista del login donde el usuario agrega datos para validar su acceso a la plataforma y recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde m encuentre.
 
 
 ![](https://i.imgur.com/oEplWmR.jpg)
