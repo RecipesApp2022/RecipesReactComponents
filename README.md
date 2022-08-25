@@ -94,25 +94,25 @@
 <a name="item1"></a>
 ### AppLayout
  
-AppLayout es un componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este contiene una variable que permite agregar el contenido correspondiente a cada página de la aplicación. 
+Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer. Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
 
 <a name="item2"></a>
 * ### NavBar
  
-Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores e inicio de sesión.  
+Contiene la parte superior del header donde se ubican los items que direccionan la navegación del usuario hacia categorías, vendedores, notificación e inicio de sesión. Por lo tanto este componente no recibe ningun parámetro. 
 
 
-![](https://i.imgur.com/RK1zhGy.jpg)
+![](https://i.imgur.com/LRqpOC6.png)
 [Subir](#top)
 
 
 <a name="item3"></a>
 * ### NavInfo
-Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos. 
+Contiene la barra inferior del header, está compuesto por la localización, direccionamientos hacia recetas, planes y combos; como parémetro no recibe nada.
 
 
-![](https://i.imgur.com/PkK97Pb.jpg)
+![](https://i.imgur.com/hP1OO0n.png)
 [Subir](#top)
 
 
@@ -120,10 +120,10 @@ Contiene la barra inferior del header, está compuesto por la localización, dir
 <a name="item4"></a>
 * ### Footer
  
-Almacena toda la información del pié de página.
+Almacena toda la información del pié de página y no es necesario que reciba ningun parametro ya que el componente consiste en el diseño del footer.
 
 
-![](https://i.imgur.com/LundOua.jpg) 
+![](https://i.imgur.com/69B1bHz.png) 
 
 
 
