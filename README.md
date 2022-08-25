@@ -206,12 +206,13 @@ withoutBgCover: Son variables logica que se encarga de escalar la imagen para qu
 
 <a name="item10"></a>
 ### PopularSearch
- 
+ ---
 Rectángulo con estilos específicos donde se agrega la información popular, imagen y texto de una sección publicitaria. 
 
 Este componente recibe dos parámetros tipo string:
 
 img: Imagen de la sesión de popular.
+
 title: Titulo de la publicidad.
 
 ![](https://i.imgur.com/epl8lQh.jpg)
