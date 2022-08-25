@@ -174,6 +174,8 @@ Contiene las imágenes de portada modo slider, este componente no recibe paráme
 ### Card
  
 Titulación de las secciones. Recibe parámetro de texto modificable, debido a que se utiliza en varias secciones del home.
+
+Cómo parámetros recibe una variable llamada props que es la encargada del nombre que se mostrara en el resultado de la ejecucion del componente en la plataforma.
 ![](https://i.imgur.com/oKX0UsN.jpg)
 
  
@@ -185,6 +187,13 @@ Titulación de las secciones. Recibe parámetro de texto modificable, debido a q
 ### CategorySectionCard
  
 Componente utilizado para las imágenes de las categorías.
+
+Este componente recibe los siguientes parámetros:
+img: Imagen de fondo.
+name: Nombre de la categoria.
+categoryId: Id de la categoria.
+withoutPaddingY: Son variables logicas que se encarga del Padding del diseño de la cajita de categoría,
+withoutBgCover: Son variables logica que se encarga de escalar la imagen para que ocupe toda la caja. Sólo son llamadas si deseo que se muestre o no.
 ![](https://i.imgur.com/X0b6gXh.jpg)
 
 [Subir](#top)
@@ -195,7 +204,11 @@ Componente utilizado para las imágenes de las categorías.
 <a name="item10"></a>
 ### PopularSearch
  
-Rectángulo con estilos específicos donde se agrega la información, imagen y texto de una sección publicitaria. 
+Rectángulo con estilos específicos donde se agrega la información popular, imagen y texto de una sección publicitaria. 
+
+Este componente recibe dos parámetros tipo string:
+img: Imagen de la sesión de popular.
+title: Titulo de la publicidad.
 ![](https://i.imgur.com/epl8lQh.jpg)
 
 [Subir](#top)
