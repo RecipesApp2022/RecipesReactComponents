@@ -168,8 +168,8 @@ import MobileMenuButton from "./MobileMenuButton";
 import clsx from "clsx";
 
 import MovilMenuSearch from "./MovilMenuSearch";
-import NotificationComponent from "./Notifications/NotificationComponent";
 
+import NotificationComponent from "./Notifications/NotificationComponent";
 
 const NavBar = () => {
     const { user } = useAuth();
