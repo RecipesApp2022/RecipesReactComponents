@@ -98,7 +98,7 @@ Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer.
 
 Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
-####Código: 
+#### Código: 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
