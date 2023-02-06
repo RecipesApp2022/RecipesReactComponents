@@ -134,8 +134,6 @@ import NavInfo from "./NavInfo";
 La compilación del código es el diseño de la unión de 3 componente para la construcción de otras posibles vista en nuestro sistema web.
 
 ![](https://imgbox.com/4haRmQ41 )
-[Subir](#top)
-
 
 <a name="item2"></a>
 * ### NavBar
