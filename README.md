@@ -251,6 +251,7 @@ import NotificationComponent from "./Notifications/NotificationComponent";
         </>
     );}export default NavBar;
 
+Cómo resultado de la ejecución de código es:
 
 ![](https://i.imgur.com/5uM6FpB.png)
 [Subir](#top)
