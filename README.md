@@ -161,7 +161,6 @@ import NotificationComponent from "./Notifications/NotificationComponent";
 
 
 const NavBar = () => {
-
     const { user } = useAuth();
 
     const [searchParams] = useSearchParams();
@@ -173,7 +172,6 @@ const NavBar = () => {
     const [showMenu, setShowMenu] = useState(false);
 
     const [currentPath, setCurrentPath] = useState(""); //pat escucha 
-
     useEffect(() => {
         setShowModal(searchParams?.get('showLogin'));
     }, [searchParams])
