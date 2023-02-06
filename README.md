@@ -99,8 +99,13 @@ Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer.
 Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
 #### Código: 
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
 
-import { useEffect } from "react";
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
+
+Importación de la libreria Footer, NavBar, NavInfo son componente para una función en particular.
+
+import { useEffect } from "react";<b/>
 import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
@@ -121,7 +126,7 @@ import NavInfo from "./NavInfo";
     )
 }
 export default AppLayout;
-
+La compilación del código es el diseño de la unión de 3 componente para la construcción de otras posibles vista en nuestro sistema web.
 
 <a name="item2"></a>
 * ### NavBar
