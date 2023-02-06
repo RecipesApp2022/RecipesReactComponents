@@ -248,8 +248,7 @@ import NotificationComponent from "./Notifications/NotificationComponent";
             <AuthModal show={showModal} onClose={handleToggleModal} />
             <MovilMenuSearch show={showModalMenu} onClose={() => setShowModalMenu(false)} />
         </>
-    );
-}export default NavBar;
+    );}export default NavBar;
 
 
 ![](https://i.imgur.com/5uM6FpB.png)
