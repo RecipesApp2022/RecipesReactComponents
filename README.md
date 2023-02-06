@@ -143,6 +143,13 @@ Contiene la parte superior del header donde se ubican los items que direccionan 
 
 No recibe ningun parámetro. 
 
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Implementación de la líbreria en este es un caso de uso perfecto para un useAuthgancho que habilita cualquier componente. para obtener el estado de autenticación actual y volver a renderizar si cambia. 
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+
 #### Código
 
 import PageLogo from "./PageLogo";
