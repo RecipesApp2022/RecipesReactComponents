@@ -128,8 +128,8 @@ import NavInfo from "./NavInfo";
             {children}
             <Footer />
         </div>
-    )
-}export default AppLayout;
+    	)
+    }export default AppLayout;
 
 La compilación del código es el diseño de la unión de 3 componente para la construcción de otras posibles vista en nuestro sistema web.
 
