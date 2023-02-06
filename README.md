@@ -154,12 +154,19 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsBell } from "react-icons/bs";
 
 import { BiSearchAlt } from "react-icons/bi";
+
 import AuthModal from "./AuthModal";
+
 import { Link, useLocation, useSearchParams } from "react-router-dom";
+
 import { useAuth } from "../contexts/AuthContext";
+
 import MenuConfig from "./MenuConfig";
+
 import MobileMenuButton from "./MobileMenuButton";
+
 import clsx from "clsx";
+
 import MovilMenuSearch from "./MovilMenuSearch";
 import NotificationComponent from "./Notifications/NotificationComponent";
 
