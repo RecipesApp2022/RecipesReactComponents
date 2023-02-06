@@ -345,100 +345,11 @@ Almacena toda la información del pié de página y no es necesario que reciba n
 Cómo parémetro no recibe nada.
 
 #### Código
-import React from "react";
 
-import PageLogo from "./PageLogo";
+![](https://i.imgur.com/LP94jBL.png) 
 
-import { SiFacebook } from "react-icons/si";
-
-import { SiInstagram } from "react-icons/si";
-
-import { SiTwitter } from "react-icons/si";
-
-import { IoLogoYoutube } from "react-icons/io";
-
-import { FaLinkedinIn } from "react-icons/fa";
-
-export default function Footer() {
-  return (
-    <footer className="bg-gray-900 text-white mt-auto p-5 md:m-auto">
-      <div className="container h-full">
-        <div className="flex items-center justify-center mb:ml-8 mt-4 md:justify-start">
-          <PageLogo />
-          <b className="ml-4 title-medium">Ricardo APP</b>
-        </div>
-        <div className="grid grid-cols-2 gap-8 p-6 md:px-28  md:grid-cols-4 md:mt-4 ">
-          <div>
-            <h1 className="font-bold my-4">
-              Get in touch
-            </h1>
-            <div>
-              <div className="md:my-4">About Us</div>
-              <div className="md:my-4">Careers</div>
-              <div className="md:my-4">Press Releases</div>
-              <div className="md:my-4">Blog</div>
-            </div>
-          </div>
-          <div>
-            <div className="font-bold my-4">Connections</div>
-            <div className="">
-              <div className="space-x-2 flex md:mt-4 md:mb-4">
-                <SiFacebook className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
-                Facebook
-              </div>
-              <div className="space-x-2 flex md:mt-4 md:mb-4">
-                <SiTwitter className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
-                Twitter
-              </div>
-              <div className="space-x-2 flex md:mt-4 md:mb-4">
-                <SiInstagram className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
-                Instagram
-              </div>
-              <div className="space-x-2 flex md:mt-4 md:mb-4">
-                <IoLogoYoutube className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
-                Youtube
-              </div>
-              <div className="space-x-2 flex md:mt-4 md:mb-4">
-                <FaLinkedinIn className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
-                LinkedinIn
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="font-bold my-4">
-              Earnings
-            </div>
-            <div>
-              <div className="md:my-4">Become an Affiliate</div>
-              <div className="md:my-4">Advertise your product</div>
-              <div className="md:my-4">Sell on Market</div>
-            </div>
-          </div>
-          <div>
-            <div className="font-bold my-4">
-              Account
-            </div>
-            <div>
-              <div className="md:my-4">Your account</div>
-              <div className="md:my-4">Returns Centre</div>
-              <div className="md:my-4">100 % purchase protection</div>
-              <div className="md:my-4">Chat with us</div>
-              <div className="md:my-4">Help</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="text-center mt-10 ">
-        <p>&copy; 2022 <span className='text-main'>Ricardo APP.</span> All rights reserved. Designed by JV, AN, LV & FJ.</p>
-      </div>
-    </footer >
-  );
-}
-    
-
+Para descargar el código selecciona aquí. https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Footer.js
      
-  
-
 ![](https://i.imgur.com/69B1bHz.png) 
 
 
@@ -448,11 +359,119 @@ export default function Footer() {
  ---
 La vista del login donde el usuario agrega datos para validar su acceso a la plataforma.
 
-Recibe como parámetro changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+Recibe como parámetro { changeForm, onClose } changeForm, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+
+#### Código
+import { useEffect, useState } from "react";
+
+import Logo from "../assets/drafts.png";
+
+import LoginBg from "../assets/img1.jpg";
+
+import PageLogo from "../componentes/PageLogo";
+
+import { useAuth } from "../contexts/AuthContext";
+
+import { useFeedBack } from "../contexts/FeedBackContext";
+
+import useAxios from "../hooks/useAxios";
+
+import Checkbox from "./Checkbox";
 
 
+    const LoginForm = ({ changeForm, onClose }) => {
+    const { setAuthInfo } = useAuth();
+    const { setLoading } = useFeedBack();
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [{ data: loginData, loading: loginLoading }, login] = useAxios({ url: '/auth/login', method: 'POST' }, { manual: true, useCache: false });
 
-![](https://i.imgur.com/hWaV5bx.pngg)
+    useEffect(() => {
+        setLoading({
+            show: loginLoading,
+            message: 'Login'
+        })
+    }, [loginLoading]);
+    useEffect(() => {
+        if (loginData) {
+            setAuthInfo({
+                user: loginData?.user,
+                token: loginData?.accessToken
+            });
+            onClose(null, true);
+        }
+    }, [loginData])
+    const handleChange = (e) => {
+        setFormData(prevData => ({
+            ...prevData,
+            [e.target.name]: e.target.value,
+        }));
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        login({ data: formData });
+    }
+    return (
+        <div className="m-auto grid md:grid-cols-2 md:w-2/3 bg-main animate__animated animate__fadeInUp">
+            <div style={{ backgroundImage: `url(${LoginBg})`, backgroundPosition: 'center center', backgroundSize: 'cover' }}>
+                <div className="flex h-full w-full bg-black bg-opacity-50 p-4">
+                    <div className="m-auto" >
+                        <img src={Logo} className="m-auto rounded-2xl" alt="RicardoApp" />
+                        <h1 className="text-4xl text-center text-white font-bold">Ricardo App</h1>
+                        <p className="font-light text-sm text-center text-white">the best platform to grow your Recipes.</p>
+                    </div>
+                </div>
+            </div>
+            <form onSubmit={handleSubmit} className="p-4">
+                <div className="text-center">
+                    <PageLogo centered />
+                    <h1 className="mt-4 text-2xl text-white font-bold">Login</h1>
+                    <div className="mx-1 my-2 h-px w-0.2 bg-white"></div>
+                </div>
+                <div className="text-white ">
+                    <p className="font-bold mt-4">E-Mail Address</p>
+                    <input
+                        className="border border-slate-100 rounded-md py-2 px-2 w-full text-black"
+                        placeholder="Email"
+                        type="email"
+                        name="email"
+                        value={formData?.email}
+                        onChange={handleChange}
+                    />
+                    <p className="font-bold">Password</p>
+                    <input
+                        className="border border-slate-100 rounded-md py-2 px-2 w-full text-black"
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        value={formData?.password}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="flex mx-2 my-2 ">
+                    <Checkbox className="mt-1.5" />
+                    <p className="text-white ml-2" >remember me</p>
+                </div>
+                <div className="text-center">
+                    <button className="bg-slate-50 px-2 py-1 rounded">sing in</button>
+                    <div className="px-2 py-1 mb-2 text-white">
+                        <p onClick={() => changeForm('forgot-password')} className="mb-2 cursor-pointer">I forgot my password?</p>
+                        <p className="mb-2">You do not have an account?
+                            <b className="cursor-pointer text-slate-700" onClick={() => { changeForm('register') }}> Sign up</b>
+                        </p>
+                        <div className=" mb-2 text-center">
+                            <p>&copy; 2022 <b className='text-white'>Ricardo APP.</b> All rights reserved. Designed by JV, AN, LV & FJ</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    )
+}export default LoginForm;
+
+Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
+
+![](https://i.imgur.com/hWaV5bx.png)
  
 
 
