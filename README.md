@@ -271,6 +271,65 @@ Contiene la barra inferior del header, está compuesto por la localización, dir
 
 Cómo parémetro no recibe nada.
 
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+#### Código
+
+import { BiMap } from "react-icons/bi";
+
+import { Link, useLocation } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+
+import clsx from "clsx";
+
+    const NavInfo = () => {
+    const [currentPath, setCurrentPath] = useState(""); //pat escucha 
+    const location = useLocation();
+    useEffect(() => {
+        setCurrentPath(location?.pathname);
+    }, [location]);
+    return (
+        <div className="bg-main text-black py-1">
+            <div className="relative flex items-center justify-center">
+                <BiMap className="text-white text-xl absolute left-5" />
+                <div className="flex items-center justify-center flex-wrap">
+                    <nav className="flex items-center space-x-10  md:space-x-20">
+                        <Link to={"/recipes"}>
+                            <p className={clsx("hover:text-white", {
+                                "text-white title-medium md:text-lg": currentPath === '/recipes',
+                                "text-black title-medium md:text-lg": currentPath !== '/recipes'
+                            })}>
+                                Recipes
+                            </p>
+                        </Link>
+
+                        <Link to={"/plans"}>
+                            <p className={clsx("hover:text-white", {
+                                "text-white title-medium md:text-lg": currentPath === '/plans',
+                                "text-black title-medium md:text-lg": currentPath !== '/plans'
+                            })}>
+                                Plans
+                            </p>
+                        </Link>
+                        <Link to={"/combos"}>
+                            <p className={clsx("hover:text-white", {
+                                "text-white title-medium md:text-lg": currentPath === '/combos',
+                                "text-black title-medium md:text-lg": currentPath !== '/combos'
+                            })}>
+                                Combos</p>
+                        </Link>
+                    </nav>
+                </div>
+            </div>
+        </div >
+    );}export default NavInfo;
 
 ![](https://i.imgur.com/hP1OO0n.png)
 [Subir](#top)
