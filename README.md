@@ -133,7 +133,7 @@ import NavInfo from "./NavInfo";
 
 La compilación del código es el diseño de la unión de 3 componente para la construcción de otras posibles vista en nuestro sistema web.
 
-![](https://imgur.com/a/av3C6Bv)
+![](https://imgur.com/a/bZFGx9t)
 [Subir](#top)
 
 
