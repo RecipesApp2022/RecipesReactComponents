@@ -146,9 +146,13 @@ No recibe ningun parámetro.
 #### Código
 
 import PageLogo from "./PageLogo";
+
 import React, { useEffect, useState } from 'react'
+
 import { FaUserCircle } from "react-icons/fa";
+
 import { BsBell } from "react-icons/bs";
+
 import { BiSearchAlt } from "react-icons/bi";
 import AuthModal from "./AuthModal";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
