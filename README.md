@@ -105,11 +105,11 @@ Importación de la libreria react-router-dom Consulte la guía de inicio para ob
 
 Importación de la libreria Footer, NavBar, NavInfo son componente para una función en particular.
 
-import { useEffect } from "react";<b/>
-import { useLocation } from "react-router-dom";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
-import NavInfo from "./NavInfo";
+import { useEffect } from "react";</b>
+import { useLocation } from "react-router-dom";</b>
+import Footer from "./Footer";</b>
+import NavBar from "./NavBar";</b>
+import NavInfo from "./NavInfo";</b>
 
     const AppLayout = ({ children }) => {
     const location = useLocation();
