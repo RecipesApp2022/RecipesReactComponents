@@ -105,6 +105,7 @@ import { useLocation } from "react-router-dom";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import NavInfo from "./NavInfo";
+
     const AppLayout = ({ children }) => {
     const location = useLocation();
     useEffect(() => {
