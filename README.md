@@ -386,7 +386,7 @@ export default function Footer() {
                 <SiFacebook className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
                 Facebook
               </li>
-              <li className="space-x-2 flex md:mt-4 md:mb-4">
+              <div className="space-x-2 flex md:mt-4 md:mb-4">
                 <SiTwitter className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
                 Twitter
               </li>
@@ -408,13 +408,13 @@ export default function Footer() {
             <h1 className="font-bold my-4">
               Earnings
             </h1>
-            <ul>
+            <div>
               <li className="md:my-4">Become an Affiliate</li>
               <li className="md:my-4">Advertise your product</li>
               <li className="md:my-4">Sell on Market</li>
-            </ul>
+            </div>
           </li>
-          <li>
+          <div>
             <h1 className="font-bold my-4">
               Account
             </h1>
@@ -425,7 +425,7 @@ export default function Footer() {
               <li className="md:my-4">Chat with us</li>
               <li className="md:my-4">Help</li>
             </ul>
-          </li>
+          </div>
         </ul>
       </div>
       <div className="text-center mt-10 ">
