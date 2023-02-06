@@ -143,13 +143,37 @@ Contiene la parte superior del header donde se ubican los items que direccionan 
 
 No recibe ningun parámetro. 
 
+#### Código
+
+import PageLogo from "./PageLogo";
+import React, { useEffect, useState } from 'react'
+import { FaUserCircle } from "react-icons/fa";
+import { BsBell } from "react-icons/bs";
+import { BiSearchAlt } from "react-icons/bi";
+import AuthModal from "./AuthModal";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import MenuConfig from "./MenuConfig";
+import MobileMenuButton from "./MobileMenuButton";
+import clsx from "clsx";
+import MovilMenuSearch from "./MovilMenuSearch";
+import NotificationComponent from "./Notifications/NotificationComponent";
+
+
 const NavBar = () => {
+
     const { user } = useAuth();
+
     const [searchParams] = useSearchParams();
+
     const [showModal, setShowModal] = useState(false);
+
     const [showModalMenu, setShowModalMenu] = useState(false);
+
     const [showMenu, setShowMenu] = useState(false);
+
     const [currentPath, setCurrentPath] = useState(""); //pat escucha 
+
     useEffect(() => {
         setShowModal(searchParams?.get('showLogin'));
     }, [searchParams])
@@ -205,6 +229,7 @@ const NavBar = () => {
                                     {user ? user.name : 'Log in'}
                                     <MenuConfig show={showMenu} onClose={() => setShowMenu(false)} />
                                 </div>
+
                             </button>
                             <MobileMenuButton />
                         </div>
