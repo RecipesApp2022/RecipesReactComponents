@@ -171,7 +171,7 @@ import MovilMenuSearch from "./MovilMenuSearch";
 
 import NotificationComponent from "./Notifications/NotificationComponent";
 
-const NavBar = () => {
+ const NavBar = () => {
     const { user } = useAuth();
 
     const [searchParams] = useSearchParams();
