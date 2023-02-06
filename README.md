@@ -98,6 +98,32 @@ Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer.
 
 Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
+####Código: 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
+import NavInfo from "./NavInfo";
+
+const AppLayout = ({ children }) => {
+
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, [location]);
+    return (
+        <div className="bg-gray-100">
+            <NavBar />
+            <NavInfo />
+            {children}
+            <Footer />
+        </div>
+    )
+}
+
+export default AppLayout;
+
 
 <a name="item2"></a>
 * ### NavBar
