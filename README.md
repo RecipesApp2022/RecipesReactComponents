@@ -709,7 +709,7 @@ import "swiper/css/pagination";
 
 import SearchHome from "../componentes/SearchHome";
 
-const SwiperHome = () => {
+    const SwiperHome = () => {
     const [innerWidth, setInnerWidth] = useState(window.innerWidth);
     useEffect(() => {
         const resizeHandler = () => {
