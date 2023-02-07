@@ -321,6 +321,8 @@ const NavInfo = () => {
 ```
 ![](https://i.imgur.com/hP1OO0n.png)
 
+[Subir](#top)
+
  
 <a name="item4"></a>
 * ### Footer
@@ -1348,6 +1350,31 @@ Cómo ejecución se observa lo siguiente.
  ---
 Componente con las dos opciones de vista (Grid View, ListView). en las pantallas de resultados de busqueda.
 
+Cómo parámetro no recibe ninguno.
+```
+import { IoList, IoGridOutline } from "react-icons/io5";
+
+const ButtonSupr = () => {
+    return (
+        <div className="flex justify-end space-x-6">
+            <button className="flex items-center space-x-2 text-main hover:text-main-dark">
+                <IoGridOutline />
+                <span>Grid View</span>
+            </button>
+            <button className="flex items-center space-x-2 hover:text-main">
+                <IoList />
+                List View
+            </button>
+            <span className="hover:text-main">
+                <b>117</b>
+                Recipes
+            </span>
+        </div>
+    );
+}export default ButtonSupr;
+```
+Cómo ejecución se observa lo siguiente.
+
 ![](https://i.imgur.com/oblMl0x.jpg)
 
 [Subir](#top)
@@ -1358,6 +1385,63 @@ Componente con las dos opciones de vista (Grid View, ListView). en las pantallas
 ### MenuLeft
  ---
 Este componente es el encargado de la estructura del sistema de filtrado que aparece en el lateral izquierdo en las pantallas de resultados de búsqueda.  A su vez contiene 6 componentes.   
+
+Este componente recibe como parámetro { filters, onClickCategory, onChangeRating, className, style }
+filters:
+onClickCategory:
+onChangeRating:
+className:
+style:
+
+```
+import ButtonRank from "./ButtonRank";
+import CategoriesRecipes from "./CategoriesRecipes";
+import RatingComponent from "./RatingComponent";
+import SelectCategory from "./SelectCategory";
+import SelectRank from "./SelectRank";
+
+const MenuLeft = ({ filters, onClickCategory, onChangeRating, className, style }) => {
+    return (
+        <div
+            style={style}
+            className={`hidden md:block ${className || ''}`}
+        >
+
+            <div className="lg:ml-6 bg-white lg:w-64 w-56 m-auto md:w-40 rounded-lg shadow ">
+                <CategoriesRecipes onClickCategory={onClickCategory} values={filters?.categoryIds} />
+            </div>
+            <div>
+                <div className="p-4 mt-6 lg:ml-6 bg-white lg:w-64 m-auto w-56 md:w-40 rounded-lg shadow">
+                    <p className="title-medium mt-2 mb-6">Types</p>
+                    <SelectCategory title="Breakfast" />
+                    <SelectCategory title="Lunch" />
+                    <SelectCategory title="Dinner" />
+                    <SelectCategory title="Snacks" />
+                </div>
+            </div>
+            <div>
+                <div className="p-4 mt-6 lg:ml-6 bg-white lg:w-64 w-56 m-auto md:w-40 rounded-lg shadow">
+                    <h1 className="title-medium mt-2 mb-6">Rating</h1>
+                    <div className="flex items-center space-between">
+                        <RatingComponent
+                            onClickStar={onChangeRating}
+                            value={filters?.rating}
+                        />
+                        {
+                            filters?.rating &&
+                            <button className="bg-main rounded-xl text-white px-4 py-1" onClick={() => onChangeRating('')}>
+                                Clear
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}export default MenuLeft;
+```
+Cómo ejecución se observa lo siguiente.
+
 
 ![](https://i.imgur.com/4iNFTtX.jpg) 
  
