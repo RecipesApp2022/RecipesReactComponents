@@ -1132,7 +1132,7 @@ export default Video;
 ```
 
 Cómo ejecución se observa lo siguiente.
-![](https://i.imgur.com/GsGriTZ.png)
+![](https://i.imgur.com/GTLA87F.png)
 
 <a name="item16"></a>
 ### Recipes
