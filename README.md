@@ -1133,6 +1133,9 @@ export default Video;
 
 Cómo ejecución se observa lo siguiente.
 ![](https://i.imgur.com/GTLA87F.png)
+ 
+[Subir](#top)
+
 
 <a name="item16"></a>
 ### Recipes
@@ -1209,7 +1212,8 @@ const Recipes = ({ title, descsh, desccost, cost, img, level, time, ing, withDef
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/R1kSxvW.jpg) 
-
+ 
+[Subir](#top)
 
 <a name="item17"></a>
 ### ChefsCountries
@@ -1253,13 +1257,15 @@ export default ChefsCountries;
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/s8M3PYt.jpg) 
-
+ 
+[Subir](#top)
 
 <a name="item18"></a>
 ### AuthModal
  ---
 Este componente es el encargado de la validación de escuchar el clic al seleccionar el Button de inicio de sesión donde nos permite iniciar en la vista del login o en la vista del registro.
 
+Recibe como parámetro { show, onClose } show, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
 ```
 import { useRef, useState } from "react";
 import ReactDom from "react-dom";
