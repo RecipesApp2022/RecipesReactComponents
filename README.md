@@ -759,10 +759,11 @@ Titulación de las secciones. Recibe parámetro de texto modificable, debido a q
 
 Cómo parámetros recibe una variable llamada props que es la encargada del nombre que se mostrará en el resultado de la ejecución del componente en la plataforma.
 
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
+
 #### Código
 
 import React, { Fragment } from "react";
-
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
