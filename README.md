@@ -132,6 +132,7 @@ La compilación del código es el diseño de la unión de 3 componente para la c
 
 ![](https://i.imgur.com/pikOfoH.png)
 
+[Subir](#top)
 
 <a name="item2"></a>
 * ### NavBar
@@ -248,7 +249,7 @@ Cómo resultado de la ejecución de código es:
 
 ![](https://i.imgur.com/5uM6FpB.png)
 
-
+[Subir](#top)
 
 <a name="item3"></a>
 * ### NavInfo
@@ -418,6 +419,7 @@ export default function Footer() {
     
 ![](https://i.imgur.com/69B1bHz.png) 
 
+[Subir](#top)
 
 <a name="item5"></a>
 ### LoginForm
@@ -535,6 +537,7 @@ Cómo ejecución el resultado obtenido del código es lo que se visualiza en la 
 
 ![](https://i.imgur.com/hWaV5bx.png)
 
+[Subir](#top)
 
 <a name="item6"></a>
 ### RegisterForm
@@ -710,6 +713,7 @@ const RegisterForm = ({ changeForm, onClose }) => {
 ```
 ![](https://i.imgur.com/T8lMgYk.png)
 
+[Subir](#top)
 
 <a name="item7"></a>
 ### SwiperHome
@@ -773,6 +777,7 @@ Cómo ejecución el resultado obtenido del código es lo que se visualiza en la 
 
 ![](https://i.imgur.com/Glk2nCD.jpg) 
 
+[Subir](#top)
 
 <a name="item8"></a>
 ### Card
@@ -803,6 +808,8 @@ export default Card;
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/oKX0UsN.jpg)
+ 
+ [Subir](#top)
 
 
 <a name="item9"></a>
@@ -863,6 +870,7 @@ Cómo ejecución del código se muestra su resultado en pantalla.
 
 ![](https://i.imgur.com/X0b6gXh.jpg)
 
+[Subir](#top)
 
 <a name="item10"></a>
 ### PopularSearch
@@ -903,6 +911,7 @@ Cómo ejecución del código se muestra su resultado en pantalla.
 
 ![](https://i.imgur.com/epl8lQh.jpg)
 
+[Subir](#top)
 
 <a name="item11"></a>
 ### SwiperWeightPlan
@@ -983,6 +992,8 @@ export default SwiperWeightPlan;
 
 Cómo ejecución de código se muestra lo que se vera en la imagen.
 ![](https://i.imgur.com/XTwqKMq.jpg)
+ 
+ [Subir](#top)
 
 
 <a name="item12"></a>
@@ -1033,7 +1044,8 @@ Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/OcBFt3l.jpg)
 
-
+[Subir](#top)
+ 
 <a name="item13"></a>
 * ### SesionCategory
  ---
@@ -1063,7 +1075,8 @@ Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/lVviHpJ.jpg)
 
-
+[Subir](#top)
+ 
 <a name="item14"></a>
 * ### VideoCategory
  ---
@@ -1093,6 +1106,8 @@ export default VideoCategory;
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/BlF8cca.jpg) 
+
+[Subir](#top)
 
 
 <a name="item15"></a>
