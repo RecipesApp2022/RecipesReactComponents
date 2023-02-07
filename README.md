@@ -494,14 +494,22 @@ Importación de la líbreria useState es un React Hook que le permite agregar un
 
 Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
 
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
 #### Código
 
 import { useEffect, useState } from "react";
+
 import Logo from "../assets/drafts.png";
+
 import LoginBg from "../assets/img1.jpg";
+
 import PageLogo from "../componentes/PageLogo";
+
 import { useAuth } from "../contexts/AuthContext";
+
 import useAxios from "../hooks/useAxios";
+
 import { useNavigate } from 'react-router-dom';
 
     const RegisterForm = ({ changeForm, onClose }) => {
