@@ -1216,11 +1216,43 @@ Cómo ejecución se observa lo siguiente.
  ---
 Contiene sección de chefs populares por países. 
 
+Este componente recibe los siguientes parámetro d etipo string:
+imgChefs: Aquí recibe la imagen del chef.
+LogoBackg: Imagen de fondo.
+imgFlag: Imagen de la bandera.
+name: Nombre del chef.
+sname: Apellido del chef.
+
+```
+const ChefsCountries = ({ imgChefs, LogoBackg, imgFlag, name, sname }) => {
+    return (
+        <div className="mdflex relative h-80 md:w-96 rounded-md cursor-pointer mt-10 mr-5 ml-5 mb-10 bg-cover" style={{ backgroundImage: `url(${LogoBackg})` }}>
+            <div className="absolute bg-black opacity-30 rounded-md w-full h-full">
+            </div>
+            <div className='absolute bg-white left-1/2 top-[30px] h-20  transform -translate-x-1/2 rounded shadow-md'>
+                <img className="rounded-lg top-[40px] h-20 w-20 " src={imgChefs} alt="Chefs" />
+            </div>
+            <div className='absolute bg-white left-1/2 top-[140px] h-20  transform -translate-x-1/2 rounded shadow-md'>
+                <img className="h-20 w-40 " src={imgFlag} alt="Flag" />
+            </div>
+            <div className="absolute font-sans text-white bottom-0 right-0 py-4 px-4 text-2xl">
+                <div className="text-center font-sans text-white bottom-0 right-0 text-2xl" style={{ textShadow: "0px 0px 3px #000000" }}>
+                    {name}
+                </div>
+                <div className="font-sans text-white bottom-0 right-0 text-2xl" style={{ textShadow: "0px 0px 3px #000000" }}>
+                    {sname}
+                </div>
+            </div>
+
+        </div>
+    );
+}
+
+export default ChefsCountries;
+```
+Cómo ejecución se observa lo siguiente.
+
 ![](https://i.imgur.com/s8M3PYt.jpg) 
-
- 
-[Subir](#top)
-
 
 
 <a name="item18"></a>
@@ -1228,6 +1260,62 @@ Contiene sección de chefs populares por países.
  ---
 Este componente es el encargado de la validación de escuchar el clic al seleccionar el Button de inicio de sesión donde nos permite iniciar en la vista del login o en la vista del registro.
 
+```
+import { useRef, useState } from "react";
+import ReactDom from "react-dom";
+import ForgotPasswordForm from "./ForgotPasswordForm";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
+
+const AuthModal = ({ show, onClose }) => {
+
+    const [showForm, setShowForm] = useState('login');
+
+    const modalRef = useRef();
+
+    if (!show) {
+        return null;
+    }
+
+    const handleClose = (e, forceClose) => {
+        if (forceClose) {
+            onClose();
+            return;
+        }
+
+
+        if (modalRef.current === e.target) {
+            onClose();
+        }
+    }
+
+    const handleForm = (form) => {
+        setShowForm(form);
+    }
+
+    return ReactDom.createPortal(
+        <div ref={modalRef} onClick={handleClose} className="flex h-screen w-screen bg-black bg-opacity-50 fixed z-10 p-10" style={{ top: 0, left: 0, overflowY: 'auto' }}>
+            {
+                showForm === 'login' &&
+                <LoginForm changeForm={handleForm} onClose={onClose} />
+            }
+
+            {
+                showForm === 'forgot-password' &&
+                <ForgotPasswordForm changeForm={handleForm} onClose={onClose} />
+            }
+
+            {
+                showForm === 'register' &&
+                <RegisterForm changeForm={handleForm} onClose={onClose} />
+            }
+        </div>
+        ,
+        document.getElementById("portal")
+    );
+}export default AuthModal;
+```
+Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/sv9LjAY.jpg)  
  
