@@ -435,27 +435,18 @@ Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.
 #### Código
 ```
 import { useEffect, useState } from "react";
-
 import Logo from "../assets/drafts.png";
-
 import LoginBg from "../assets/img1.jpg";
-
 import PageLogo from "../componentes/PageLogo";
-
 import { useAuth } from "../contexts/AuthContext";
-
 import { useFeedBack } from "../contexts/FeedBackContext";
-
 import useAxios from "../hooks/useAxios";
-
 import Checkbox from "./Checkbox";
-
 const LoginForm = ({ changeForm, onClose }) => {
     const { setAuthInfo } = useAuth();
     const { setLoading } = useFeedBack();
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [{ data: loginData, loading: loginLoading }, login] = useAxios({ url: '/auth/login', method: 'POST' }, { manual: true, useCache: false });
-
     useEffect(() => {
         setLoading({
             show: loginLoading,
@@ -563,20 +554,13 @@ Importación de la libreria react-router-dom Consulte la guía de inicio para ob
 #### Código
 ```
 import { useEffect, useState } from "react";
-
 import Logo from "../assets/drafts.png";
-
 import LoginBg from "../assets/img1.jpg";
-
 import PageLogo from "../componentes/PageLogo";
-
 import { useAuth } from "../contexts/AuthContext";
-
 import useAxios from "../hooks/useAxios";
-
 import { useNavigate } from 'react-router-dom';
-
-    const RegisterForm = ({ changeForm, onClose }) => {
+const RegisterForm = ({ changeForm, onClose }) => {
     const navigate = useNavigate();
     const { setAuthInfo } = useAuth();
     const [data, setData] = useState({
@@ -741,26 +725,16 @@ Importación de la líbreria useState es un React Hook que le permite agregar un
 #### Código
 ```
 import React, { useState, useEffect } from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";// Import Swiper React components
-
 import img1 from "../assets/img1.jpg";
-
 import img2 from "../assets/img2.jpg";
-
 import img3 from "../assets/img3.jpg";
-
 import { Pagination, Navigation } from "swiper";
-
 import "swiper/css";
-
 import "swiper/css/navigation";
-
 import "swiper/css/pagination";
-
 import SearchHome from "../componentes/SearchHome";
-
-    const SwiperHome = () => {
+const SwiperHome = () => {
     const [innerWidth, setInnerWidth] = useState(window.innerWidth);
     useEffect(() => {
         const resizeHandler = () => {
@@ -813,7 +787,6 @@ Importación de la libreria react-router-dom Consulte la guía de inicio para ob
 ```
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-
 const Card = (props) => {
   return (
     <Fragment>
@@ -824,7 +797,6 @@ const Card = (props) => {
     </Fragment>
   );
 };
-
 export default Card;
 ```
 
@@ -848,9 +820,7 @@ withoutBgCover: Son variables lógicas que se encarga de escalar la imagen para 
 #### Código
 ```
 import clsx from "clsx";
-
 import { forwardRef } from "react";
-
 const CategorySectionCard = forwardRef(({
     className,
     img,
