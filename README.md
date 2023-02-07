@@ -347,11 +347,11 @@ Cómo parémetro no recibe nada.
 #### Código
 
 ![](https://i.imgur.com/LP94jBL.png) 
-
+[Subir](#top)
 Para descargar el código selecciona aquí. https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Footer.js
      
 ![](https://i.imgur.com/69B1bHz.png) 
-
+[Subir](#top)
 
 
 <a name="item5"></a>
@@ -478,7 +478,7 @@ import Checkbox from "./Checkbox";
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/hWaV5bx.png)
- 
+ [Subir](#top)
 
 
 <a name="item6"></a>
@@ -673,7 +673,7 @@ import { useNavigate } from 'react-router-dom';
 }export default RegisterForm;
 
 ![](https://i.imgur.com/T8lMgYk.png)
-
+[Subir](#top)
 
 
 <a name="item7"></a>
@@ -747,7 +747,6 @@ import SearchHome from "../componentes/SearchHome";
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen, Sólo se encarga de mostrar la imagen del banner.
 
 ![](https://i.imgur.com/Glk2nCD.jpg) 
-
 [Subir](#top)
 
 
@@ -767,20 +766,12 @@ import React, { Fragment } from "react";
 
 import { Link } from "react-router-dom";
 
-const Card = (props) => {
-
-return (
-<Fragment>	
-	<div className="relative flex justify-center text-center md:h-14 cursor-pointer rounded md:text-2xl md:px-2 py-2 mx-8 md:my-8 font-semibold shadow bg-main text-white">{props.saludo}{props.link && <Link to={props.link} className="absolute right-10 hidden md:block mt-2 text-base cursor-pointer hover:text-black">{props.title}</Link>}</div>	
-</Fragment>
-);
-};export default Card;
-
+![](https://i.imgur.com/wAQzJCT.png)
+[Subir](#top)
+https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Card.js
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/oKX0UsN.jpg)
-
- 
 [Subir](#top)
 
 
