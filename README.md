@@ -108,15 +108,10 @@ Importación de la libreria Footer, NavBar, NavInfo son componente para una func
 
 ```
 import { useEffect } from "react";
-
 import { useLocation } from "react-router-dom";
-
 import Footer from "./Footer";
-
 import NavBar from "./NavBar";
-
 import NavInfo from "./NavInfo";
-
 const AppLayout = ({ children }) => {
     const location = useLocation();
     useEffect(() => {
@@ -155,29 +150,17 @@ Importación de la libreria useEffect, los efectos en esta librería de JavaScri
 #### Código
 ```
 import PageLogo from "./PageLogo";
-
 import React, { useEffect, useState } from 'react'
-
 import { FaUserCircle } from "react-icons/fa";
-
 import { BsBell } from "react-icons/bs";
-
 import { BiSearchAlt } from "react-icons/bi";
-
 import AuthModal from "./AuthModal";
-
 import { Link, useLocation, useSearchParams } from "react-router-dom";
-
 import { useAuth } from "../contexts/AuthContext";
-
 import MenuConfig from "./MenuConfig";
-
 import MobileMenuButton from "./MobileMenuButton";
-
 import clsx from "clsx";
-
 import MovilMenuSearch from "./MovilMenuSearch";
-
 import NotificationComponent from "./Notifications/NotificationComponent";
 
 const NavBar = () => {
@@ -258,7 +241,8 @@ const NavBar = () => {
             <AuthModal show={showModal} onClose={handleToggleModal} />
             <MovilMenuSearch show={showModalMenu} onClose={() => setShowModalMenu(false)} />
         </>
-    );}export default NavBar;
+    );
+    }export default NavBar;
 ```
 Cómo resultado de la ejecución de código es:
 
