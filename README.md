@@ -872,6 +872,9 @@ Rectángulo con estilos específicos donde se agrega la información popular, im
 Este componente recibe dos parámetros tipo string:  
 img: Imagen de la sesión de popular.  
 title: Título de la publicidad.  
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
+
 ```
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -898,9 +901,6 @@ export default PopularSearch;
 ```
 ![](https://i.imgur.com/epl8lQh.jpg)
 
-[Subir](#top)
-
-
 
 <a name="item11"></a>
 ### SwiperWeightPlan
@@ -908,6 +908,10 @@ export default PopularSearch;
 Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve.  
 
 No recibe ningún parámetro.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 
 #### Código
 
@@ -1062,10 +1066,8 @@ Cómo ejecución se observa lo siguiente.
 * ### VideoCategory
  ---
 Descripción del vídeo, contiene imagen y nombre del vendedor, nombre de la receta.  
-Los siguientes parámetros que recibe son:
-name: Variable tipo string que se encarga 
-img:
-subname:
+
+Cómo parámetro no recibe nada.
 
 #### Código
 ```
@@ -1096,13 +1098,36 @@ Cómo ejecución se observa lo siguiente.
  ---
 Modelo de la estructura de la card donde se muestra el video.
 
+```
+import ReactPlayer from 'react-player';
+import chefsSw from '../assets/chefsSw.jpg';
+
+const Video = ({ name, subname }) => {
+    return (
+        <div className="text-white">
+            <div className="h-36 bg-black rounded-lg overflow-hidden">
+                <ReactPlayer
+                    url='https://www.youtube.com/watch?v=WmLNXXlo3rQ'
+                    height={'100%'}
+                    width={'100%'}
+                    className="rounded-lg"
+                />
+            </div>
+            <div className="flex">
+                <img className="rounded-full h-10 w-10" src={chefsSw} alt="" />
+                <div className="grid grid-rows-2 m-0.5">
+                    <p className="text-black font-semibold ">{name}</p>
+                    <p className="text-gray-500 text-xs font-semibold ">{subname}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+export default Video;
+```
+Cómo ejecución se observa lo siguiente.
+
 ![](https://i.imgur.com/ZbqvqxU.jpg)
-
- 
-[Subir](#top)
-
-
-
 
 
 <a name="item16"></a>
