@@ -99,12 +99,14 @@ Es el componente padre de enrutamiento entre los hijos NavBar, NavInfo y Footer.
 Este recibe por parametro {children} que permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
 #### Código: 
+
 Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
 
 Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
 
 Importación de la libreria Footer, NavBar, NavInfo son componente para una función en particular.
 
+```
 import { useEffect } from "react";
 
 import { useLocation } from "react-router-dom";
@@ -115,8 +117,7 @@ import NavBar from "./NavBar";
 
 import NavInfo from "./NavInfo";
 
-
-    const AppLayout = ({ children }) => {
+const AppLayout = ({ children }) => {
     const location = useLocation();
     useEffect(() => {
         window.scrollTo({ top: 0 });
@@ -130,6 +131,7 @@ import NavInfo from "./NavInfo";
         </div>
     	)
     }export default AppLayout;
+```
 
 La compilación del código es el diseño de la unión de 3 componente para la construcción de otras posibles vista en nuestro sistema web.
 
@@ -151,7 +153,7 @@ Importación de la libreria useEffect, los efectos en esta librería de JavaScri
 
 
 #### Código
-
+```
 import PageLogo from "./PageLogo";
 
 import React, { useEffect, useState } from 'react'
@@ -178,7 +180,7 @@ import MovilMenuSearch from "./MovilMenuSearch";
 
 import NotificationComponent from "./Notifications/NotificationComponent";
 
-    const NavBar = () => {
+const NavBar = () => {
     
     const { user } = useAuth();
 
@@ -257,7 +259,7 @@ import NotificationComponent from "./Notifications/NotificationComponent";
             <MovilMenuSearch show={showModalMenu} onClose={() => setShowModalMenu(false)} />
         </>
     );}export default NavBar;
-
+```
 Cómo resultado de la ejecución de código es:
 
 ![](https://i.imgur.com/5uM6FpB.png)
@@ -280,7 +282,7 @@ Importación de la libreria useEffect, los efectos en esta librería de JavaScri
 Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 
 #### Código
-
+```
 import { BiMap } from "react-icons/bi";
 
 import { Link, useLocation } from "react-router-dom";
@@ -289,7 +291,7 @@ import { useEffect, useState } from "react";
 
 import clsx from "clsx";
 
-    const NavInfo = () => {
+const NavInfo = () => {
     const [currentPath, setCurrentPath] = useState(""); //pat escucha 
     const location = useLocation();
     useEffect(() => {
@@ -329,8 +331,9 @@ import clsx from "clsx";
                 </div>
             </div>
         </div >
-    );}export default NavInfo;
-
+    );
+    }export default NavInfo;
+```
 ![](https://i.imgur.com/hP1OO0n.png)
 
  
@@ -343,10 +346,92 @@ Cómo parémetro no recibe nada.
 
 #### Código
 
-![](https://i.imgur.com/LP94jBL.png)
+```
+import React from "react";
+import PageLogo from "./PageLogo";
+import { SiFacebook } from "react-icons/si";
+import { SiInstagram } from "react-icons/si";
+import { SiTwitter } from "react-icons/si";
+import { IoLogoYoutube } from "react-icons/io";
+import { FaLinkedinIn } from "react-icons/fa";
 
-Para descargar el código selecciona aquí. https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Footer.js
-     
+export default function Footer() {
+  return (
+    <footer className="bg-gray-900 text-white mt-auto p-5 md:m-auto">
+      <div className="container h-full">
+        <div className="flex items-center justify-center mb:ml-8 mt-4 md:justify-start">
+          <PageLogo />
+          <b className="ml-4 title-medium">Ricardo APP</b>
+        </div>
+        <ul className="grid grid-cols-2 gap-8 p-6 md:px-28  md:grid-cols-4 md:mt-4 ">
+          <li>
+            <h1 className="font-bold my-4">
+              Get in touch
+            </h1>
+            <ul>
+              <li className="md:my-4">About Us</li>
+              <li className="md:my-4">Careers</li>
+              <li className="md:my-4">Press Releases</li>
+              <li className="md:my-4">Blog</li>
+            </ul>
+          </li>
+          <li>
+            <h1 className="font-bold my-4">Connections</h1>
+            <ul className="">
+              <li className="space-x-2 flex md:mt-4 md:mb-4">
+                <SiFacebook className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
+                Facebook
+              </li>
+              <li className="space-x-2 flex md:mt-4 md:mb-4">
+                <SiTwitter className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
+                Twitter
+              </li>
+              <li className="space-x-2 flex md:mt-4 md:mb-4">
+                <SiInstagram className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
+                Instagram
+              </li>
+              <li className="space-x-2 flex md:mt-4 md:mb-4">
+                <IoLogoYoutube className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
+                Youtube
+              </li>
+              <li className="space-x-2 flex md:mt-4 md:mb-4">
+                <FaLinkedinIn className="md:h-6 md:w-6 h-4 w-4 mt-1 cursor-pointer hover:text-main md:cursor-pointer mr-1" />
+                LinkedinIn
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h1 className="font-bold my-4">
+              Earnings
+            </h1>
+            <ul>
+              <li className="md:my-4">Become an Affiliate</li>
+              <li className="md:my-4">Advertise your product</li>
+              <li className="md:my-4">Sell on Market</li>
+            </ul>
+          </li>
+          <li>
+            <h1 className="font-bold my-4">
+              Account
+            </h1>
+            <ul>
+              <li className="md:my-4">Your account</li>
+              <li className="md:my-4">Returns Centre</li>
+              <li className="md:my-4">100 % purchase protection</li>
+              <li className="md:my-4">Chat with us</li>
+              <li className="md:my-4">Help</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div className="text-center mt-10 ">
+        <p>&copy; 2022 <span className='text-main'>Ricardo APP.</span> All rights reserved. Designed by JV, AN, LV & FJ.</p>
+      </div>
+    </footer >
+  );
+}
+```
+    
 ![](https://i.imgur.com/69B1bHz.png) 
 
 
@@ -364,6 +449,7 @@ Importación de la líbreria useState es un React Hook que le permite agregar un
 Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
 
 #### Código
+```
 import { useEffect, useState } from "react";
 
 import Logo from "../assets/drafts.png";
@@ -380,8 +466,7 @@ import useAxios from "../hooks/useAxios";
 
 import Checkbox from "./Checkbox";
 
-
-    const LoginForm = ({ changeForm, onClose }) => {
+const LoginForm = ({ changeForm, onClose }) => {
     const { setAuthInfo } = useAuth();
     const { setLoading } = useFeedBack();
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -470,7 +555,7 @@ import Checkbox from "./Checkbox";
         </div>
     )
 }export default LoginForm;
-
+```
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/hWaV5bx.png)
@@ -492,7 +577,7 @@ Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.
 Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
 
 #### Código
-
+```
 import { useEffect, useState } from "react";
 
 import Logo from "../assets/drafts.png";
@@ -625,25 +710,13 @@ import { useNavigate } from 'react-router-dom';
                     </div>
                     <div className="mx-2 my-2">
                         <p className="font-bold">User Instagram:</p>
-                        <input
-                            className="border border-slate-100 rounded-m py-2 px-2 w-full text-black"
-                            placeholder="@xxxxxxxxxxxx"
-                            type="text"
-                            name="instagram"
-                            value={data?.instagram}
-                            onChange={handleChange}
-                        />
+                        <input className="border border-slate-100 rounded-m py-2 px-2 w-full text-black"
+                            placeholder="@xxxxxxxxxxxx" type="text" name="instagram" value={data?.instagram} onChange={handleChange}/>
                     </div>
                     <div className="mx-2 my-2">
                         <p className="font-bold">User PayPal:</p>
-                        <input
-                            className="border border-slate-100 rounded-md py-2 px-2 w-full text-black"
-                            placeholder="xxxxx@xxxx.xxx"
-                            type="email"
-                            name="paypal"
-                            value={data?.paypal}
-                            onChange={handleChange}
-                        />
+                        <input className="border border-slate-100 rounded-md py-2 px-2 w-full text-black"
+                            placeholder="xxxxx@xxxx.xxx" type="email" name="paypal" value={data?.paypal} onChange={handleChange}/>
                     </div>
                 </div>
                 <div className="text-center">
@@ -666,7 +739,7 @@ import { useNavigate } from 'react-router-dom';
         </div >
     )
 }export default RegisterForm;
-
+```
 ![](https://i.imgur.com/T8lMgYk.png)
 
 
@@ -682,7 +755,7 @@ Importación de la libreria useEffect, los efectos en esta librería de JavaScri
 Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 
 #### Código
-
+```
 import React, { useState, useEffect } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";// Import Swiper React components
@@ -737,7 +810,7 @@ import SearchHome from "../componentes/SearchHome";
         </div>
     );
 }export default SwiperHome; 
-
+```
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen, Sólo se encarga de mostrar la imagen del banner.
 
 ![](https://i.imgur.com/Glk2nCD.jpg) 
@@ -753,14 +826,23 @@ Cómo parámetros recibe una variable llamada props que es la encargada del nomb
 Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
 
 #### Código
-
+```
 import React, { Fragment } from "react";
-
 import { Link } from "react-router-dom";
 
-![](https://i.imgur.com/wAQzJCT.png)
+const Card = (props) => {
+  return (
+    <Fragment>
+      <div className="relative flex justify-center text-center md:h-14 cursor-pointer rounded md:text-2xl md:px-2 py-2 mx-8 md:my-8 font-semibold shadow bg-main 	text-white">
+        {props.saludo}
+        {props.link && <Link to={props.link} className="absolute right-10 hidden md:block mt-2 text-base cursor-pointer hover:text-black">{props.title}</Link>}
+      </div>
+    </Fragment>
+  );
+};
 
-https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Card.js
+export default Card;
+```
 
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
@@ -780,7 +862,7 @@ withoutPaddingY: Son variables lógicas que se encarga del Padding del diseño d
 withoutBgCover: Son variables lógicas que se encarga de escalar la imagen para que ocupe toda la caja. Solo son llamadas si deseo que se muestre o no.  
 
 #### Código
-
+```
 import clsx from "clsx";
 
 import { forwardRef } from "react";
@@ -821,6 +903,7 @@ const CategorySectionCard = forwardRef(({
         </a>
     );
 })export default CategorySectionCard;
+```
 
 Cómo ejecución del código se muestra su resultado en pantala.
 ![](https://i.imgur.com/X0b6gXh.jpg)
