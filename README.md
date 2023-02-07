@@ -872,7 +872,30 @@ Rectángulo con estilos específicos donde se agrega la información popular, im
 Este componente recibe dos parámetros tipo string:  
 img: Imagen de la sesión de popular.  
 title: Título de la publicidad.  
+```
+import React from 'react';
+import { Link } from 'react-router-dom';
 
+const PopularSearch = ({ title, img, url }) => {
+    return (
+        <div className="flex bg-white w-full rounded-md overflow-hidden shadow-md">
+            <div className='justify-around items-center py-3 px-4 w-full'>
+                <div className='text-3xl px-4 py-3 font-bold'>
+                    {title}
+                </div>
+                <br />
+                <Link to={url} className="bg-main text-white py-2 px-3 rounded my-4 mx-4">
+                    See more
+                </Link>
+            </div>
+            <div className="w-full">
+                <img className='w-full h-full' src={img} alt="PopularSearch" />
+            </div>
+        </div>
+    );
+}
+export default PopularSearch;
+```
 ![](https://i.imgur.com/epl8lQh.jpg)
 
 [Subir](#top)
@@ -883,41 +906,156 @@ title: Título de la publicidad.
 ### SwiperWeightPlan
  ---
 Sección de los planes, donde se trae información de los planes como imagen, título y descripción breve.  
+
 No recibe ningún parámetro.
 
+#### Código
+
+```
+import React, { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import WeightPlan from '../componentes/WeightPlan';
+import { Navigation } from "swiper";
+import usePlans from "../hooks/usePlans";
+import SystemInfo from "../util/SystemInfo";
+
+const SwiperWeightPlan = () => {
+    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+    const [filters, setFilters] = useState({
+        page: 1,
+        perPage: 10,
+        hideClientPlans: 'true'
+    })
+
+    const [{ plans }] = usePlans({
+        params: {
+            ...filters
+        }
+    });
+
+    useEffect(() => {
+        const resizeHandler = () => {
+            setInnerWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', resizeHandler);
+
+        return () => window.removeEventListener('resize', resizeHandler);
+    }, []);
+
+    return (
+        <div className="container px-8">
+            <Swiper
+                slidesPerView={innerWidth > 768 ? 3 : 1}
+                spaceBetween={20}
+                loop={true}
+                navigation={true}
+                modules={[Navigation]}
+                className="mySwiper m-auto "
+            >
+                {plans.map(plan => <SwiperSlide key={plan.id}>
+                    <WeightPlan
+                        price={`${plan?.price}$`}
+                        hideCart
+                        logo={`${SystemInfo.api}${plan?.seller?.logo}`}
+                        img={`${SystemInfo.api}${plan?.images?.[0]?.path}`}
+                        title={plan?.name}
+                        text={plan?.description}
+                    />
+                </SwiperSlide>)}
+            </Swiper>
+        </div>
+    );
+}
+
+export default SwiperWeightPlan;
+```
+
+Cómo ejecución de código se muestra lo que se vera en la imagen.
 ![](https://i.imgur.com/XTwqKMq.jpg)
- 
-[Subir](#top)
-
-
-
 
 
 <a name="item12"></a>
 ### CategoriesVideo
  ---
 Toda la sección de categorías con videos. 
+
 No recibe ningún parámetro.
 
+#### Código
+
+```
+import category from "../assets/category3.jpg"
+import CategorySectionCard from "./CategorySectionCard";
+import React from 'react';
+import SesionCategory from "./SesionCategory";
+import VideoCategory from "./VideoCategory";
+
+const CategoriesVideo = () => {
+    return (
+        <div className="bg-white">
+            <div className="container p-4 ">
+                <SesionCategory />
+                <div className=" md:p-8 md:flex">
+                    <div className="md:w-8/12 p-1">
+                        <VideoCategory />
+                    </div>
+                    <div className="md:w-4/12 p-2 ">
+                        <CategorySectionCard
+                            img={category}
+                            name="Paleo"
+                            className={"py-40 bg-full"}
+                            withoutPaddingY
+                            withoutBgCover
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    );
+}
+
+export default CategoriesVideo;
+```
+
+Cómo ejecución se observa lo siguiente.
+
 ![](https://i.imgur.com/OcBFt3l.jpg)
-
-[Subir](#top)
-
-
-
 
 
 <a name="item13"></a>
 * ### SesionCategory
  ---
 Select de las categorías.  
+
 No tiene ningún parámetro.
 
+#### Código
+
+```
+const SesionCategory = () => {
+    return (
+        <form className="m-10 ml-8 m-50 cursor-pointer ">
+            <select className="text-main font-semibold text-lg bg-white border border-gray-400 rounded-md py-1.5 md:px-20  
+                         focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 leading-4">
+                <option value="">New recipes</option>
+                <option value="">Low in calories</option>
+                <option value="">Paleo</option>
+                <option value="">High in protein </option>
+            </select>
+        </form >
+    );
+}
+export default SesionCategory;
+```
+Cómo ejecución se observa lo siguiente.
+
 ![](https://i.imgur.com/lVviHpJ.jpg)
-
-[Subir](#top)
-
-
 
 
 <a name="item14"></a>
@@ -929,11 +1067,28 @@ name: Variable tipo string que se encarga
 img:
 subname:
 
+#### Código
+```
+import React from 'react';
+import Video from './Video';
+
+const VideoCategory = () => {
+    return (
+        <div className="h-full md:w-full grid md:grid-cols-3 md:gap-3">
+            <Video name="Recipes Paleo" subname="Rosa Maria" />
+            <Video name="Recipes Paleo" subname="Rosa Maria" />
+            <Video name="Recipes Paleo" subname="Rosa Maria" />
+            <Video name="Recipes Paleo" subname="Rosa Maria" />
+            <Video name="Recipes Paleo" subname="Rosa Maria" />
+            <Video name="Recipes Paleo" subname="Rosa Maria" />
+        </div>
+    );
+}
+export default VideoCategory;
+```
+Cómo ejecución se observa lo siguiente.
+
 ![](https://i.imgur.com/BlF8cca.jpg) 
-
-[Subir](#top)
-
-
 
 
 <a name="item15"></a>
