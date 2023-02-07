@@ -134,7 +134,7 @@ import NavInfo from "./NavInfo";
 La compilación del código es el diseño de la unión de 3 componente para la construcción de otras posibles vista en nuestro sistema web.
 
 ![](https://i.imgur.com/pikOfoH.png)
-[Subir](#top)
+
 
 <a name="item2"></a>
 * ### NavBar
@@ -261,7 +261,6 @@ import NotificationComponent from "./Notifications/NotificationComponent";
 Cómo resultado de la ejecución de código es:
 
 ![](https://i.imgur.com/5uM6FpB.png)
-[Subir](#top)
 
 
 
@@ -333,8 +332,6 @@ import clsx from "clsx";
     );}export default NavInfo;
 
 ![](https://i.imgur.com/hP1OO0n.png)
-[Subir](#top)
-
 
  
 <a name="item4"></a>
@@ -346,12 +343,11 @@ Cómo parémetro no recibe nada.
 
 #### Código
 
-![](https://i.imgur.com/LP94jBL.png) 
-[Subir](#top)
+![](https://i.imgur.com/LP94jBL.png)
+
 Para descargar el código selecciona aquí. https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Footer.js
      
 ![](https://i.imgur.com/69B1bHz.png) 
-[Subir](#top)
 
 
 <a name="item5"></a>
@@ -478,7 +474,6 @@ import Checkbox from "./Checkbox";
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/hWaV5bx.png)
- [Subir](#top)
 
 
 <a name="item6"></a>
@@ -673,7 +668,6 @@ import { useNavigate } from 'react-router-dom';
 }export default RegisterForm;
 
 ![](https://i.imgur.com/T8lMgYk.png)
-[Subir](#top)
 
 
 <a name="item7"></a>
@@ -747,8 +741,6 @@ import SearchHome from "../componentes/SearchHome";
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen, Sólo se encarga de mostrar la imagen del banner.
 
 ![](https://i.imgur.com/Glk2nCD.jpg) 
-[Subir](#top)
-
 
 
 <a name="item8"></a>
@@ -767,13 +759,12 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 ![](https://i.imgur.com/wAQzJCT.png)
-[Subir](#top)
+
 https://github.com/FJardim/recipes-clients/blob/master/src/componentes/Card.js
+
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/oKX0UsN.jpg)
-[Subir](#top)
-
 
 
 <a name="item9"></a>
