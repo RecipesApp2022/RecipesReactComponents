@@ -1134,7 +1134,6 @@ export default Video;
 Cómo ejecución se observa lo siguiente.
 ![](https://i.imgur.com/GsGriTZ.png)
 
-
 <a name="item16"></a>
 ### Recipes
  ---
