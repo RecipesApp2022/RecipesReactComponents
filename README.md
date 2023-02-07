@@ -859,9 +859,9 @@ const CategorySectionCard = forwardRef(({
 })export default CategorySectionCard;
 ```
 
-Cómo ejecución del código se muestra su resultado en pantala.
-![](https://i.imgur.com/X0b6gXh.jpg)
+Cómo ejecución del código se muestra su resultado en pantalla.
 
+![](https://i.imgur.com/X0b6gXh.jpg)
 
 
 <a name="item10"></a>
@@ -899,6 +899,8 @@ const PopularSearch = ({ title, img, url }) => {
 }
 export default PopularSearch;
 ```
+Cómo ejecución del código se muestra su resultado en pantalla.
+
 ![](https://i.imgur.com/epl8lQh.jpg)
 
 
