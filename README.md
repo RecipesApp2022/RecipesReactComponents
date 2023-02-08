@@ -39,7 +39,7 @@
 * [DescriptionChef](#item35)
 * [ButtonImage](#item36)
 * [Details](#item37)
-* [ButtonComprar](#item38)
+* [](#item38)
 * [Tab](#item39)
 * [TabButton](#item40)
 * [TabPanel](#item41)
@@ -882,6 +882,7 @@ Rectángulo con estilos específicos donde se agrega la información popular, im
 Este componente recibe dos parámetros tipo string:  
 img: Imagen de la sesión de popular.  
 title: Título de la publicidad.  
+url: url de la publicidad.
 
 Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web. 
 
@@ -1162,6 +1163,8 @@ Cómo ejecución se observa lo siguiente.
 ### Recipes
  ---
 Componente que contiene la estructura de la plantilla de como se muestra la receta en el home. 
+
+Cómo parametro en el componente recibe { title, descsh, desccost, cost, img, level, time, ing, withDefaultButtons = true }
 
 Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
 
@@ -1861,6 +1864,7 @@ Componente que contiene la llamada de un subcomponente llamado scroll de navegac
 
 No posee nigún parámetro.
 
+#### Código
 ```
 import ScrollNavigation from "../componentes/ScrollNavigation";
 
@@ -1874,12 +1878,14 @@ const ButtomButton = () => {
 
 export default ButtomButton;
 ```
-Cómo ejecución del código es la llamada al componente donde contiene el diseño de pies de pagina de scroll.
+Cómo ejecución del código, es la llamada al componente donde contiene el diseño del pies de pagina. A continuación se explica detalladamente el componente scrollNavigation.
 
 ### ScrollNavigation
  
 Componente con botones de paginación que se repite en varias secciones.
 Cómo parámetro no recibe ningun tipo de datos.
+
+#### Código
 ```
 import React from "react";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
@@ -1934,7 +1940,62 @@ export default ButtomButton;
 ### ProductImagenCarousel
 
 Componentes con la vista de las imagenes en el detalle del producto
+Este componente recibe como parámetro.
 
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria swiper de Por defecto, Swiper React usa la versión principal de Swiper (sin ningún módulo adicional). Si desea utilizar Navegación, Paginación y otros módulos , primero debe instalarlos.
+
+#### Código
+```
+import clsx from "clsx";
+import { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import imgUrl from "../helpers/imgUrl";
+
+const ProductImagesCarousel = ({ images = [], productName }) => {
+  const [swiper, setSwiper] = useState(null);
+
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  return <div className="hidden md:block">
+    <div className="relative">
+      <Swiper
+        onSwiper={setSwiper}
+        onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+        autoHeight={true}
+      >
+        {
+          images?.length > 0 && images?.map(image => <SwiperSlide key={image.id} zoom={{ maxRatio: 2 }}>
+            <div className="swiper-zoom-container">
+              <img
+                src={imgUrl(image.path)}
+                alt={productName}
+                className="rounded-xl w-full h-96"
+              />
+            </div>
+          </SwiperSlide>)}
+      </Swiper>
+    </div>
+    <div className="flex justify-center mt-6 space-x-3">
+      {images?.length > 0 &&
+        images?.map((image, i) => <img
+          key={image.id}
+          src={imgUrl(image.path)}
+          alt={productName}
+          className={clsx(
+            'h-20 w-20 rounded-xl border border-gray-100 rounded shadow hover:shadow-md cursor-pointer',
+            activeSlideIndex === i && 'ring-2 ring-blue-300 ring-opacity-75'
+          )}
+          onClick={() => swiper.slideTo(i)}
+        />)}
+    </div>
+  </div>;
+};
+
+export default ProductImagesCarousel;
+```
+Cómo resultado de la ejecución del componente es el resultado final que se puede observar en la imagen.
 ![](https://i.imgur.com/6KCthjp.jpg)
  
 [Subir](#top)
@@ -1947,19 +2008,132 @@ Componentes con la vista de las imagenes en el detalle del producto
  
 Botones de interaccion con funcionalidades para hacer match, agregar a favoritos o descartar un producto.
 
+cómo parámetro no recibe ninguno este componente.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+```
+import React from 'react'
+import {AiOutlineClose, AiOutlineCheck} from 'react-icons/ai'
+import {BsFillEmojiLaughingFill} from "react-icons/bs"
+
+
+const Matches = () => {
+  return (
+    <div className="container flex justify-center space-x-8">
+        <button className="bg-white rounded-full py-2 px-2 shadow-2xl text-xl recipe-btn"><AiOutlineClose className="text-red-500" /></button>
+        <button className="bg-white rounded-full py-2 px-2 shadow-2xl text-xl recipe-btn"><BsFillEmojiLaughingFill className="text-yellow-300" /></button>
+        <button className="bg-white rounded-full py-2 px-2 shadow-2xl text-xl recipe-btn"><AiOutlineCheck className="text-green-700	" /></button>
+
+    </div>
+  )
+}
+
+export default Matches
+```
+Cómo resultado de la ejecución del componente es el resultado final que se puede observar en la imagen.
+
 ![](https://i.imgur.com/VrVdiMo.jpg)
 
 [Subir](#top)
 
 
 
-
 <a name="item29"></a>
 ### MenuConfig
  
-Componente padre del menu desplegable del panel de usuario con iconos e item.
+Componente padre del menú desplegable del panel de usuario con iconos e item.
 
-![](https://i.imgur.com/15MaLOu.jpg)
+Recibe como parámetro { show, onClose } show, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+#### Código
+```
+import { useRef, useEffect } from "react";
+import { FaUserCircle } from "react-icons/fa";
+import { BsFillBookmarkHeartFill, BsFillGearFill, BsFillCalendar2MinusFill } from "react-icons/bs";
+import { RiMessage2Fill } from "react-icons/ri";
+import { AiOutlineLogout } from "react-icons/ai";
+import { FaListAlt } from "react-icons/fa";
+import { useAuth } from "../contexts/AuthContext";
+import { IoHeart, IoHelpCircleOutline, IoChatbubbleEllipsesOutline, IoBookmarksSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import MenuList from "../util/MenuList";
+
+const MenuConfig = ({ show, onClose }) => {
+    const { setAuthInfo } = useAuth();
+
+    const modalRef = useRef();
+
+    const handleLougoutClick = (e) => {
+        e.preventDefault();
+
+        setAuthInfo({ isAuthenticated: false, token: null });
+    }
+
+    useEffect(() => {
+        const handleMousedown = (e) => {
+            if (modalRef.current && !modalRef.current.contains(e.target)) {
+                onClose?.();
+            }
+        }
+
+        document.addEventListener('mousedown', handleMousedown);
+
+        return () => document.addEventListener('mousedown', handleMousedown);
+    }, [modalRef])
+
+    if (!show) {
+        return null;
+    }
+
+    return (
+        <div>
+            <ul ref={modalRef}
+                style={{ top: '100%' }}
+                className="absolute space-y-2 z-20 right-0 text-white bg-gray-800 w-52 border border-slate-300 rounded-md py-4"
+            >
+                {
+                    MenuList?.map(({ name, Icon, url }, i) => {
+                        return (
+                            <li className="space-x-2 border-b px-4" key={i}>
+                                <Link to={url}>
+                                    <div className="flex hover:text-main">
+                                        <Icon className="mt-1" />
+                                        <p className="text-lg ml-2.5 mb-1.5">{name}</p>
+                                    </div>
+                                </Link>
+                            </li>
+                        )
+                    })
+                }
+                <li className="space-x-2 px-4">
+                    <a onClick={handleLougoutClick} href="dfdf">
+                        <div className="flex hover:text-main">
+                            <AiOutlineLogout className="mt-1" />
+                            <p className="text-lg ml-2.5">Log Out</p>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    );
+}
+
+export default MenuConfig;
+```
+Cómo resultado de la ejecución del componente es el resultado final que se puede observar en la imagen.
+
+![](https://i.imgur.com/eKEAr1k.png)
 
 [Subir](#top)
 
@@ -1971,7 +2145,81 @@ Componente padre del menu desplegable del panel de usuario con iconos e item.
  
 Panel de herramientas del usuario vista con iconos.
 
-![](https://i.imgur.com/yG20mk5.jpg)
+El comnponente no recibe ningún parámetro.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+#### Código
+```
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+import { BsFillHeartFill, BsFillGearFill, BsFillBookmarkHeartFill, BsFillCalendar2MinusFill } from "react-icons/bs";
+import { IoPersonCircleSharp } from "react-icons/io5";
+import { FaListAlt } from "react-icons/fa";
+import { RiMessage2Fill } from "react-icons/ri";
+import { AiOutlineLogout } from "react-icons/ai";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { IoHelpCircleOutline, IoChatbubbleEllipsesOutline, IoBookmarksSharp } from "react-icons/io5";
+import MenuList from "../util/MenuList";
+
+const MyAccountLayout = () => {
+    const { setAuthInfo } = useAuth();
+
+    const [currentPath, setCurrentPath] = useState("");
+
+    const location = useLocation();
+
+    useEffect(() => {
+        setCurrentPath(location?.pathname);
+    }, [location]);
+
+    const handleLougoutClick = (e) => {
+        e.preventDefault();
+
+        setAuthInfo({ isAuthenticated: false, user: null, token: null });
+    }
+
+    return (
+        <div className="flex">
+            <div className="w-2/12 md:w-[5vw] bg-gray-700 hidden md:block text-white text-[2vw]" >
+                {
+                    MenuList?.map(({ name, Icon, url }, i) => {
+                        return (
+                            <div key={i}>
+                                <Link title={name} to={url}>
+                                    <Icon className={clsx(["mx-auto my-6 cursor-pointer transform hover:text-main hover:scale-150 transition duration-500 text-3xl md:text-2xl"], {
+                                        'text-main': currentPath === url
+                                    })} />
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
+                <div className="text-center">
+                    <button title="Log Out" onClick={handleLougoutClick} className="mx-auto my-6 cursor-pointer transform hover:text-main hover:scale-150 transition duration-500 text-3xl md:text-2xl">
+                        <AiOutlineLogout ></AiOutlineLogout>
+                    </button>
+                </div>
+            </div>
+            <div className="w-full min-w-0">
+                <Outlet />
+            </div>
+        </div >
+    );
+}
+
+export default MyAccountLayout;
+```
+Cómo ejecución del código su resultado final es lo que se puede visualizar en la imagén.
+
+![](https://i.imgur.com/ftYgUpz.png)
  
 [Subir](#top)
 
@@ -1983,23 +2231,33 @@ Panel de herramientas del usuario vista con iconos.
  
 Componente con el logo de la app que se adapta al tamaño adecuado.
 
+Cómo parámetro recibe { centered = false } es una variable logica que tepermite mostrar o no el lolo del sistema.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+#### Código
+```
+import { Link } from 'react-router-dom';
+import LogoDrafts from '../assets/drafts.png';
+
+const PageLogo = ({ centered = false }) => {
+    return (
+        <Link to={"/"}>
+            <div className={`flex items-center text-white md:space-x-4 ${centered ? 'justify-center' : ''}`}>
+                <img className="inline-block md:h-9 w-9 rounded-lg"
+                    src={LogoDrafts} alt="recipes" />
+            </div>
+        </Link>
+    );
+}
+
+export default PageLogo;
+```
+Cómo ejecución del código su resultado final es lo que se puede visualizar en la imagén.
+
 ![](https://i.imgur.com/2sY7Kq7.jpg)
  
 [Subir](#top)
-
-
-
-
-<a name="item32"></a>
-### NavSearchBar
- 
-Select de los tipos que encontramos en el header.
-
-![]()
-
-[Subir](#top)
-
-
 
 
 
@@ -2008,13 +2266,36 @@ Select de los tipos que encontramos en el header.
  
 Componente con informacion profesional del vendedor desde su perfil.
 
+Cómo parámetro recibe el seller que seria de tipo entero el identificador del seller.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+
+```
+import React from "react";
+import { BsPatchCheckFill } from "react-icons/bs";
+
+const CertificationChef = ({ seller }) => {
+  return (
+    <div className="mt-6 p-2">
+      <button className="flex items-center space-x-2 text-black text-lg	 font-semibold">
+        <BsPatchCheckFill className="text-main" />
+        <span>Professional Certification</span>
+      </button>
+      <div className=" mt-4">
+        <h1>Chef: {seller?.credentialNumber}</h1>
+      </div>
+    </div>
+  );
+};
+export default CertificationChef;
+```
+Cómo ejecución del código su resultado final es lo que se puede visualizar en la imagén.
+
 ![](https://i.imgur.com/0FU20yz.jpg)
  
 [Subir](#top)
-
-
-
-
 
 
 <a name="item34"></a>
@@ -2022,26 +2303,96 @@ Componente con informacion profesional del vendedor desde su perfil.
  
 Entradas del blog del vendedor ubicadas en el lateral izquierdo del perfil del vendedor.
 
+No recibe ningún parámetro.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+```
+import { BsPin } from "react-icons/bs";
+import React from "react";
+
+const Post = () => {
+  return (
+    <div className="mt-12">
+      <h1 className="text-xl font-semibold">Post De Anya</h1>
+      <div className="mt-6">
+        <div className=" space-y-3">
+          <button className="flex items-center space-x-2 text-black ">
+            <BsPin className="text-main" />
+            <span>5 Formas para Picar Cebolla.</span>
+          </button>
+          <button className="flex items-center space-x-2 text-black">
+            <BsPin className="text-main" />
+            <span>Tips para mejorar tus jugos.</span>
+          </button>
+          <button className="flex items-center space-x-2 text-black">
+            <BsPin className="text-main" />
+            <span>5 Formas para Picar Cebolla.</span>
+          </button>
+          <button className="flex items-center space-x-2 text-black">
+            <BsPin className="text-main" />
+            <span>Mantén afilados tus cuchillos.</span>
+          </button>
+          <button className="flex items-center space-x-2 text-black">
+            <BsPin className="text-main" />
+            <span>Utiliza papel de hornear.</span>
+          </button>
+          <button className="flex items-center space-x-2 text-black">
+            <BsPin className="text-main" />
+            <span>Siempre utiliza aceite de oliva.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Post;
+```
+Cómo ejecución del código su resultado final es lo que se puede visualizar en la imagén.
+
 ![](https://i.imgur.com/k4IAEZ8.jpg)
  
 [Subir](#top)
 
 
 
-
-
-
 <a name="item35"></a>
 ### DescriptionChef
  
-Descripcion escrita por el vendedor en su perfil
+Descripcion escrita por el vendedor en su perfil.
+
+Cómo parámetro recibe el seller que seria de tipo entero el identificador del seller.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+```
+import React from "react";
+import { RiBookReadLine } from "react-icons/ri";
+
+const DescriptionChef = ({ seller }) => {
+  return (
+    <div className="mt-10 p-2">
+      <button className="flex items-center space-x-2 text-black text-xl font-semibold">
+        <RiBookReadLine className="text-main" />
+        <span>Description</span>
+      </button>
+      <div className="p-1 md:text-justify text-justify ">
+        {seller?.description}
+      </div>
+    </div>
+  );
+};
+
+export default DescriptionChef;
+```
+Cómo ejecución del código su resultado final es lo que se puede visualizar en la imagén.
 
 ![](https://i.imgur.com/lOrkBhB.jpg)
  
 [Subir](#top)
-
-
-
 
 
 <a name="item36"></a>
@@ -2049,50 +2400,119 @@ Descripcion escrita por el vendedor en su perfil
  
 Este componente contiene los botones de opcion de compra de ingredientes en Wallmart, Insta card y Amazon Fresh, los cuales redireccionan hacia estos sitios para realizar la compra con esos supermercados. Asi mismo se encuentra dentro de este el boton de pago del producto (receta, plan o combo) a traves de pay pal. 
 
+Recibe como parámetro { image } una imagen que es la que va en el button.
 
+#### Código
+```
+const ButtonImage = ({ image }) => {
+    return (
+        <button
+            style={{ backgroundImage: `url(${image})`, backgroundSize: '100% 100%', backgroundPosition: 'center center' }}
+            className="mb-4 p-2 mb:ml-2 w-40 h-12 rounded-xl border bg-white">
+        </button>
+    )
+}
+export default ButtonImage;
+```
+Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
 ![](https://i.imgur.com/kXCgkaW.jpg) 
 ![](https://i.imgur.com/ZSwrYTC.jpg)
  
 [Subir](#top)
 
 
-
-
-
 <a name="item37"></a>
 ### Details
  
-components que encargado de mostrar esta informacion que se encuentra en la vista de detalle de recetas, combos y planes (Level, categoria, time, igredientes)
+Componentes encargado de mostrar esta información que se encuentra en la vista de detalle de recetas, combos y planes (Level, categoria, time, igredientes).
 
+Recibe parámetro { level, categories, fitness, time, days, ingredients, number, price, hideprice = false }, la variable hideprice es una variable logica porque permite ocultar una linea en epecifico, las demas variables son de tipo string.
+
+#### Código
+```
+import React from 'react'
+import Chefs from '../assets/chef-hat.png'
+const Details = ({ level, categories, fitness, time, days, ingredients, number, price, hideprice = false }) => {
+    return (
+        <div>
+            <div className='md:flex py-2 '>
+                <p className="w-1/2">{level}</p>
+                <div className='flex mt-1'>
+                    <img className="w-6 h-6" src={Chefs} alt="chefs" />
+                    <img className="ml-2 w-6 h-6" src={Chefs} alt="chefs" />
+                    <img className="ml-2 w-6 h-6" src={Chefs} alt="chefs" />
+                    <img className="ml-2 w-6 h-6" src={Chefs} alt="chefs" />
+                </div>
+            </div>
+            <div className='md:flex py-2 '>
+                <p className="md:w-1/2">{categories}</p>
+                <p className="md:-1/2 mt-1 text-black">{fitness}</p>
+                {!hideprice &&
+                    <div><p className='text-main ml-4 font-semibold'>{price}</p></div>}
+            </div>
+            <div className='md:flex py-2 '>
+                <p className="md:w-1/2">{time}</p>
+                <p className="md:w-1/2 text-main underline">{days}</p>
+            </div>
+            <div className='md:flex py-2 '>
+                <p className="w-1/2">{ingredients}</p>
+                <p className="w-1/2 text-black">{number}</p>
+            </div>
+
+        </div>
+    )
+}
+
+export default Details
+
+```
+Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
 
 ![](https://i.imgur.com/ICEzwHy.jpg)
  
 [Subir](#top)
 
 
-
-
-
-
 <a name="item38"></a>
-### ButtonComprar
- 
-Componentes de boton de comprar (desde la caja blanca hasta el boton en la vista del detalle del producto(recetas....) 
+### 
 
-
-![](https://i.imgur.com/W5vbfBG.jpg)
+![]()
  
 [Subir](#top)
-
-
-
 
 
 <a name="item39"></a>
 ### Tab
  
 Componente dinamico encargado del movimiento del cambio de las lista seleccionada.
+Recibe como parámetro { children, value, onClick, canContinue = true } children es la variable que almacena el contenido de cada pestaña, value es el estilo de seleccion de la pestaña, onclick es la variable lógica para saber el click y el canContinue es el que me permite volver al estado original con valores lógico.
+#### Código
+```
+import clsx from "clsx";
+import { useTabs } from "../contexts/TabsContext";
 
+const Tab = ({ children, value, onClick, canContinue = true }) => {
+    const { value: contextValue, setValue } = useTabs();
+
+    return <div
+        className={clsx([
+            'px-5 py-2 md:font-semibold font-medium md:text-lg text-sm cursor-pointer',
+            { 'border-b-2 border-main': value === contextValue }
+        ])}
+        onClick={() => {
+            if (canContinue) {
+                setValue(value);
+                onClick?.(value);
+            }
+        }}
+    >
+        {children}
+    </div>;
+};
+
+export default Tab;
+```
+Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
 
 ![](https://i.imgur.com/EjGCgq4.jpg)
 
