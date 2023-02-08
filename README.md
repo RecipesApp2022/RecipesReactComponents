@@ -2485,7 +2485,9 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 ### Tab
  
 Componente dinamico encargado del movimiento del cambio de las lista seleccionada.
+
 Recibe como parámetro { children, value, onClick, canContinue = true } children es la variable que almacena el contenido de cada pestaña, value es el estilo de seleccion de la pestaña, onclick es la variable lógica para saber el click y el canContinue es el que me permite volver al estado original con valores lógico.
+
 #### Código
 ```
 import clsx from "clsx";
@@ -2520,13 +2522,28 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 
 
 
-
-
 <a name="item41"></a>
 ### TabPanel
  
-componente encargado de mostar o ocultar la informacion de sus hijos dependiendo de la pestaña seleccionada.
+Componente encargado de mostar o ocultar la información de sus hijos dependiendo de la pestaña seleccionada.
 
+Recibe como parámetro { children, className, value } children es la variable que almacena el contenido de cada pestaña, value es el estilo de selección de la pestaña, className es la clases en particular que tiene el cuerpo del contenido interno a mostrar.
+
+#### Código
+```
+import { useTabs } from "../contexts/TabsContext";
+
+const TabPanel = ({ children, className, value }) => {
+    const { value: contextValue } = useTabs();
+
+    if (value !== contextValue) return null;
+
+    return <div className={className}>{children}</div>;
+};
+
+export default TabPanel;
+```
+Cómo ejecución del código del resultado final es lo que se muestra en la imagen.}
 
 ![](https://i.imgur.com/EjGCgq4.jpg)
 
