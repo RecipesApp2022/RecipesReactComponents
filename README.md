@@ -1120,6 +1120,10 @@ Modelo de la estructura de la card donde se muestra el video.
 Este componente recibe dos parámetros tipo string:  
 name: recibe el nombre de vídeo.  
 subname: Título de la publicidad.  
+
+Importación de la líbreria react-player Componente react para reproducir una variadad de URL, incluidas rutas de archivos y YouTube.
+
+#### Código
 ```
 import ReactPlayer from 'react-player';
 import chefsSw from '../assets/chefsSw.jpg';
@@ -1159,6 +1163,9 @@ Cómo ejecución se observa lo siguiente.
  ---
 Componente que contiene la estructura de la plantilla de como se muestra la receta en el home. 
 
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
 ```
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
@@ -1283,6 +1290,12 @@ Cómo ejecución se observa lo siguiente.
 Este componente es el encargado de la validación de escuchar el clic al seleccionar el Button de inicio de sesión donde nos permite iniciar en la vista del login o en la vista del registro.
 
 Recibe como parámetro { show, onClose } show, lo que hace es avisar al componente padre en que modal estoy y onClose me permite cerrar el modal donde se encuentre.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+#### Código
 ```
 import { useRef, useState } from "react";
 import ReactDom from "react-dom";
@@ -1387,13 +1400,13 @@ Cómo ejecución se observa lo siguiente.
 Este componente es el encargado de la estructura del sistema de filtrado que aparece en el lateral izquierdo en las pantallas de resultados de búsqueda.  A su vez contiene 6 componentes.   
 
 Este componente recibe como parámetro { filters, onClickCategory, onChangeRating, className, style } son variables para el funcionamiento del menú lateral.
-filters:
+filters: Variable tipo string de flitro de selección.
 onClickCategory: Variable de valor lógico de la escucha el click de categoría.
 onChangeRating: Variable de valor lógico de la escucha el click del rating.
 className: Esté parametro recibe una clases de que tu le quieras pasar.
 style: Aquí en esta variable recibe el estilo.
 
-#### 
+#### Código
 ```
 import ButtonRank from "./ButtonRank";
 import CategoriesRecipes from "./CategoriesRecipes";
@@ -1452,7 +1465,108 @@ Cómo ejecución se observa lo siguiente.
 <a name="item21"></a>
 ### CategoriesRecipes
  ---
-Componente encargado del filtrado por categorías.
+Componente encargado del filtrado por categorías del menu lateral, donde se puede observar las categorias cargadas en la base de datos.
+
+Recibe como parámetro { onClickCategory, values } onClickCategory, nos permite almacenar un valor en especifico para saber si seleccione click a la categoria y value es un arreglo de id de categorias que es llenada por el componente superior que lo llama.
+
+Importación de la librería useCallback useCallback en React tiene un uso muy similar al hook useMemo, pues ambos se enfocan en memoizar ciertos elementos en React. La diferencia aquí es que, mientras useMemo devuelve un valor memoizado, el hook useCallback devuelve una función memoizada.
+
+Importación de la librería useRef en React nos devuelve un objeto ref mutable, cuya propiedad current se inicializa en el argumento pasado como initialValue:
+const refContainer = useRef (initialValue)
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+#### Código
+```
+import clsx from "clsx";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import useCategories from "../hooks/useCategories";
+
+const CategoriesRecipes = ({ onClickCategory, values }) => {
+
+  const [categoriesFilters, setCategoriesFilters] = useState({
+    page: 1,
+    perPage: 8
+  });
+
+  const [currentCategories, setCurrentCategories] = useState([]);
+
+  const [{ categories, numberOfPages, error, loading }, getCategories] = useCategories({ axiosConfig: { params: { ...categoriesFilters } }, options: { useCache: false } });
+
+  const observer = useRef();
+
+  const lastValueRef = useCallback((value) => {
+    if (observer?.current) observer?.current?.disconnect?.();
+
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        if (numberOfPages > categoriesFilters?.page) {
+          setCategoriesFilters((oldCategories) => {
+            return {
+              ...oldCategories,
+              page: oldCategories?.page + 1
+            }
+          });
+        }
+      }
+    })
+    if (value) observer?.current?.observe?.(value)
+  }, [currentCategories]);
+
+  useEffect(() => {
+    if (categories?.length > 0) {
+      setCurrentCategories((oldCategories) => {
+        return [...oldCategories, ...categories]
+      });
+    }
+  }, [categories]);
+
+  return (
+    <div className="mb-4 md:p-6">
+      <h4 className="title-medium mt-2 mb-6">Categories</h4>
+      {
+        values?.length > 0 &&
+        <div className="text-end">
+          <button className="bg-main rounded-xl text-white px-4 py-1" onClick={() => onClickCategory('')}>
+            Clear
+          </button>
+        </div>
+      }
+      <div style={{ maxHeight: '300px', overflowY: 'auto' }} className="custom-scrollbar custom-scrollbar-main">
+        {
+          currentCategories?.map((category, i) => {
+            return (
+              <div
+                key={i}
+                onClick={() => { onClickCategory?.(category) }}
+                ref={i + 1 === currentCategories.length ? lastValueRef : null}
+                className={clsx(["font-normal cursor-pointer hover:text-main m-2"], {
+                  "text-main": values?.includes(category?.id)
+                })}
+              >
+                {category?.name}
+              </div>
+            )
+          })
+        }
+        {
+          loading &&
+          <div
+            className="font-normal cursor-pointer hover:text-main m-2"
+          >
+            Loading...
+          </div>
+        }
+      </div>
+    </div>
+  );
+};
+
+export default CategoriesRecipes;
+```
+Cómo resultado de la ejecución se puede visualizar en la imagen.
 
 ![](https://i.imgur.com/nodHnhR.jpg) 
  
@@ -1465,7 +1579,29 @@ Componente encargado del filtrado por categorías.
  ---
 Componente encargado del filtrado por Types.
 
-![](https://i.imgur.com/czTDiK6.jpg)
+Cómo parámetro no recibe nada.
+
+#### Código
+```
+const SesionCategory = () => {
+    return (
+        <form className="m-10 ml-8 m-50 cursor-pointer ">
+            <select className="text-main font-semibold text-lg bg-white border border-gray-400 rounded-md py-1.5 md:px-20  
+                         focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 leading-4">
+                <option value="">New recipes</option>
+                <option value="">Low in calories</option>
+                <option value="">Paleo</option>
+                <option value="">High in protein </option>
+            </select>
+        </form >
+    );
+}
+
+export default SesionCategory;
+```
+Cómo resultado de la ejecución se puede visualizar en la imagen.
+
+![](https://i.imgur.com/7mNZHhE.png)
  
 [Subir](#top)
 
