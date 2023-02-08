@@ -1684,6 +1684,170 @@ Cómo resultado de la ejecución se puede visualizar en la imagen.
  
 Este componente contiene la estructura de las cards con la información mostrada de cada vendedor desde la vitrina de vendedores y el home.
 
+Cómo parámetro recibe el id del seller "valor de tipo entero".
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+#### Código
+
+```
+import { BsStarFill } from "react-icons/bs";
+import cheque from "../assets/cheque.png";
+import { Link } from "react-router-dom";
+import imgUrl from "../helpers/imgUrl";
+import RatingComponent from "./RatingComponent";
+import Modal from "./Modal/Modal";
+import { useState } from "react";
+import useSellersRatings from "../hooks/useSellersRatings";
+import { useEffect } from "react";
+
+
+const BannerChef = ({ seller }) => {
+
+  const [showCustomersReviews, setShowCustomersReviews] = useState(false);
+
+  const [currentReviews, setCurrentReviews] = useState([]);
+
+  const [filters, setFilters] = useState({
+    page: 1,
+    orderBy: 'createdAt,DESC',
+    sellerId: ''
+  });
+
+  const [{ sellersRatings, numberOfPages: ratingPages, total: totalReviews, loading: loadingRatings }, getRatings] = useSellersRatings({ params: { ...filters }, options: { manual: true, useCache: false } });
+
+  useEffect(() => {
+    if (filters?.sellerId) {
+      getRatings({
+        params: {
+          ...filters
+        }
+      });
+    }
+  }, [filters])
+
+  useEffect(() => {
+    if (sellersRatings?.length > 0) {
+      setCurrentReviews((oldReviews) => {
+        return [...oldReviews, ...sellersRatings];
+      });
+    }
+  }, [sellersRatings]);
+
+  useEffect(() => {
+    if (seller?.sellerId) {
+      setFilters((oldFilters) => {
+        return {
+          ...oldFilters,
+          sellerId: seller?.sellerId
+        }
+      })
+    }
+  }, [seller?.sellerId])
+
+  const handleMore = () => {
+    if (ratingPages > filters?.page) {
+      setFilters((oldFilters) => {
+        return {
+          ...oldFilters,
+          page: oldFilters?.page + 1
+        }
+      });
+    }
+  }
+
+  return (
+    <div
+      className="md:h-96 flex justify-center items-center"
+      style={{ backgroundImage: `url(${imgUrl(seller?.banner)})`, backgroundSize: "100% 100%" }}
+    >
+      <div className="h-full w-full" style={{ background: "rgba(0,0,0, .5)" }}>
+        <Link to={`/sellers/${seller?.slug}/blog`}>
+          <div className="flex justify-center items-center p-6">
+            <img src={imgUrl(seller?.logo)}
+              className="md:h-52 md:w-52 w-20 h-20 rounded-full items-center" alt="" />
+          </div>
+        </Link>
+        <div className="text-center text-white font-sans">
+          <div className="flex justify-center text-center">
+            <p className="md:text-4xl text-center font-bold text-ellipsis">{(seller?.name)}</p>
+            <img src={cheque} alt="" className="md:mt-4 md:ml-3 m-1 text-main w-5 h-5" />
+          </div>
+
+          <p className="md:text-2xl">{(seller?.shortDescription)}</p>
+          <div onClick={() => setShowCustomersReviews(true)} className="flex items-center justify-center cursor-pointer">
+            <RatingComponent
+              disabled
+              value={seller?.rating}
+            />
+            ({totalReviews} customers reviews)
+          </div>
+        </div>
+      </div>
+      <Modal show={showCustomersReviews} onClose={() => setShowCustomersReviews(false)}>
+        <div style={{ maxHeight: '70vh', overflowY: 'auto' }} className="custom-scrollbar custom-scrollbar-main">
+          <h1 className="text-center text-xl font-bold">
+            Customers Reviews ({totalReviews})
+          </h1>
+          {
+            currentReviews?.length > 0 ?
+              currentReviews?.map((review, i) => {
+                return (
+                  <div key={i} className="py-4 border-b border-main">
+                    <div className="flex items-center space-x-4">
+                      <img src={imgUrl(review?.client?.imgPath)} style={{ height: 50, width: 50 }} className="rounded-full" />
+                      <p className="text-gray-500 font-bold">
+                        {review?.client?.name}
+                        <RatingComponent
+                          disabled
+                          value={review?.value}
+                          size="sm"
+                        />
+                      </p>
+                    </div>
+                    <br />
+                    <p className="text-gray-500">
+                      {review?.comment}
+                    </p>
+                  </div>
+                )
+              })
+              :
+              <div className="text-center text-red-500 text-xl">
+                No results found.
+              </div>
+          }
+          {
+            loadingRatings ?
+              <div className="text-center my-4">
+                Loading more reviews...
+              </div>
+              :
+              ratingPages > filters?.page ?
+                <div className="text-center">
+                  <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4 mb-4">
+                    Load More
+                  </button>
+                </div>
+                :
+                <div className="text-center my-4">
+                  No more reviews.
+                </div>
+          }
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+export default BannerChef;
+```
+Cómo resultado de la ejecución se puede visualizar en la imagen.
+
 ![](https://i.imgur.com/KQQe1Zd.jpg)
  
 [Subir](#top)
@@ -1693,13 +1857,78 @@ Este componente contiene la estructura de las cards con la información mostrada
 <a name="item26"></a>
 ### ButtomButton
  
-Componente con botones de paginación que se repite en varias secciones.
+Componente que contiene la llamada de un subcomponente llamado scroll de navegación.
 
+No posee nigún parámetro.
+
+```
+import ScrollNavigation from "../componentes/ScrollNavigation";
+
+const ButtomButton = () => {
+  return (
+    <div>
+      <ScrollNavigation />
+    </div>
+  );
+};
+
+export default ButtomButton;
+```
+Cómo ejecución del código es la llamada al componente donde contiene el diseño de pies de pagina de scroll.
+
+### ScrollNavigation
+ 
+Componente con botones de paginación que se repite en varias secciones.
+Cómo parámetro no recibe ningun tipo de datos.
+```
+import React from "react";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+const ButtomButton = () => {
+  return (
+    <div className="flex flex-col items-center my-12">
+      <div className="flex text-gray-700">
+        <div className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer  hover:bg-main hover:text-white">
+          <AiOutlineLeft />
+        </div>
+        <div className="flex h-12 font-medium rounded-full space-x-2">
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full  border border-main hover:bg-main hover:text-white">
+            1
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            2
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white  ">
+            3
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full ">
+            ...
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            8
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            9
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            10
+          </div>
+          <div className="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-main text-white ">
+            1
+          </div>
+        </div>
+        <div className="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer hover:bg-main hover:text-white">
+          <AiOutlineRight />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ButtomButton;
+```
 ![](https://i.imgur.com/7UNmpRB.jpg)
  
 [Subir](#top)
-
-
 
 <a name="item27"></a>
 ### ProductImagenCarousel
