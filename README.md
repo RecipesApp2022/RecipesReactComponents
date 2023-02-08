@@ -1393,6 +1393,7 @@ onChangeRating: Variable de valor lógico de la escucha el click del rating.
 className: Esté parametro recibe una clases de que tu le quieras pasar.
 style: Aquí en esta variable recibe el estilo.
 
+#### 
 ```
 import ButtonRank from "./ButtonRank";
 import CategoriesRecipes from "./CategoriesRecipes";
