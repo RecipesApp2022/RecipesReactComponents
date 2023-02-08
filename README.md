@@ -1386,12 +1386,12 @@ Cómo ejecución se observa lo siguiente.
  ---
 Este componente es el encargado de la estructura del sistema de filtrado que aparece en el lateral izquierdo en las pantallas de resultados de búsqueda.  A su vez contiene 6 componentes.   
 
-Este componente recibe como parámetro { filters, onClickCategory, onChangeRating, className, style }
+Este componente recibe como parámetro { filters, onClickCategory, onChangeRating, className, style } son variables para el funcionamiento del menú lateral.
 filters:
-onClickCategory:
-onChangeRating:
-className:
-style:
+onClickCategory: Variable de valor lógico de la escucha el click de categoría.
+onChangeRating: Variable de valor lógico de la escucha el click del rating.
+className: Esté parametro recibe una clases de que tu le quieras pasar.
+style: Aquí en esta variable recibe el estilo.
 
 ```
 import ButtonRank from "./ButtonRank";
@@ -1442,8 +1442,7 @@ const MenuLeft = ({ filters, onClickCategory, onChangeRating, className, style }
 ```
 Cómo ejecución se observa lo siguiente.
 
-
-![](https://i.imgur.com/4iNFTtX.jpg) 
+![](https://i.imgur.com/25UWgjQ.png) 
  
 [Subir](#top)
 
