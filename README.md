@@ -2477,8 +2477,7 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 ### 
 
 ![]()
- 
-[Subir](#top)
+
 
 
 <a name="item39"></a>
@@ -2550,68 +2549,130 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 [Subir](#top)
 
 
-
-
-
-
-
 <a name="item42"></a>
 ### TabsContainer
  
-chequea que sus hijos si es 1 lo muestra si son muchos lo rederiza.
+Este componente chequea que sus hijos si es uno, lo muestra si son muchos lo rederiza.
 
+Recibe como parámetro { children, className } children es la variable que almacena el contenido de cada pestaña, className es el diseño que puede recibir el componente.
+
+#### Código
+```
+const TabsContainer = ({ children, className }) => {
+    const finalChildren = Array.isArray(children) ? children : [children];
+
+    return <div className={`${className}`}>{finalChildren}</div>;
+}
+export default TabsContainer;
+```
+Cómo ejecución del código del resultado final es lo que se muestra en la imagen.}
 
 ![](https://i.imgur.com/XmcMSTW.jpg)
  
 [Subir](#top)
 
 
-
-
-
 <a name="item43"></a>
 ### TotalShopping
  
-componente encargado de mostrar imagen de un tamaño en particular para la vista del producto
+Componente encargado de mostrar imagen de un tamaño en particular para la vista del producto
 
+Recibe como parámetro { img } es una cadena de tipo string, esa imagen es la encargada de visualizarce en el componente. 
+
+#### Código
+```
+const TotalShopping = ({ img }) => {
+    return (
+        <div className="p-4">
+            <div className="bg-white">
+                <img className="w-20 h-20 drop-shadow-lg" src={img} alt="Logo" />
+            </div>
+        </div>
+    );
+}
+export default TotalShopping;
+
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/fUptzyn.jpg)
 
 [Subir](#top)
 
 
-
-
-
-
-
 <a name="item44"></a>
 ### TotalShoppingPrice
  
-Componente  encargado de mostrar precio en la vista del detalle del producto unico
+Componente  encargado de mostrar precio en la vista del detalle del producto unico.
 
+Recibe como parámetro { price } de ese producto, el tipo de dato de este parámetro es decimal.
+```
+const TotalShoppingPrecio = ({ price }) => {
+    return (
+        <div className="p-4">
+            <p className="mt-2 md:text-2xl text-lg font-bold text-gray-400">{price}</p>
+        </div>
+    );
+}
+
+export default TotalShoppingPrecio;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 ![](https://i.imgur.com/W5vbfBG.jpg)
  
 [Subir](#top)
 
 
-
-
-
 <a name="item45"></a>
 ### InformationChef
  
-componente encargado de Mostrar las redes sociales de chef
+Es el componente encargado de Mostrar las redes sociales de chef.
 
+Recibe como parámetro el { seller } el vendedor tipo de datos  "objetos" esto es para obtener la información personal del seller.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+```
+import React from 'react'
+import { TiContacts } from "react-icons/ti"
+
+const InformationChef = ({ seller }) => {
+  return (
+    <div className='p-2'>
+      <button className="flex items-center space-x-2 text-black text-xl font-semibold">
+        <TiContacts className="text-main" />
+        <span>Information</span>
+      </button>
+      <div className="mt-6 space-y-2">
+        {
+          seller?.phoneNumber &&
+          <p>Phone: {seller?.phoneNumber}</p>
+        }
+        {
+          seller?.instagram &&
+          <p>Instagram: {seller?.instagram}</p>
+        }
+        {
+          seller?.facebook &&
+          <p>Facebook: {seller?.facebook}</p>
+        }
+        {
+          seller?.whatsapp &&
+          <p>Whatsapp: {seller?.whatsapp}</p>
+        }
+      </div>
+    </div>
+  )
+}
+
+export default InformationChef
+```
+Cómo resultado d ela ejecución del componente se observa que puedo obtener toda la información necesario del vendedor, para el diseño creado en el frontend.
 
 ![](https://i.imgur.com/7BfR5Ig.jpg)
  
 [Subir](#top)
-
-
-
-
-
 
 
 <a name="item46"></a>
@@ -2619,23 +2680,106 @@ componente encargado de Mostrar las redes sociales de chef
  
 Componente encargado de mostra del detalle de la descripcion de post del blog
 
+Recibe como parámetro { title } es el objeto del post del vendedor.
+
+```
+import React from "react";
+
+const DescriptionPost = ({ title }) => {
+  return (
+    <div>
+      <h1 className="text-3xl font-semibold mt-10">{title}</h1>
+      <p className="mt-6 text-justify">
+        Lorem ipsum dolor sit amet. Qui accusamus facilis et cumque distinctio
+        ut doloribus obcaecati et quasi quia? Eos quis perferendis eum pariatur
+        deserunt et enim quam qui harum porro et ipsum consequatur qui quia
+        illo. Eos suscipit sint qui dicta dolorum et voluptas explicabo. Ut
+        velit animi At corporis molestias id veniam ipsum. Aut magnam sint cum
+        repudiandae natus vel reprehenderit repellat eos expedita rerum est
+        deserunt earum ut culpa odit. Qui omnis assumenda 33 minus libero hic
+        perspiciatis voluptas a iste corrupti. Cum amet molestias et perferendis
+        tempore qui ducimus deserunt ut vero ipsa cum nisi voluptates. Rem
+        quibusdam neque ut illum omnis et repellendus dolorum ut voluptas
+        similique. A molestiae ipsa et autem laboriosam sit alias beatae non
+        eius reiciendis. Et dignissimos obcaecati in recusandae nemo sit
+        molestiae necessitatibus et dolore itaque rem dolores placeat. Lorem
+        ipsum dolor sit amet. Qui accusamus facilis et cumque distinctio ut
+        doloribus obcaecati et quasi quia? Eos quis perferendis eum pariatur
+        deserunt et enim quam qui harum porro et ipsum consequatur qui quia
+        illo. Eos suscipit sint qui dicta dolorum et voluptas explicabo. Ut
+        velit animi At corporis molestias id veniam ipsum. Aut magnam sint cum
+        repudiandae natus vel reprehenderit repellat eos expedita rerum est
+        deserunt earum ut culpa odit. Qui omnis assumenda 33 minus libero hic
+        perspiciatis voluptas a iste corrupti. Cum amet molestias et perferendis
+        tempore qui ducimus deserunt ut vero ipsa cum nisi voluptates. Rem
+        quibusdam neque ut illum omnis et repellendus dolorum ut voluptas
+        similique. A molestiae ipsa et autem laboriosam sit alias beatae non
+        eius reiciendis. Et dignissimos obcaecati in recusandae nemo sit
+        molestiae necessitatibus et dolore itaque rem dolores placeat.t
+      </p>
+    </div>
+  );
+};
+
+export default DescriptionPost;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/PNWKOmO.jpg)
 
 [Subir](#top)
 
 
-
-
-
 <a name="item47"></a>
 ### CalendarDay
  
-Componente encargado de recibir el dia correspondiente del calendar
+Componente encargado de recibir el dia correspondiente del calendar.
+
+Recibe como parámetro { num, onClick, day } num  es de tipo entero , onClick es el click del dia seleccionado y el day es un parámetro que guarda el day seleccionado en el onClick.
+
+#### Código
+```
+import cancel from "../assets/cancelar.png";
+import check from "../assets/cheque.png";
+
+const CalendarDay = ({ num, onClick, day }) => {
+
+    const dayHaveRecipes = (day) => {
+        var dayRecipes = day?.mealPeriods.filter((period) => {
+            if (period.recipes?.length > 0) {
+                return period;
+            }
+        });
 
 
-![](https://live.staticflickr.com/65535/52094212550_2251271785_m.jpg)
- 
+        if (dayRecipes.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    return (
+        <div onClick={(e) => { onClick(e, day) }} className='md:h-72 md:w-56 h-16 w-28 text-main flex justify-center items-center border transition duration-300 border-gray-500 transform hover:-translate-y-4 hover:bg-main hover:bg-main hover:text-white cursor-pointer'>
+            {
+                dayHaveRecipes(day) ?
+                    <img style={{ width: "10%" }} src={check} />
+                    :
+                    <img style={{ width: "10%" }} src={cancel} />
+            }
+            <p>
+            </p>
+            <p className='md:font-bold text-sm md:text-xl'>Day</p>
+            <p className='md:font-bold text-sm md:text-xl ml-0.5'>{num}</p>
+        </div>
+    );
+}
+
+export default CalendarDay;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
+
+![](https://i.imgur.com/pPh6blH.jpg) 
 [Subir](#top)
 
 
@@ -2646,13 +2790,31 @@ Componente encargado de recibir el dia correspondiente del calendar
  
 Componente encargado del diseño del calendario 
 
+Recibe Cómo parámetro { week, onDayClick } week es la semana que recibe de tipo objeto, donde recibe un objeto con un array de dias, onDayClick en el encargado de guardar en click del dia seleccionado.
 
-![](https://i.imgur.com/pPh6blH.jpg)
+```
+import CalendarDay from "./CalendarDay";
+
+const Calendar = ({ week, onDayClick }) => {
+    return (
+        <div className='mt-4 py-8 px-10'>
+            <p className='text-main text-sm md:text-4xl font-bold p-2 '>Week {week?.week}</p>
+            <div className='grid grid-cols-1 md:flex m-auto'>
+                {
+                    week?.days?.map((day, i) => <CalendarDay key={i} day={day} onClick={onDayClick} num={day?.day} />)
+                }
+            </div>
+        </div>
+    );
+}
+
+export default Calendar;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
+
+![](https://i.imgur.com/Pk9IoEx.png)
  
 [Subir](#top)
-
-
-
 
 
 <a name="item49"></a>
