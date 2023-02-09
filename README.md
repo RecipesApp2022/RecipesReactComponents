@@ -2847,8 +2847,7 @@ const RequireAuth = ({ children }) => {
 
 export default RequireAuth;
 ```
-Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
-![](https://i.imgur.com/H2GSeFq.png) 
+Cómo ejecución del componente es todo lo referente a la autenticación de usuario y clientes no posee imagen.
  
 [Subir](#top)
 
@@ -2973,19 +2972,56 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 [Subir](#top)
 
 
-
 <a name="item52"></a>
 * ### ButtonSearch
  
 Componente encargado del selector de busqueda por sus categorias.
 
+Cómo parámetro recibe { category, onClickCategory } category es la categoria escrita en el buscador, onClickCategory es la variable que almacena el click de la categoria "seller, recipes, plans y combos".
 
-![](https://i.imgur.com/ZcvnIqL.jpg)
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+#### Código
+```
+import { useState } from "react";
+import ButtonSearchSelector from "./ButtonSearchSelector";
+
+const ButtonSearch = ({ category, onClickCategory }) => {
+
+    return (
+        <div className="text-base m-0 rounded-tl-lg h-12 rounded-t-lg flex overflow-x-auto">
+            <ButtonSearchSelector
+                onClick={() => onClickCategory?.('sellers')}
+                name="Sellers"
+                isActive={category === 'sellers'}
+            />
+
+            <ButtonSearchSelector
+                onClick={() => onClickCategory?.('recipes')}
+                name="Recipes"
+                isActive={category === 'recipes'}
+            />
+            <ButtonSearchSelector
+                onClick={() => onClickCategory?.('plans')}
+                name="Plans"
+                isActive={category === 'plans'}
+            />
+            <ButtonSearchSelector
+                onClick={() => onClickCategory?.('combos')}
+                name="Combos"
+                isActive={category === 'combos'}
+            />
+
+        </div>
+    );
+}
+export default ButtonSearch;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
+
+![](https://i.imgur.com/x56RUVb.png)
 
 [Subir](#top)
-
-
-
 
 
 <a name="item53"></a>
@@ -2993,42 +3029,112 @@ Componente encargado del selector de busqueda por sus categorias.
  
 Componente de la vista de cuadro de planes. 
 
+Recibe como parámetro { img, price, logo, title, text, hideCart = false, className } img es la imagen de fondo del weightPlan, price es el precio del plan donde su tipo de datos es decimal, logo es el logo de la marca de combo, title es tipo string del titulo del combo, text es el contenido del plan, hideCart es para ocultar el botón de valoración de plan y className es el tipo de dato donde recibe el parámetro esclusivo.
+
+#### Código
+```
+import clsx from "clsx";
+import ButtonCart from "./ButtonCart";
+
+const WeightPlan = ({ img, price, logo, title, text, hideCart = false, className }) => {
+  return (
+    <div className={clsx("p-4", className)}>
+      <div
+        className="relative h-64 w-full flex bg-main rounded-md cursor-pointer bg-cover "
+        style={{ backgroundImage: `url(${img})` }}
+      >
+        <div className="absolute bg-black opacity-40 rounded-md "></div>
+        <div className="absolute flex left-1 top-1 bg-main-dark rounded-lg opacity-70">
+          <p className="text-white h-6 w-15 ml-1 ">{price} </p>
+        </div>
+        <img
+          className="absolute right-2 top-1 rounded h-20 w-20"
+          src={logo}
+          alt="Logo"
+        />
+
+        <div
+          className="text-white text-center w-full mt-36 text-4xl md:text-4xl"
+          style={{ textShadow: "0px 0px 3px #000000" }}
+        >
+          {title}
+          <p className="text-white my-2 text-center text-base m-4">{text}</p>
+        </div>
+      </div>
+      <div className="bottom-0 right-0 space-x-3 flex justify-center mt-auto bg-white">
+        {!hideCart && (
+          <div className="flex justify-center">
+            <ButtonCart />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default WeightPlan;
+```
+Cómo resultado de ejecución de código es el cuadro informativo del plan mostrado en el home de la página.
+
 ![](https://i.imgur.com/zz5z3jo.jpg)
 
 [Subir](#top)
 
 
-
-
-
-
-
-<a name="item54"></a>
-### Swiper
- 
-CategoryCard, Combos, Home, Overview, Popular, Recipes, WeightPlan
-
-
-![]()
-
-[Subir](#top)
-
-
-
-
-
 <a name="item55"></a>
 ### config
  
-Componente de la parte del usuario en la vista de configuracion.
+Componente de la parte del usuario en la vista de configuración.
 
+ Recibe como parámetro { title, spam } el title es de tipo de dato string y el spam es el scroll de lo seleccionado.
+ 
+#### Código
+```
+import React from "react";
+import CheckboxConfig from "../componentes/CheckboxConfig";
+import ButtonChange from "./ButtonChange";
+
+const LanguageConfig = ({ title, spam }) => {
+  return (
+    <div className="mt-6">
+      <div className=" space-y-7">
+        <div className="grid grid-cols-2 md:-space-x-32 ml-4">
+          <label
+            className="form-check-label inline-block text-gray-800"
+            htmlFor="flexCheckDefault"
+          >
+            {title}
+          </label>
+          <div>
+            <CheckboxConfig />
+          </div>
+        </div>
+        <div className="grid grid-cols-2   md:-space-x-32 ml-4">
+          <label
+            className="form-check-label inline-block text-gray-800"
+            htmlFor="flexCheckDefault"
+          >
+            {spam}
+          </label>
+          <div>
+            <CheckboxConfig />
+          </div>
+        </div>
+        <div className="flex md:justify-end justify-center ">
+          <ButtonChange />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LanguageConfig;
+```
+Cómo resultado de ejecución de código es el cuadro informativo del plan mostrado en el home de la página.
 
 ![](https://i.imgur.com/EABaJmL.png)
 
 [Subir](#top)
-
-
-
 
 
 <a name="item56"></a>
@@ -3036,13 +3142,35 @@ Componente de la parte del usuario en la vista de configuracion.
  
 Componente encargado del chef de la description del menu lateral
 
+ Recibe como parámetro { title, spam } el title es de tipo de dato string y el spam es el scroll de lo seleccionado.
+
+#### Código
+
+```
+import React from "react";
+import { RiBookReadLine } from "react-icons/ri";
+
+const DescriptionChef = ({ seller }) => {
+  return (
+    <div className="mt-10 p-2">
+      <button className="flex items-center space-x-2 text-black text-xl font-semibold">
+        <RiBookReadLine className="text-main" />
+        <span>Description</span>
+      </button>
+      <div className="p-1 md:text-justify text-justify ">
+        {seller?.description}
+      </div>
+    </div>
+  );
+};
+
+export default DescriptionChef;
+```
+Cómo resultado de ejecución de código es el cuadro informativo del plan mostrado en el home de la página.
 
 ![](https://i.imgur.com/Z317Uop.jpg)
  
 [Subir](#top)
-
-
-
 
 
 <a name="item57"></a>
@@ -3050,26 +3178,119 @@ Componente encargado del chef de la description del menu lateral
  
 Componente encargado de mostrar la informacion de post de Anya del menu lateral
 
+Recibe cómo parámetro {seller} es un objeto donde tiene toda la información del vendedor.
+
+#### Código
+```
+import React from "react";
+import { RiBookReadLine } from "react-icons/ri";
+
+const DescriptionChef = ({ seller }) => {
+  return (
+    <div className="mt-10 p-2">
+      <button className="flex items-center space-x-2 text-black text-xl font-semibold">
+        <RiBookReadLine className="text-main" />
+        <span>Description</span>
+      </button>
+      <div className="p-1 md:text-justify text-justify ">
+        {seller?.description}
+      </div>
+    </div>
+  );
+};
+
+export default DescriptionChef;
+```
+Cómo resultado de ejecución de código es el cuadro informativo del plan mostrado en el home de la página.
 
 ![](https://i.imgur.com/lbnWbfI.jpg)
 
 [Subir](#top)
 
 
-
-
 <a name="item58"></a>
 ### FormAccount
  
-Componente de la informacion personal de user en la vista de usuario (my personal informayion)
+Componente de la informacion personal de user en la vista de usuario (my personal informayion).
+
+Recibe como parámetro { sourseimg, textname, textphone, textaccount, textbutton } de tipo string es donde se encarga de almacenar los nombre que se van a mostrar en la vista correspondiente en el caso del sourseimg es el nombre que recibe el botón, textname nombre del texto, textphone telefono, textaccount cuenta y el botton de change de guardar datos.
+
+#### Código
+```
+import React from 'react'
+import profile from "../assets/profile.png"
+import ButtonChange from "../componentes/ButtonChange";
+const FormAccount = ({ sourseimg, textname, textphone, textaccount, textbutton }) => {
+  return (
+    <form>
+      <div className="p-2 md:grid md:grid-cols-2 gap-4 mt-6">
+        <div className="flex items-center space-x-4">
+          <img src={profile} alt="" className="w-20" />
+          <label
+            htmlFor="inputfile"
+            className="bg-main md:flex justify-center items-center hover:bg-main-light text-white font-semibold text-center px-3 py-2 rounded-lg cursor-pointer"
+          >
+            {sourseimg}
+          </label>
+          <input type="file" className="hidden" id="inputfile" />
+        </div>
+        <div>
+          <label
+            className="mt-4 block text-gray-600 font-bold md:text-xl"
+            htmlFor="text"
+          >
+            {textname}
+          </label>
+          <input
+            type="text"
+            className="md:mt-6 md:text-xl text-base border rounded-lg md:w-80 w-full h-10 block"
+            id="text"
+            placeholder='Name'
+          />
 
 
+        </div>
+        <div>
+          <label
+            className="mt-4 block text-gray-600 font-bold md:text-xl"
+            htmlFor="number"
+          >
+            {textphone}
+          </label>
+          <input
+            type="number"
+            className="md:mt-6 md:text-xl text-base border rounded-lg  md:w-80 w-full h-10 block"
+            id="number"
+            placeholder='00000000'
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="user"
+            className="mt-4 block text-gray-600 font-bold md:text-xl">
+            {textaccount}
+          </label>
+          <input
+            type="text"
+            className="md:mt-6 md:text-xl text-base border rounded-lg md:w-80 w-full h-10 block"
+            id="user"
+            placeholder='@xxxxxxxxxx'
+          />
+        </div>
+      </div>
+      <div className="flex justify-center md:justify-end mt-4">
+        <ButtonChange />
+      </div>
+    </form>
+  )
+}
+
+export default FormAccount
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 ![](https://i.imgur.com/oBI4w4l.jpg)
 
 [Subir](#top)
-
-
-
 
 
 <a name="item59"></a>
@@ -3077,36 +3298,108 @@ Componente de la informacion personal de user en la vista de usuario (my persona
  
 Datos de los canales de venta del chef que aparece en el menu lateral.
 
+Recibe como parámetro un objetos { seller } donde trae toda la información requerida del vendedor. 
+
+#### Código
+```
+import React from 'react'
+import { TiContacts } from "react-icons/ti"
+
+const InformationChef = ({ seller }) => {
+  return (
+    <div className='p-2'>
+      <button className="flex items-center space-x-2 text-black text-xl font-semibold">
+        <TiContacts className="text-main" />
+        <span>Information</span>
+      </button>
+      <div className="mt-6 space-y-2">
+        {
+          seller?.phoneNumber &&
+          <p>Phone: {seller?.phoneNumber}</p>
+        }
+        {
+          seller?.instagram &&
+          <p>Instagram: {seller?.instagram}</p>
+        }
+        {
+          seller?.facebook &&
+          <p>Facebook: {seller?.facebook}</p>
+        }
+        {
+          seller?.whatsapp &&
+          <p>Whatsapp: {seller?.whatsapp}</p>
+        }
+      </div>
+    </div>
+  )
+}
+
+export default InformationChef
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/KmzMHy8.jpg)
 
 [Subir](#top)
 
-
-
-
-
-
-
 <a name="item60"></a>
 ### ingredientRow
  
-Componente encargado del diseño del cuadro de la lista de ingredientes.
+Este componente es el encargado del diseño del cuadro de la lista de ingredientes.
 
+Recibe como párametros el colsNumber = 2  por defecto tiene dos columna  para el gridColsResolver y children es el contenido a mostrar.
+
+#### Código
+```
+import clsx from "clsx";
+const gridColsResolver = (colsNumber) => {
+    if (colsNumber === 3) {
+
+        return 'md:grid-cols-3';
+    }
+
+    return 'grid-cols-2';
+}
+
+const IngredientRow = ({ colsNumber = 2, children }) => {
+    return <div className={clsx('grid border-b-2 last:border-0', gridColsResolver(colsNumber))}>
+        {children}
+    </div>;
+}
+export default IngredientRow;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/NZWLwnL.jpg)
  
 [Subir](#top)
 
 
-
-
-
 <a name="item61"></a>
 ### ingredientRowDetails
 
-Componente encargado del detalle que lleva cada vista de la lista de ingredientes.
+Este Componente es el encargado del detalle que lleva cada vista de la lista de ingredientes.
 
+Recibe como parámetro { imageSource, title, subtitle, subtitle2, price } imageSource  
+#### Código
+```
+const IngredientRowDetails = ({ imageSource, title, subtitle, subtitle2, price }) => {
+    return <div className="flex p-2">
+        <img src={imageSource} alt={title} className="w-16 h-16" />
+        <div className="flex items-center px-3 w-full">
+            <div className="text-xs space-y-1">
+                <p className="font-semibold">{title}</p>
+                {subtitle && <p className="text-gray-700">{subtitle}</p>}
+                {subtitle2 && <p className="text-gray-700">{subtitle2}</p>}
+            </div>
+            {price && <div className="ml-auto text-sm font-semibold">{price}</div>}
+        </div>
+    </div>;
+}
+
+export default IngredientRowDetails;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/NZWLwnL.jpg)
 
