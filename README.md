@@ -2779,10 +2779,8 @@ export default CalendarDay;
 ```
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
-![](https://i.imgur.com/pPh6blH.jpg) 
+![](https://i.imgur.com/Pk9IoEx.png)
 [Subir](#top)
-
-
 
 
 <a name="item48"></a>
@@ -2811,9 +2809,7 @@ const Calendar = ({ week, onDayClick }) => {
 export default Calendar;
 ```
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
-
-![](https://i.imgur.com/Pk9IoEx.png)
- 
+![](https://i.imgur.com/pPh6blH.jpg) 
 [Subir](#top)
 
 
@@ -2822,28 +2818,102 @@ Cómo ejecución del componente como resultado final muestra la visualización d
  
 Componente de autenticacion del login de usuario. Envuelve MyAccountLayou.
 
+Recibe como parámetro { children } te permite agregar el contenido o cuerpo  correspondiente a cada página de la aplicación con la estructura ya definida de sus componentes hijos. 
 
+Importación de la líbreria useAuth está diseñado para ser rápido de configurar. Necesitará una cuenta con Auth0 o Netlify Identity y las claves de acceso adecuadas.
+
+#### Código
+
+```
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
+const RequireAuth = ({ children }) => {
+
+    const { user } = useAuth();
+
+    let location = useLocation();
+
+    if (!user) {
+        // Redirect them to the /login page, but save the current location they were
+        // trying to go to when they were redirected. This allows us to send them
+        // along to that page after they login, which is a nicer user experience
+        // than dropping them off on the home page.
+        return <Navigate to="/?showLogin=true" state={{ from: location }} replace />;
+    }
+
+    return children;
+}
+
+export default RequireAuth;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 ![](https://i.imgur.com/H2GSeFq.png) 
  
 [Subir](#top)
 
 
-
-
-
-
 <a name="item50"></a>
 ### ScrollNavegacion
  
-Componente encargado de contener el diseño circular. Componente principal ButtonButton(ScrollNavegacion)
+Componente encargado de contener el diseño circular. Componente principal ButtonButton(ScrollNavegacion).
 
+No recibe ningun parámetro.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+```
+import React from "react";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+const ButtomButton = () => {
+  return (
+    <div className="flex flex-col items-center my-12">
+      <div className="flex text-gray-700">
+        <div className="h-12 w-12 mr-1 flex justify-center items-center rounded-full cursor-pointer  hover:bg-main hover:text-white">
+          <AiOutlineLeft />
+        </div>
+        <div className="flex h-12 font-medium rounded-full space-x-2">
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full  border border-main hover:bg-main hover:text-white">
+            1
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            2
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white  ">
+            3
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full ">
+            ...
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            8
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            9
+          </div>
+          <div className="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full border border-main  hover:bg-main hover:text-white ">
+            10
+          </div>
+          <div className="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-main text-white ">
+            1
+          </div>
+        </div>
+        <div className="h-12 w-12 ml-1 flex justify-center items-center rounded-full cursor-pointer hover:bg-main hover:text-white">
+          <AiOutlineRight />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ButtomButton;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/axBDP5H.png)
 
 [Subir](#top)
-
-
-
 
 
 <a name="item51"></a>
@@ -2851,6 +2921,52 @@ Componente encargado de contener el diseño circular. Componente principal Butto
  
 Componente encargado de motor de Busqueda en el home contiene el componente ButtonSearch
 
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+#### Código
+```
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ButtonSearch from "./ButtonSearch";
+
+const SearchHome = () => {
+
+    const [category, setCategory] = useState('recipes');
+
+    const [search, setSearch] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        navigate(`/${category}?name=${search}`);
+    }
+    return (
+        <div className='hidden md:block absolute flex p-8 w-3/6 h-2/3 z-10 rounded-xl' style={{ top: '12%', left: '25%', background: 'rgba(0,0,0, .4)' }}>
+            <form onSubmit={handleSubmit}>
+                <div className="m-auto w-full">
+                    <ButtonSearch category={category} onClickCategory={(category) => { setCategory(category) }} />
+                    <div className="relative text-white text-center text-base">
+                        <input
+                            value={search}
+                            onChange={(e) => { setSearch(e.target.value) }}
+                            className='text-black text-xs h-12 border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 
+                            leading-4 border-0 rounded-bl-lg rounded-r-lg w-full top-0 right-0'
+                            type="text"
+                            placeholder="Enter the item you are looking for or a characteristic (example:Rice, Sushi)..." />
+                        <button className="absolute h-full px-6 text-center bg-main top-0 right-0 rounded-r-lg font-semibold">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
+}
+export default SearchHome;
+```
+Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/VUipCHj.jpg)
  
