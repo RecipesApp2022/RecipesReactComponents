@@ -3370,11 +3370,6 @@ export default IngredientRow;
 ```
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
-![](https://i.imgur.com/NZWLwnL.jpg)
- 
-[Subir](#top)
-
-
 <a name="item61"></a>
 ### ingredientRowDetails
 
@@ -3399,12 +3394,356 @@ const IngredientRowDetails = ({ imageSource, title, subtitle, subtitle2, price }
 
 export default IngredientRowDetails;
 ```
-Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
 
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+
+#### Código
+```
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheck } from "react-icons/ai";
+import { BsFillEmojiLaughingFill } from "react-icons/bs";
+import { IoHeartOutline, IoHeart } from "react-icons/io5";
+import ShowMoreButton from "./ShowMoreButton";
+import favoriteReactions from "../consts/favoriteReactions"
+import useAxios from "../hooks/useAxios";
+import { useEffect } from "react";
+import usePaymentMethods from "../hooks/usePaymentMethods";
+import imgUrl from "../helpers/imgUrl";
+import { useFeedBack } from "../contexts/FeedBackContext";
+import RatingComponent from "./RatingComponent";
+import { useState } from "react";
+import Modal from "./Modal/Modal";
+import useRatings from "../hooks/useRatings";
+import { Link } from "react-router-dom";
+
+const ProductInfo = ({
+  name,
+  description,
+  ingredients = [],
+  maxIngredientsCount = 8,
+  onFavoriteClicked,
+  onSaveClicked,
+  haveDiscount,
+  price,
+  detailsLabel,
+  details,
+  maxDetailsCount = 8,
+  saved = false,
+  isPremiun,
+  type,
+  sellerId,
+  productId,
+  productType,
+  rating,
+  alreadyAcquired
+}) => {
+
+  const { setLoading } = useFeedBack();
+
+  const [filters, setFilters] = useState({
+    page: 1,
+    orderBy: 'createdAt,DESC',
+    itemId: productId,
+    itemType: productType
+  });
+
+  const [showCustomersReviews, setShowCustomersReviews] = useState(false);
+
+  const [currentReviews, setCurrentReviews] = useState([]);
+
+  const [{ data: createOrderData, loading: createOrderLoading }, createOrder] = useAxios({ method: 'POST', url: `/orders` }, { manual: true, useCache: false });
+
+  const [{ paymentMethods, total, numberOfPages, size, error, loading }, getPaymentMethods] = usePaymentMethods();
+
+  const [{ ratings, numberOfPages: ratingPages, total: totalReviews, loading: loadingRatings }, getRatings] = useRatings({ params: { ...filters }, options: { manual: true, useCache: false } });
+
+  useEffect(() => {
+    if (filters?.itemId && filters?.itemType) {
+      getRatings({
+        params: {
+          ...filters
+        }
+      });
+    }
+  }, [filters])
+
+  useEffect(() => {
+    if (productId && productType) {
+      setFilters((oldFilters) => {
+        return {
+          ...oldFilters,
+          itemId: productId,
+          itemType: productType
+        }
+      })
+    }
+  }, [productId, productType])
+
+  useEffect(() => {
+    if (ratings?.length > 0) {
+      setCurrentReviews((oldReviews) => {
+        return [...oldReviews, ...ratings];
+      });
+    }
+  }, [ratings]);
+
+  useEffect(() => {
+    setLoading({
+      show: createOrderLoading,
+      message: 'Loading'
+    })
+  }, [createOrderLoading])
+
+  useEffect(() => {
+    if (createOrderData) {
+      if (createOrderData?.url) {
+        window.open(createOrderData?.url, "_blank");
+      } else {
+        console.log(createOrderData);
+      }
+    }
+  }, [createOrderData])
+
+  const handleFavoriteClicked = (reaction) => () => onFavoriteClicked?.({ type, reaction });
+
+  const handleSaveClicked = () => onSaveClicked?.({ type });
+
+  const handleBuy = (paymentMethodCode) => {
+    if (!alreadyAcquired) {
+      createOrder({
+        data: {
+          sellerId,
+          productId,
+          type: productType,
+          paymentMethodCode: paymentMethodCode || null
+        }
+      });
+    }
+  }
+
+  const handleMore = () => {
+    if (ratingPages > filters?.page) {
+      setFilters((oldFilters) => {
+        return {
+          ...oldFilters,
+          page: oldFilters?.page + 1
+        }
+      });
+    }
+  }
+
+  return (
+    <div className="w-full md:w-1/2 md:px-8">
+      <div className="md:flex items-center text-3xl md:justify-between">
+        <h1 className="font-bold text-2xl md:ml-1 md:block w-full text-center md:text-left">{name}</h1>
+        <div className="md:flex space-x-4 md:m-2 md:m-auto mt-4 flex justify-center ">
+          <button
+            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
+            onClick={handleFavoriteClicked(favoriteReactions.DISLIKE)}
+            data-tip="I don't like this!"
+          >
+            <AiOutlineClose className="text-red-500" />
+          </button>
+          <button
+            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
+            onClick={handleFavoriteClicked(favoriteReactions.LIKE)}
+            data-tip="I like this!"
+          >
+            <AiOutlineCheck className="text-green-700" />
+          </button>
+          <button
+            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
+            onClick={handleFavoriteClicked(favoriteReactions.LOVE_IT)}
+            data-tip="Great!"
+          >
+            <BsFillEmojiLaughingFill className="text-yellow-300" />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center">
+        <RatingComponent
+          disabled
+          value={rating}
+        />
+        <p className="text-gray-300 text-lg m-2 underline cursor-pointer" onClick={() => { setShowCustomersReviews(true) }} >
+          ({totalReviews} customer review)
+        </p>
+      </div>
+      <div className="bg-white rounded-lg p-4">
+        <div className="text-lg">
+          {description
+            ? <>
+              <p>{description}</p>
+            </>
+            : <>
+              <h4 className="font-semibold mb-3">{detailsLabel}</h4>
+              {details?.slice(0, maxDetailsCount).map((detail, i) => (
+                <a key={i} style={{ display: 'block' }} href={detail.uri}>{detail?.name}</a>
+              ))}
+              {ingredients?.slice(0, maxIngredientsCount).map((ingredient, i) => (
+                <div key={i}>{ingredient.value} {ingredient.measurementUnit.name.toLowerCase()} of {ingredient.ingredient.name}</div>
+              ))}
+              {
+                productType === 'plan' || productType === 'combo' ?
+                  <ShowMoreButton
+                    buttonText="Show more"
+                    content={details?.slice(maxDetailsCount).map((detail, i) => (
+                      <a key={i} href={detail.uri}>{detail?.name}</a>
+                    ))}
+                  />
+                  :
+                  null
+              }
+              {
+                productType === 'recipe' ?
+                  <ShowMoreButton
+                    buttonText="Show more"
+                    content={ingredients?.slice(maxIngredientsCount).map((ingredient, i) => (
+                      <div key={i}>{ingredient.value} {ingredient.measurementUnit.name.toLowerCase()} of {ingredient.ingredient.name}</div>
+                    ))}
+                  />
+                  :
+                  null
+              }
+            </>
+          }
+        </div>
+      </div>
+      <div>
+        <div className="text-main text-3xl font-semibold">
+          {
+            alreadyAcquired ?
+              <div className="text-center mt-8">
+                You already have this product.
+                <br />
+                <br />
+                <div className="flex items-center justify-center">
+                  <Link to={`/purchases-products`} className="bg-main text-white px-8 py-2 rounded-xl">
+                    Go to my Inventory
+                  </Link>
+                </div>
+              </div>
+              :
+              <div className="mt-8 flex items-center justify-between">
+
+                <p className="text-main">{price}</p>
+                {
+                  isPremiun ?
+                    <div className="w-1/2">
+                      <h1 className="text-xl text-gray-500 mb-4">
+                        Pay with:
+                      </h1>
+                      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 justify-center">
+                        {
+                          paymentMethods?.map((payment, i) => {
+                            return (
+                              <button key={i} className="py-2 rounded-xl text-center text-white capitalize" onClick={() => handleBuy(payment?.code)}>
+                                <img src={imgUrl(payment?.image)} alt="" style={{ maxWidth: '100%' }} />
+                              </button>
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+                    :
+                    <button className="bg-main px-8 py-2 rounded-xl text-white" onClick={() => {
+                      if (!createOrderData) {
+                        handleBuy(null)
+                      } else {
+                        window.open(`/orders/${createOrderData?.order?.id}`);
+                      }
+                    }}>
+                      {
+                        createOrderLoading ?
+                          'Loading'
+                          :
+                          createOrderData ?
+                            'View Details'
+                            :
+                            'Add free'
+                      }
+                    </button>
+                }
+
+                {
+                  haveDiscount &&
+                  <p className="text-gray-400 text-sm">$48.56</p>
+                }
+              </div>
+          }
+        </div>
+      </div>
+      <Modal show={showCustomersReviews} onClose={() => setShowCustomersReviews(false)}>
+        <div style={{ maxHeight: '70vh', overflowY: 'auto' }} className="custom-scrollbar custom-scrollbar-main">
+          <h1 className="text-center text-xl font-bold">
+            Customers Reviews ({totalReviews})
+          </h1>
+          {
+            currentReviews?.length > 0 ?
+              currentReviews?.map((review, i) => {
+                return (
+                  <div key={i} className="py-4 border-b border-main">
+                    <div className="flex items-center space-x-4">
+                      <img src={imgUrl(review?.client?.imgPath)} style={{ height: 50, width: 50 }} className="rounded-full" />
+                      <p className="text-gray-500 font-bold">
+                        {review?.client?.name}
+                        <RatingComponent
+                          disabled
+                          value={review?.value}
+                          size="sm"
+                        />
+                      </p>
+                    </div>
+                    <br />
+                    <p className="text-gray-500">
+                      {review?.comment}
+                    </p>
+                  </div>
+                )
+              })
+              :
+              <div className="text-center text-red-500 text-xl">
+                No results found.
+              </div>
+          }
+          {
+            loadingRatings ?
+              <div className="text-center my-4">
+                Loading more reviews...
+              </div>
+              :
+              ratingPages > filters?.page ?
+                <div className="text-center">
+                  <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4 mb-4">
+                    Load More
+                  </button>
+                </div>
+                :
+                <div className="text-center my-4">
+                  No more reviews.
+                </div>
+          }
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+export default ProductInfo;
+```
 ![](https://i.imgur.com/NZWLwnL.jpg)
+![]( https://i.imgur.com/menOJPW.png)
 
 [Subir](#top)
-
 
 
 
@@ -3413,44 +3752,228 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 
 Componente encargado del diseño de las letras de la vista overview
 
+Recibe una variable de tipo string.
+
+#### Código
+```
+const LyOverview = ({ name }) => {
+    return (
+        <div className="text-main text-9xl font-bold">
+            <p className="ml-10 p-1 drop-shadow-lg">{name}</p>
+        </div>
+    );
+}
+export default LyOverview;
+```
+cómo ejecución del código se puede observar el resultado en la imagen publicada.
 
 ![](https://i.imgur.com/PwvSgsV.jpg)
 
 [Subir](#top)
 
 
-
-
 <a name="item63"></a>
 ### MealDetailOverview
 
-componente del scroll de la vista por dia.
+Componente del scroll de la vista por día.
+Este componente ya no se utiliza pero tenia la finalidad de mostrar un cuadro con imagen y descripcion, donde recibe como parámetro un text y un source. 
 
+#### Código
+```
+const MealDetailOverview = ({ source, text }) => {
+    return (
+        <div>
+            <img className="m-auto h-48 w-48 rounded-lg" src={source} alt="" />
+            <p className="truncate text-center p-2 font-bold text-2xl text-gray-500" title={text} >{text}</p>
+        </div>
+    );
+}
 
-![]()
-
-[Subir](#top)
-
-
-
+export default MealDetailOverview;
+```
 
 <a name="item64"></a>
 ### MealDetailOverviewImages
 
 Componete encargado de mostrar la imagenes al seleccionar un cuadro de la vista de overview.
 
-![]()
+Recibe como parámetro un array de imagenes que se muestra en la vista del cuadro por dia en el overview, este componente ya no se ultiliza porq se realizo unas mejoras pero el código esta aquí y se muestra a continuación.
+
+#### Código
+```
+const MealPlanOverviewImages = ({ images = [] }) => {
+    return (
+        <div className={`flex flex-col h-64 w-full overflow-y-auto bg-white rounded shadow`}>
+            {images.map((image, i) => <div
+                key={i}
+                className={`p-2 bg-white w-full border-b`}
+            >
+                <div className="p-1 text-center text-xs text-gray-500">
+                    <img
+                        className="m-auto w-auto rounded-lg mb-1 h-18 w-18"
+                        src={image.source} alt="cargando"
+                    />
+                    {<p className="truncate" title={image.name}>{image.name}</p>}
+                </div>
+            </div>)}
+        </div>
+    );
+}
+
+export default MealPlanOverviewImages;
+```
 
 [Subir](#top)
-
-
 
 
 <a name="item65"></a>
 ### PasswordUser
 
-Componente donde permite al usuario agregar contraseña en la vista paypal user.
+Componente donde permite al usuario agregar contraseña, modificarla y confirmarla
+Recibe como parámetro title, text y spam son tipos de datos string.
 
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
+#### Código
+
+```
+import React, { useEffect, useState } from 'react'
+import { useFeedBack } from '../contexts/FeedBackContext'
+import useAxios from '../hooks/useAxios'
+import ButtonChange from './ButtonChange'
+
+const PasswordUser = ({ title, text, spam }) => {
+
+  const { setLoading } = useFeedBack();
+
+  const [data, setData] = useState({
+    password: "",
+    currentPassword: '',
+    passwordConfirm: ''
+  });
+
+
+  const [showResponseMessage, setShowResponseMessage] = useState(false);
+
+  const [{ loading }, updatePassword] = useAxios({ url: `/auth/password`, method: 'PUT' }, { useCache: false, manual: true });
+
+  useEffect(() => {
+    if (showResponseMessage) {
+      setTimeout(() => {
+        setShowResponseMessage(false);
+      }, [3000])
+    }
+  }, [showResponseMessage])
+
+  useEffect(() => {
+    setLoading({
+      show: loading,
+      message: 'Loading'
+    })
+  }, [loading]);
+
+  const handleChange = (e) => {
+    setData((oldData) => {
+      return {
+        ...oldData,
+        [e.target.name]: e.target.value
+      }
+    });
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (data?.password !== data?.passwordConfirm) {
+      alert('Las contraseñas no coinciden');
+    }
+
+    const { passwordConfirm, ...rest } = data;
+
+    updatePassword({ data: { ...rest } }).then(() => {
+      setShowResponseMessage(true);
+
+      setData({
+        password: "",
+        currentPassword: '',
+        passwordConfirm: ''
+      });
+    });
+
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="lg:flex" style={{ maxWidth: '100%' }}>
+        <div className="ml-2 mt-6 md:mt-2">
+          <label
+            htmlFor="user"
+            className="text-gray-600 font-bold md:text-xl"
+          >
+            {title}
+          </label>
+          <input
+            name='currentPassword'
+            onChange={handleChange}
+            value={data?.currentPassword}
+            type="password"
+            className="md:mt-6 md:text-xl text-base border rounded-lg w-full h-10 block"
+            placeholder='Password'
+          />
+        </div>
+        <div className="ml-2 mt-4 md:mt-2">
+          <label
+            htmlFor="user"
+            className="text-gray-600 font-bold md:text-xl"
+          >
+            {text}
+          </label>
+          <input
+            name='password'
+            onChange={handleChange}
+            value={data?.password}
+            type="password"
+            className="md:mt-6 md:text-xl text-base border rounded-lg w-full h-10 block"
+            placeholder='Password'
+          />
+        </div>
+        <div className="ml-2  mt-4 md:mt-2">
+          <label
+            htmlFor="user"
+            className="text-gray-600 font-bold md:text-xl"
+          >
+            {spam}
+          </label>
+          <input
+            name='passwordConfirm'
+            onChange={handleChange}
+            value={data?.passwordConfirm}
+            type="password"
+            className="md:mt-6 md:text-xl text-base border rounded-lg w-full h-10 block"
+            placeholder='Password'
+          />
+        </div>
+      </div>
+      <div className="flex items-center space-x-4 justify-center md:justify-end mt-4">
+        {
+          showResponseMessage &&
+          <span className='animate__animated animate__fadeInLeft'>
+            The password has been updated
+          </span>
+        }
+        <ButtonChange />
+      </div>
+    </form>
+  )
+}
+
+export default PasswordUser
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/R2OqFUW.png)
  
 [Subir](#top)
@@ -3459,6 +3982,57 @@ Componente donde permite al usuario agregar contraseña en la vista paypal user.
 ### PaypalLogin
 
 Componente que fue creado para mostrar el diseño de PayPal de iniciar sesión de paypal.
+Recibe como parámetro { title, help, login, create } title titulo de la vista, help es la contraseña de paypalque recibe en el input, login es el usuario "correo" para ingresar a la vista y eñ create es el filtro del input de ingresar al paypal.
+
+#### Código 
+```
+import React from "react";
+import paypal from "../assets/paypal.png";
+const PaypalLogin = ({ title, help, login, create }) => {
+  return (
+    <div>
+      <div className=" container flex justify-center">
+        <div>
+          <img src={paypal} alt="" className="w-20 ml-10" />
+          <p className="font-semibold text-2xl">{title}</p>
+        </div>
+      </div>
+
+      <div className="container ml-4 ">
+        <div className=" justify-center">
+          <input
+            type="text"
+            placeholder="paypaluser@gmail.com"
+            className="border justify-center rounded-lg w-auto mt-6 "
+          />
+
+          <input
+            type="password" id="password"
+            placeholder="****************"
+            className="border rounded-lg w-auto flex justify-center mt-6 bg-gray-200"
+          />
+
+          <p className="text-blue-600 font-bold cursor-pointer">{help}</p>
+        </div>
+      </div>
+
+      <div className="mt-6 p-2">
+        <h3 className="flex items-center justify-center p-4 bg-blue-700 text-white font-semibold rounded-full shadow cursor-pointer">
+          {login}
+        </h3>
+      </div>
+      <div className="mt-6 p-2">
+        <h3 className="flex items-center justify-center p-4 bg-white border border-blue-700 text-blue-700 font-semibold rounded-full shadow cursor-pointer">
+          {create}
+        </h3>
+      </div>
+    </div>
+  );
+};
+
+export default PaypalLogin;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 ![](https://i.imgur.com/Ohu20I5.png)
  
@@ -3471,12 +4045,49 @@ Componente que fue creado para mostrar el diseño de PayPal de iniciar sesión d
 
 Componente que se encarga de colocar la informacion de my paypal en la vista de user.
 
+Recibe como parámetro { textuser, textbutton } textuser es lo que colocas en el patrón de la vista de cofiguraciones de user de paypal y textbutton es el funcionamiento del botón.
+
+#### Código
+```
+import React from 'react'
+import paypal from "../assets/paypal.png"
+
+const PaypalUser = ({ textuser, textbutton }) => {
+  return (
+    <form>
+      <div className="flex mt-4">
+        <img src={paypal} alt="" className="w-20" />
+        <div className="ml-2">
+          <label
+            htmlFor="user"
+            className="text-gray-600 font-bold md:text-xl"
+          >
+            {textuser}
+          </label>
+          <input
+            type="text"
+            className="md:mt-6 md:text-xl text-base border rounded-lg md:w-80 w-full h-10 block"
+            id="user"
+            placeholder='User'
+          />
+        </div>
+      </div>
+      <div className="flex justify-center md:justify-end mt-4">
+        <button className="bg-main hover:bg-main-light px-4 py-2 text-white font-semibold rounded-lg">
+          {textbutton}
+        </button>
+      </div>
+    </form>
+  )
+}
+
+export default PaypalUser
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 ![](https://i.imgur.com/Ua3GKRL.jpg)
 
 [Subir](#top)
-
-
 
 
 <a name="item68"></a>
