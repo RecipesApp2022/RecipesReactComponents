@@ -3393,358 +3393,10 @@ const IngredientRowDetails = ({ imageSource, title, subtitle, subtitle2, price }
 }
 
 export default IngredientRowDetails;
-```
-Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
-
-Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
-
-Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
-
-Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
-
-
-#### Código
-```
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
-import { AiOutlineClose } from "react-icons/ai";
-import { AiOutlineCheck } from "react-icons/ai";
-import { BsFillEmojiLaughingFill } from "react-icons/bs";
-import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import ShowMoreButton from "./ShowMoreButton";
-import favoriteReactions from "../consts/favoriteReactions"
-import useAxios from "../hooks/useAxios";
-import { useEffect } from "react";
-import usePaymentMethods from "../hooks/usePaymentMethods";
-import imgUrl from "../helpers/imgUrl";
-import { useFeedBack } from "../contexts/FeedBackContext";
-import RatingComponent from "./RatingComponent";
-import { useState } from "react";
-import Modal from "./Modal/Modal";
-import useRatings from "../hooks/useRatings";
-import { Link } from "react-router-dom";
-
-const ProductInfo = ({
-  name,
-  description,
-  ingredients = [],
-  maxIngredientsCount = 8,
-  onFavoriteClicked,
-  onSaveClicked,
-  haveDiscount,
-  price,
-  detailsLabel,
-  details,
-  maxDetailsCount = 8,
-  saved = false,
-  isPremiun,
-  type,
-  sellerId,
-  productId,
-  productType,
-  rating,
-  alreadyAcquired
-}) => {
-
-  const { setLoading } = useFeedBack();
-
-  const [filters, setFilters] = useState({
-    page: 1,
-    orderBy: 'createdAt,DESC',
-    itemId: productId,
-    itemType: productType
-  });
-
-  const [showCustomersReviews, setShowCustomersReviews] = useState(false);
-
-  const [currentReviews, setCurrentReviews] = useState([]);
-
-  const [{ data: createOrderData, loading: createOrderLoading }, createOrder] = useAxios({ method: 'POST', url: `/orders` }, { manual: true, useCache: false });
-
-  const [{ paymentMethods, total, numberOfPages, size, error, loading }, getPaymentMethods] = usePaymentMethods();
-
-  const [{ ratings, numberOfPages: ratingPages, total: totalReviews, loading: loadingRatings }, getRatings] = useRatings({ params: { ...filters }, options: { manual: true, useCache: false } });
-
-  useEffect(() => {
-    if (filters?.itemId && filters?.itemType) {
-      getRatings({
-        params: {
-          ...filters
-        }
-      });
-    }
-  }, [filters])
-
-  useEffect(() => {
-    if (productId && productType) {
-      setFilters((oldFilters) => {
-        return {
-          ...oldFilters,
-          itemId: productId,
-          itemType: productType
-        }
-      })
-    }
-  }, [productId, productType])
-
-  useEffect(() => {
-    if (ratings?.length > 0) {
-      setCurrentReviews((oldReviews) => {
-        return [...oldReviews, ...ratings];
-      });
-    }
-  }, [ratings]);
-
-  useEffect(() => {
-    setLoading({
-      show: createOrderLoading,
-      message: 'Loading'
-    })
-  }, [createOrderLoading])
-
-  useEffect(() => {
-    if (createOrderData) {
-      if (createOrderData?.url) {
-        window.open(createOrderData?.url, "_blank");
-      } else {
-        console.log(createOrderData);
-      }
-    }
-  }, [createOrderData])
-
-  const handleFavoriteClicked = (reaction) => () => onFavoriteClicked?.({ type, reaction });
-
-  const handleSaveClicked = () => onSaveClicked?.({ type });
-
-  const handleBuy = (paymentMethodCode) => {
-    if (!alreadyAcquired) {
-      createOrder({
-        data: {
-          sellerId,
-          productId,
-          type: productType,
-          paymentMethodCode: paymentMethodCode || null
-        }
-      });
-    }
-  }
-
-  const handleMore = () => {
-    if (ratingPages > filters?.page) {
-      setFilters((oldFilters) => {
-        return {
-          ...oldFilters,
-          page: oldFilters?.page + 1
-        }
-      });
-    }
-  }
-
-  return (
-    <div className="w-full md:w-1/2 md:px-8">
-      <div className="md:flex items-center text-3xl md:justify-between">
-        <h1 className="font-bold text-2xl md:ml-1 md:block w-full text-center md:text-left">{name}</h1>
-        <div className="md:flex space-x-4 md:m-2 md:m-auto mt-4 flex justify-center ">
-          <button
-            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
-            onClick={handleFavoriteClicked(favoriteReactions.DISLIKE)}
-            data-tip="I don't like this!"
-          >
-            <AiOutlineClose className="text-red-500" />
-          </button>
-          <button
-            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
-            onClick={handleFavoriteClicked(favoriteReactions.LIKE)}
-            data-tip="I like this!"
-          >
-            <AiOutlineCheck className="text-green-700" />
-          </button>
-          <button
-            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
-            onClick={handleFavoriteClicked(favoriteReactions.LOVE_IT)}
-            data-tip="Great!"
-          >
-            <BsFillEmojiLaughingFill className="text-yellow-300" />
-          </button>
-        </div>
-      </div>
-
-      <div className="flex items-center">
-        <RatingComponent
-          disabled
-          value={rating}
-        />
-        <p className="text-gray-300 text-lg m-2 underline cursor-pointer" onClick={() => { setShowCustomersReviews(true) }} >
-          ({totalReviews} customer review)
-        </p>
-      </div>
-      <div className="bg-white rounded-lg p-4">
-        <div className="text-lg">
-          {description
-            ? <>
-              <p>{description}</p>
-            </>
-            : <>
-              <h4 className="font-semibold mb-3">{detailsLabel}</h4>
-              {details?.slice(0, maxDetailsCount).map((detail, i) => (
-                <a key={i} style={{ display: 'block' }} href={detail.uri}>{detail?.name}</a>
-              ))}
-              {ingredients?.slice(0, maxIngredientsCount).map((ingredient, i) => (
-                <div key={i}>{ingredient.value} {ingredient.measurementUnit.name.toLowerCase()} of {ingredient.ingredient.name}</div>
-              ))}
-              {
-                productType === 'plan' || productType === 'combo' ?
-                  <ShowMoreButton
-                    buttonText="Show more"
-                    content={details?.slice(maxDetailsCount).map((detail, i) => (
-                      <a key={i} href={detail.uri}>{detail?.name}</a>
-                    ))}
-                  />
-                  :
-                  null
-              }
-              {
-                productType === 'recipe' ?
-                  <ShowMoreButton
-                    buttonText="Show more"
-                    content={ingredients?.slice(maxIngredientsCount).map((ingredient, i) => (
-                      <div key={i}>{ingredient.value} {ingredient.measurementUnit.name.toLowerCase()} of {ingredient.ingredient.name}</div>
-                    ))}
-                  />
-                  :
-                  null
-              }
-            </>
-          }
-        </div>
-      </div>
-      <div>
-        <div className="text-main text-3xl font-semibold">
-          {
-            alreadyAcquired ?
-              <div className="text-center mt-8">
-                You already have this product.
-                <br />
-                <br />
-                <div className="flex items-center justify-center">
-                  <Link to={`/purchases-products`} className="bg-main text-white px-8 py-2 rounded-xl">
-                    Go to my Inventory
-                  </Link>
-                </div>
-              </div>
-              :
-              <div className="mt-8 flex items-center justify-between">
-
-                <p className="text-main">{price}</p>
-                {
-                  isPremiun ?
-                    <div className="w-1/2">
-                      <h1 className="text-xl text-gray-500 mb-4">
-                        Pay with:
-                      </h1>
-                      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 justify-center">
-                        {
-                          paymentMethods?.map((payment, i) => {
-                            return (
-                              <button key={i} className="py-2 rounded-xl text-center text-white capitalize" onClick={() => handleBuy(payment?.code)}>
-                                <img src={imgUrl(payment?.image)} alt="" style={{ maxWidth: '100%' }} />
-                              </button>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                    :
-                    <button className="bg-main px-8 py-2 rounded-xl text-white" onClick={() => {
-                      if (!createOrderData) {
-                        handleBuy(null)
-                      } else {
-                        window.open(`/orders/${createOrderData?.order?.id}`);
-                      }
-                    }}>
-                      {
-                        createOrderLoading ?
-                          'Loading'
-                          :
-                          createOrderData ?
-                            'View Details'
-                            :
-                            'Add free'
-                      }
-                    </button>
-                }
-
-                {
-                  haveDiscount &&
-                  <p className="text-gray-400 text-sm">$48.56</p>
-                }
-              </div>
-          }
-        </div>
-      </div>
-      <Modal show={showCustomersReviews} onClose={() => setShowCustomersReviews(false)}>
-        <div style={{ maxHeight: '70vh', overflowY: 'auto' }} className="custom-scrollbar custom-scrollbar-main">
-          <h1 className="text-center text-xl font-bold">
-            Customers Reviews ({totalReviews})
-          </h1>
-          {
-            currentReviews?.length > 0 ?
-              currentReviews?.map((review, i) => {
-                return (
-                  <div key={i} className="py-4 border-b border-main">
-                    <div className="flex items-center space-x-4">
-                      <img src={imgUrl(review?.client?.imgPath)} style={{ height: 50, width: 50 }} className="rounded-full" />
-                      <p className="text-gray-500 font-bold">
-                        {review?.client?.name}
-                        <RatingComponent
-                          disabled
-                          value={review?.value}
-                          size="sm"
-                        />
-                      </p>
-                    </div>
-                    <br />
-                    <p className="text-gray-500">
-                      {review?.comment}
-                    </p>
-                  </div>
-                )
-              })
-              :
-              <div className="text-center text-red-500 text-xl">
-                No results found.
-              </div>
-          }
-          {
-            loadingRatings ?
-              <div className="text-center my-4">
-                Loading more reviews...
-              </div>
-              :
-              ratingPages > filters?.page ?
-                <div className="text-center">
-                  <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4 mb-4">
-                    Load More
-                  </button>
-                </div>
-                :
-                <div className="text-center my-4">
-                  No more reviews.
-                </div>
-          }
-        </div>
-      </Modal>
-    </div>
-  );
-};
-
-export default ProductInfo;
-```
 ![](https://i.imgur.com/NZWLwnL.jpg)
 ![]( https://i.imgur.com/menOJPW.png)
 
 [Subir](#top)
-
 
 
 <a name="item62"></a>
@@ -4095,78 +3747,567 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 Componente que se encarga mostrar todo el contenido de la vista de detalle del producto.
 
-![](https://i.imgur.com/oaZUbKe.jpg)
+#### Código
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+
+#### Código
+```
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCheck } from "react-icons/ai";
+import { BsFillEmojiLaughingFill } from "react-icons/bs";
+import { IoHeartOutline, IoHeart } from "react-icons/io5";
+import ShowMoreButton from "./ShowMoreButton";
+import favoriteReactions from "../consts/favoriteReactions"
+import useAxios from "../hooks/useAxios";
+import { useEffect } from "react";
+import usePaymentMethods from "../hooks/usePaymentMethods";
+import imgUrl from "../helpers/imgUrl";
+import { useFeedBack } from "../contexts/FeedBackContext";
+import RatingComponent from "./RatingComponent";
+import { useState } from "react";
+import Modal from "./Modal/Modal";
+import useRatings from "../hooks/useRatings";
+import { Link } from "react-router-dom";
+
+const ProductInfo = ({
+  name,
+  description,
+  ingredients = [],
+  maxIngredientsCount = 8,
+  onFavoriteClicked,
+  onSaveClicked,
+  haveDiscount,
+  price,
+  detailsLabel,
+  details,
+  maxDetailsCount = 8,
+  saved = false,
+  isPremiun,
+  type,
+  sellerId,
+  productId,
+  productType,
+  rating,
+  alreadyAcquired
+}) => {
+
+  const { setLoading } = useFeedBack();
+
+  const [filters, setFilters] = useState({
+    page: 1,
+    orderBy: 'createdAt,DESC',
+    itemId: productId,
+    itemType: productType
+  });
+
+  const [showCustomersReviews, setShowCustomersReviews] = useState(false);
+
+  const [currentReviews, setCurrentReviews] = useState([]);
+
+  const [{ data: createOrderData, loading: createOrderLoading }, createOrder] = useAxios({ method: 'POST', url: `/orders` }, { manual: true, useCache: false });
+
+  const [{ paymentMethods, total, numberOfPages, size, error, loading }, getPaymentMethods] = usePaymentMethods();
+
+  const [{ ratings, numberOfPages: ratingPages, total: totalReviews, loading: loadingRatings }, getRatings] = useRatings({ params: { ...filters }, options: { manual: true, useCache: false } });
+
+  useEffect(() => {
+    if (filters?.itemId && filters?.itemType) {
+      getRatings({
+        params: {
+          ...filters
+        }
+      });
+    }
+  }, [filters])
+
+  useEffect(() => {
+    if (productId && productType) {
+      setFilters((oldFilters) => {
+        return {
+          ...oldFilters,
+          itemId: productId,
+          itemType: productType
+        }
+      })
+    }
+  }, [productId, productType])
+
+  useEffect(() => {
+    if (ratings?.length > 0) {
+      setCurrentReviews((oldReviews) => {
+        return [...oldReviews, ...ratings];
+      });
+    }
+  }, [ratings]);
+
+  useEffect(() => {
+    setLoading({
+      show: createOrderLoading,
+      message: 'Loading'
+    })
+  }, [createOrderLoading])
+
+  useEffect(() => {
+    if (createOrderData) {
+      if (createOrderData?.url) {
+        window.open(createOrderData?.url, "_blank");
+      } else {
+        console.log(createOrderData);
+      }
+    }
+  }, [createOrderData])
+
+  const handleFavoriteClicked = (reaction) => () => onFavoriteClicked?.({ type, reaction });
+
+  const handleSaveClicked = () => onSaveClicked?.({ type });
+
+  const handleBuy = (paymentMethodCode) => {
+    if (!alreadyAcquired) {
+      createOrder({
+        data: {
+          sellerId,
+          productId,
+          type: productType,
+          paymentMethodCode: paymentMethodCode || null
+        }
+      });
+    }
+  }
+
+  const handleMore = () => {
+    if (ratingPages > filters?.page) {
+      setFilters((oldFilters) => {
+        return {
+          ...oldFilters,
+          page: oldFilters?.page + 1
+        }
+      });
+    }
+  }
+
+  return (
+    <div className="w-full md:w-1/2 md:px-8">
+      <div className="md:flex items-center text-3xl md:justify-between">
+        <h1 className="font-bold text-2xl md:ml-1 md:block w-full text-center md:text-left">{name}</h1>
+        <div className="md:flex space-x-4 md:m-2 md:m-auto mt-4 flex justify-center ">
+          <button
+            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
+            onClick={handleFavoriteClicked(favoriteReactions.DISLIKE)}
+            data-tip="I don't like this!"
+          >
+            <AiOutlineClose className="text-red-500" />
+          </button>
+          <button
+            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
+            onClick={handleFavoriteClicked(favoriteReactions.LIKE)}
+            data-tip="I like this!"
+          >
+            <AiOutlineCheck className="text-green-700" />
+          </button>
+          <button
+            className="bg-white rounded-full py-1 px-1 shadow-2xl recipe-btn"
+            onClick={handleFavoriteClicked(favoriteReactions.LOVE_IT)}
+            data-tip="Great!"
+          >
+            <BsFillEmojiLaughingFill className="text-yellow-300" />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex items-center">
+        <RatingComponent
+          disabled
+          value={rating}
+        />
+        <p className="text-gray-300 text-lg m-2 underline cursor-pointer" onClick={() => { setShowCustomersReviews(true) }} >
+          ({totalReviews} customer review)
+        </p>
+      </div>
+      <div className="bg-white rounded-lg p-4">
+        <div className="text-lg">
+          {description
+            ? <>
+              <p>{description}</p>
+            </>
+            : <>
+              <h4 className="font-semibold mb-3">{detailsLabel}</h4>
+              {details?.slice(0, maxDetailsCount).map((detail, i) => (
+                <a key={i} style={{ display: 'block' }} href={detail.uri}>{detail?.name}</a>
+              ))}
+              {ingredients?.slice(0, maxIngredientsCount).map((ingredient, i) => (
+                <div key={i}>{ingredient.value} {ingredient.measurementUnit.name.toLowerCase()} of {ingredient.ingredient.name}</div>
+              ))}
+              {
+                productType === 'plan' || productType === 'combo' ?
+                  <ShowMoreButton
+                    buttonText="Show more"
+                    content={details?.slice(maxDetailsCount).map((detail, i) => (
+                      <a key={i} href={detail.uri}>{detail?.name}</a>
+                    ))}
+                  />
+                  :
+                  null
+              }
+              {
+                productType === 'recipe' ?
+                  <ShowMoreButton
+                    buttonText="Show more"
+                    content={ingredients?.slice(maxIngredientsCount).map((ingredient, i) => (
+                      <div key={i}>{ingredient.value} {ingredient.measurementUnit.name.toLowerCase()} of {ingredient.ingredient.name}</div>
+                    ))}
+                  />
+                  :
+                  null
+              }
+            </>
+          }
+        </div>
+      </div>
+      <div>
+        <div className="text-main text-3xl font-semibold">
+          {
+            alreadyAcquired ?
+              <div className="text-center mt-8">
+                You already have this product.
+                <br />
+                <br />
+                <div className="flex items-center justify-center">
+                  <Link to={`/purchases-products`} className="bg-main text-white px-8 py-2 rounded-xl">
+                    Go to my Inventory
+                  </Link>
+                </div>
+              </div>
+              :
+              <div className="mt-8 flex items-center justify-between">
+
+                <p className="text-main">{price}</p>
+                {
+                  isPremiun ?
+                    <div className="w-1/2">
+                      <h1 className="text-xl text-gray-500 mb-4">
+                        Pay with:
+                      </h1>
+                      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-2 justify-center">
+                        {
+                          paymentMethods?.map((payment, i) => {
+                            return (
+                              <button key={i} className="py-2 rounded-xl text-center text-white capitalize" onClick={() => handleBuy(payment?.code)}>
+                                <img src={imgUrl(payment?.image)} alt="" style={{ maxWidth: '100%' }} />
+                              </button>
+                            )
+                          })
+                        }
+                      </div>
+                    </div>
+                    :
+                    <button className="bg-main px-8 py-2 rounded-xl text-white" onClick={() => {
+                      if (!createOrderData) {
+                        handleBuy(null)
+                      } else {
+                        window.open(`/orders/${createOrderData?.order?.id}`);
+                      }
+                    }}>
+                      {
+                        createOrderLoading ?
+                          'Loading'
+                          :
+                          createOrderData ?
+                            'View Details'
+                            :
+                            'Add free'
+                      }
+                    </button>
+                }
+
+                {
+                  haveDiscount &&
+                  <p className="text-gray-400 text-sm">$48.56</p>
+                }
+              </div>
+          }
+        </div>
+      </div>
+      <Modal show={showCustomersReviews} onClose={() => setShowCustomersReviews(false)}>
+        <div style={{ maxHeight: '70vh', overflowY: 'auto' }} className="custom-scrollbar custom-scrollbar-main">
+          <h1 className="text-center text-xl font-bold">
+            Customers Reviews ({totalReviews})
+          </h1>
+          {
+            currentReviews?.length > 0 ?
+              currentReviews?.map((review, i) => {
+                return (
+                  <div key={i} className="py-4 border-b border-main">
+                    <div className="flex items-center space-x-4">
+                      <img src={imgUrl(review?.client?.imgPath)} style={{ height: 50, width: 50 }} className="rounded-full" />
+                      <p className="text-gray-500 font-bold">
+                        {review?.client?.name}
+                        <RatingComponent
+                          disabled
+                          value={review?.value}
+                          size="sm"
+                        />
+                      </p>
+                    </div>
+                    <br />
+                    <p className="text-gray-500">
+                      {review?.comment}
+                    </p>
+                  </div>
+                )
+              })
+              :
+              <div className="text-center text-red-500 text-xl">
+                No results found.
+              </div>
+          }
+          {
+            loadingRatings ?
+              <div className="text-center my-4">
+                Loading more reviews...
+              </div>
+              :
+              ratingPages > filters?.page ?
+                <div className="text-center">
+                  <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4 mb-4">
+                    Load More
+                  </button>
+                </div>
+                :
+                <div className="text-center my-4">
+                  No more reviews.
+                </div>
+          }
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+export default ProductInfo;
+```
+Su ejecución es la union de otro componentes y como resultado se ve en la imagen.
+
+![](https://i.imgur.com/hrAdSWM.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item69"></a>
 ### BannerPage
 
-componente del banner de las diferente vista (revision).
+Componente del banner de las diferente vista (revision).
 
+Recibe como parámetro { image, title } image es un archivo tipo imagen, title es el nombre del tipo string que va en el banner.
+	
+#### Código
+```
+const BannerPage = ({ image, title }) => {
+  return (
+    <div
+      className="md:h-96 h-70 flex justify-center items-center"
+      style={{ background: `url(${image})`, backgroundSize: "100% 100%" }}
+    >
+      <h1
+        className="text-white rounded-xl title py-24 lg:px-64 rounded-4xl"
+        style={{ background: "rgba(0,0,0, .3)" }}
+      >
+        {title}
+      </h1>
+    </div>
+  );
+};
+
+export default BannerPage;	
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	
 ![](https://i.imgur.com/aG1xRyc.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item70"></a>
 ### BoxCalendar
 
 Componente encargado del diseño del cuadro del calendario de la vista del usuario
+No recibe ningún parámetro.
+	
+#### Código
+```
+import { Link } from "react-router-dom";
 
+const BoxCalendar = () => {
+    return (
+        <Link to={"/meanplanoverview"}>
+            <div className="mt-4 bg-white h-28 w-28  border bordes-2">
+
+            </div>
+        </Link>
+
+    );
+}
+
+export default BoxCalendar;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	
 ![](https://i.imgur.com/9gQbIlN.jpg)
 
 [Subir](#top)
 
 
-
-
 <a name="item71"></a>
 ### BoxName
 
-Componente que recibe el texto del dia de la semana (Sunday, Monday, Tuesday, Wednesday, Thursday, Friday).
+Componente que recibe el texto del dia de la semana (Sunday, Monday, Tuesday, Wednesday, Thursday, Friday) donde lo recibe por parametro y llama a otro componente para el diseño de estructura del calendario.
+Recibe como parámetro { name } es de tipo string.
+	
+#### Código
+```
+import BoxCalendar from "../componentes/BoxCalendar";
 
-![]()
+const BoxName = ({ name }) => {
+    return (
+        <div className="text-lg font-bold">
+            <span className="">
+                {name}
+            </span>
+            <BoxCalendar />
+            <BoxCalendar />
+            <BoxCalendar />
+            <BoxCalendar />
+            <BoxCalendar />
+        </div>
+
+    );
+}
+
+export default BoxName;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![](https://i.imgur.com/8rCYf2d.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item72"></a>
 ### ButtonCart
 
 Componente del boton de carrito.
+No recibe ningún parámetro.
+	
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
 
+#### Código
+```
+import React from 'react'
+import {BsFillCartPlusFill} from 'react-icons/bs'
+
+const ButtonCart = () => {
+  return (
+    <button
+className="bg-main  p-2 mb-2 mt-2 flex items-center rounded-xl text-white font-semibold hover:bg-main-light">
+ <BsFillCartPlusFill/> 
+     <p className='text-base ml-2 mr-2'>Add to Cart</p>
+</button>
+  )
+}
+
+export default ButtonCart
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	
 ![](https://i.imgur.com/xYF5GkZ.jpg)
 
 [Subir](#top)
 
 
-
-
 <a name="item73"></a>
 ### ButtonChange
 
-Componente del boton de change
-
+Componente del boton de change.
+Recibe cómo parámetro { onClick, loading, buttonText = 'Change' } de funcionalidades de del botón.
+	
+#### Código
+```
+const ButtonChange = ({ onClick, loading, buttonText = 'Change' }) => {
+    return (
+        <button disabled={loading} type="button" onClick={(e) => onClick?.(e)} className="bg-main hover:bg-main-light px-4 py-2 text-white font-semibold rounded-lg">
+            {
+                loading ?
+                    'loading'
+                    :
+                    buttonText
+            }
+        </button>
+    );
+}
+export default ButtonChange;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	
 ![](https://i.imgur.com/8FCip2e.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item74"></a>
 ### ButtonItems
 
 Componente que se encarga del diseño del boton de seleccion de (recipes, plans y combos)
+Recibe como parámetro { defaultCategory = 'recipes', seller } consite en la funcionalidad del botón de objeto de la información del vendedor y una variable defaultCategory de tipo string =recipes.
 
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+#### Código
+```
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ButtonSellers from "./ButtonSellers";
+
+const ButtonItems = ({ defaultCategory = 'recipes', seller }) => {
+  const [category, setCategory] = useState(defaultCategory);
+  return (
+    <div className="text-base m-0 rounded-tl-lg h-12 rounded-t-lg flex">
+      <Link to={`/sellers/${seller?.slug}/recipes`}>
+        <ButtonSellers
+          onClick={() => { setCategory('recipes') }}
+          name="Recipes"
+          isActive={category === 'recipes'}
+        />
+      </Link>
+
+      <Link to={`/sellers/${seller?.slug}/plans`}>
+        <ButtonSellers
+          onClick={() => { setCategory('plans') }}
+          name="Plans"
+          isActive={category === 'plans'}
+        />
+      </Link>
+
+      <Link to={`/sellers/${seller?.slug}/combos`}>
+        <ButtonSellers
+          onClick={() => { setCategory('combos') }}
+          name="Combos"
+          isActive={category === 'combos'}
+        />
+      </Link >
+    </div >
+  );
+};
+
+export default ButtonItems;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/O9JlBX9.png)
 
 [Subir](#top)
@@ -4177,50 +4318,161 @@ Componente que se encarga del diseño del boton de seleccion de (recipes, plans 
 <a name="item75"></a>
 ### SelectOrder
 
-Componente del diseño de lista de ordenar por del vendedor.	
+Componente del diseño de lista de ordenar por del vendedor.
 
+#### Código
+```
+import React from "react";
+const SelectOrder = () => {
+  return (
+    <div>
+      <select
+        id="Rating"
+        className="bg-gray-50 border border-gray-300 text-gray-900 title-button rounded-lg focus:ring-main block w-60 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500"
+      >
+        <option selected>Ordenar Por</option>
+        <option value="">A-Z</option>
+        <option value="">Rating</option>
+        <option value=""> Time Cock</option>
+      </select>
+    </div>
+  );
+};
+
+export default SelectOrder;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	      
 ![](https://i.imgur.com/Q31CQTS.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item76"></a>
 ### CardChef
 
 Componente del vendedor. Vista sellers.
+#### Código
+	      
+```
+import cheque from "../assets/cheque.png";
+const BannerChef = ({ foto, name, description, logo, recipes, plans, pack }) => {
 
+  return (
+    <div className="flex justify-center items-center rounded-lg relative"
+      style={{ background: `url(${foto})`, backgroundSize: "100% 100%" }}>
+
+      <div className='rounded-md absolute bg-black h-full w-full opacity-40' ></div>
+      <div className="relative">
+        <div className="flex justify-center items-center mt-6">
+          <img
+            src={logo}
+            className="h-20 w-20 rounded-full items-center"
+            alt=""
+          />
+        </div>
+
+        <div className="text-center text-white font-sans">
+          <div className="flex justify-center items-center">
+            <p className="text-xl font-bold ml-4">{name}</p>
+            <div className="mt-4 ml-3" />
+            <img src={cheque} alt="" className="w-4 h-4 mt-2 mr-2" />
+          </div>
+          {
+            description ?
+              <p className="text-base truncate">{description}</p>
+              :
+              <p className="text-base mb-8"></p>
+          }
+          <div className="flex space-x-8 mb-6 mt-2">
+            <p className="text-xs">{recipes}</p>
+            <p className="text-xs">{plans}</p>
+            <p className="text-xs">{pack}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default BannerChef;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/s4rgz6r.jpg)
 
 [Subir](#top)
-
-
-
 
 
 <a name="item78"></a>
 ### CardOrder
 
 Componente donde aparece foto de nombre del vendedor, order, sellers.
+Recibe como parámetro { title, chef } recibe el title del seller tipo string y chef es también de tipo string de la imagen del seller.
+	
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
 
+#### Código
+```
+import React from "react";
+import womenchef from "../assets/womenchef.jpg";
+import { BsPatchCheckFill } from "react-icons/bs";
+
+const CardOrder = ({title,chef}) => {
+  return (
+    <div className="mb-6">
+      <p className="ml-2 mt-2 text-main mb-6">{title}</p>
+      <div className="flex">
+        <img src={womenchef} alt="" className="w-20 rounded-full shadow" />
+        <p className="text-black  mt-6 ml-4">{chef}</p>
+        <BsPatchCheckFill className="text-main mt-7 ml-2" />
+      </div>
+    </div>
+  );
+};
+
+export default CardOrder;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/IDxf85y.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item79"></a>
 ### CardPaypal
 
 Componente que se encuentra en la vista de la forma de pago de paypal (logo y modificar).
+Recibe como parámetro { title, text } recibe el title del paypal tipo string y text es también de tipo string es el texto del user de paypal.
+	      
+#### Código
+```	     
+import React from "react";
+import paypal from "../assets/paypal.png";
+const CardPaypal = ({ title, text }) => {
+  return (
+    <div className="bg-white shadow p-3 rounded-lg ">
+    <div className="flex">
+      <img src={paypal} alt="" className="w-20" />
+      <div className="mt-6 flex space-x-16 md:space-x-52 font-semibold">
+        <div>
+          <p>{title}</p>
+        
+        </div>
+       
+        <div>
+          <p className="text-main cursor-pointer">{text}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  );
+};
 
+export default CardPaypal;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/HYISllZ.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item80"></a>
@@ -4228,6 +4480,26 @@ Componente que se encuentra en la vista de la forma de pago de paypal (logo y mo
 
 Componente que contiene imagen y titulo del producto en la vista de paypal.
 
+Recibe como parámetro { title, food } recibe el title de recipe de tipo string y food es también de tipo string porque es la imagen del producto.
+#### Código
+```
+import React from 'react'
+import lasagna from '../assets/pasticho.png'
+const CardProduct = ({title,food}) => {
+  return (
+    <div>
+      <p className='text-main ml-2'>{title}</p>
+    <div className='md:flex grid mt-2 mb-20'>
+        <img src={lasagna} alt="" className='rounded-lg shadow' />
+        <p className='md:mt-12 mt-2 ml-10 md:ml-6 flex'>{food}</p>
+    </div>
+    </div>
+  )
+}
+
+export default CardProduct
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/fgykcjx.png)
 
 [Subir](#top)
