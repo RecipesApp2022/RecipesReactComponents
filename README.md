@@ -4510,20 +4510,156 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 <a name="item81"></a>
 ### CardRecipes
 
-Componente de las recetas. 
+Componente de la carta de recetas. 
 
-![](https://i.imgur.com/eJSBoxj.png)
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+#### Código
+```
+import AppLogo from "../assets/drafts.png";
+import { BsBookmark } from "react-icons/bs";
+import Matches from "./Matches";
+import CestaCompras from "../assets/Img-button/cesta-de-la-compra.png";
+import BolsaCompras from "../assets/Img-button/bolsa-de-la-compra.png";
+import Reloj from "../assets/clock.png";
+import ButtonCart from "./ButtonCart";
+import { FaStar } from "react-icons/fa";
+
+const CardRecipes = ({
+  texto,
+  price,
+  foto,
+  title,
+  sellerLogo,
+  sellerName,
+  numberOfIngredients,
+  preparationTime,
+  numberOfItems,
+  hideButtons,
+  hideCart = false,
+  hideClock,
+  hideBag,
+  rating
+}) => {
+  return (
+    <div className="bg-white w-full mb-6 rounded-xl overflow-hidden">
+      <div
+        className="h-64 w-74 relative"
+        style={{ backgroundImage: `url(${foto})`, backgroundSize: "100% 100%" }}
+      >
+        <div className="relative h-full w-full bg-black bg-opacity-20 flex ">
+          <div className="absolute left-0 top-1 w-full justify-center items-center flex">
+            <img
+              src={AppLogo}
+              className="h-10 w-10 opacity-60 rounded-full"
+              alt="AppLogo"
+            />
+          </div>
+          <div className="absolute flex left-2 top-2 bg-main-dark rounded-lg bg-opacity-70 text-sm leading-none">
+            <p className="text-white py-1 px-1.5">${price}</p>
+          </div>
+          <div className="absolute flex z-10 top-3 right-3 justify-end text-white">
+            {!hideBag && <div className="flex mr-2">
+              <img src={BolsaCompras} className="h-5 w-5 text-white m-auto" alt="BolsaCompras" />
+              <p className="text-white h-5 w-15 ml-1">{numberOfItems}</p>
+            </div>}
+            <div className="flex ">
+              <img src={CestaCompras} className="h-5 w-5 m-auto" alt="CestaCompras" />
+              <p className="text-white h-5 w-5 ml-1">{numberOfIngredients}</p>
+            </div>
+
+            {!hideClock && <div className="flex ">
+              <img src={Reloj} className="h-5 w-5 m-auto" alt="CestaCompras" />
+              <p className="text-white h-5 w-5 ml-1">{preparationTime}</p>
+            </div>}
+          </div>
+
+          <h1 className="m-auto text-2xl text-white font-semibold">{title}</h1>
+          <div className="absolute w-full p-2 bottom-0 bg-black bg-opacity-30 ">
+            <h1 className="text-white font-semibold truncate mb-1" title={texto}>{texto}</h1>
+
+            <div className="flex">
+              <div className="flex text-bold">
+                <img className="rounded-full h-8 w-8" src={sellerLogo} alt="" />
+                <h1 className="p-1 text-white">{sellerName}</h1>
+              </div>
+              <div className="flex justify-end text-white ml-auto">
+                <div className="flex items-center space-x-2">
+                  <FaStar color="#FFBA5A" />
+                  <p className="text-white">{rating || '0'}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        {!hideButtons && (
+          <div className="p-2">
+            <Matches />
+          </div>
+        )}
+        {!hideCart && (
+          <div className="flex justify-center">
+            <ButtonCart />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default CardRecipes;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	      
+![](https://i.imgur.com/R32WIwM.png)
 
 [Subir](#top)
-
-
 
 
 <a name="item82"></a>
 ### CardResum
 
-Componente de orden de resum en paypal.
+Componente de orden de resumen del total por cancelar en paypal.
+Recibe como parámetros	{ title, total, price }   title y total es de tipo string, price su tipo de datos decimal.
+	      
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+	      
+#### Código
+import React, { useState } from "react";
+import paypal from "../assets/paypaltransp.png";
+import PaypalModal from "./PaypalModal";
 
+const CardResum = ({ title, total, price }) => {
+  const [showPaypalModal, setShowPaypalModal] = useState(false);
+
+  return (
+    <div className="bg-white shadow p-3 rounded-lg ">
+      <div>
+        <p className="mb-8 ml-4 md:text-2xl text-base lg:text-2xl font-bold border-b pb-1 text-gray-600">{title}</p>
+      </div>
+      <div className="flex justify-between ml-5 mr-5">
+        <p>{total}</p>
+        <p>{price}</p>
+      </div>
+      <div className="flex justify-center mt-10 mb-8">
+        <img
+          src={paypal}
+          alt=""
+          className="w-40 bg-main rounded-lg p-3 cursor-pointer"
+          onClick={() => setShowPaypalModal(true)}
+        />
+      </div>
+
+      <PaypalModal show={showPaypalModal} onClose={() => setShowPaypalModal(false)} />
+    </div>
+  );
+};
+
+export default CardResum;	      
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.	      
 ![](https://i.imgur.com/3fKcpYB.jpg)
 
 [Subir](#top)
@@ -4535,14 +4671,24 @@ Componente de orden de resum en paypal.
 ### CardWithTitle
 
 Componente que fue realizado para la parte de configuraciones de My servings en la vista de usuario.
-
+Recibe como parámetro { title, children } ambos parametros son de tipos string title es el titulo y el children es el contenido que se va insertar.
+	    
+#### Código
+```	    
+import React from "react";
+export const CardWithTitle = ({ title, children }) => {
+  return (
+    <div className="bg-white shadow p-3 rounded-lg w-full">
+      <h1 className="text-gray-600 font-bold md:text-2xl border-b pb-1">{title}</h1>
+      {children}
+    </div>
+  );
+};
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.	
 ![](https://i.imgur.com/wv1BuLk.jpg)
 
 [Subir](#top)
-
-
-
-
 
 
 <a name="item84"></a>
