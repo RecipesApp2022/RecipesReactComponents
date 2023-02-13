@@ -39,7 +39,6 @@
 * [DescriptionChef](#item35)
 * [ButtonImage](#item36)
 * [Details](#item37)
-* [](#item38)
 * [Tab](#item39)
 * [TabButton](#item40)
 * [TabPanel](#item41)
