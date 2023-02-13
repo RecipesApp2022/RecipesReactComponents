@@ -4735,7 +4735,6 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 
 
-
 <a name="item83"></a>
 ### CardWithTitle
 
@@ -4850,10 +4849,34 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/tvnn47v.png)
 
 [Subir](#top)
-
+		        
+	    
 <a name="item87"></a>
-### WaPay
-Componente encargado de mostrar la informacion de la lista de comparador de precio.
+### CommentsComponent
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+
+	    
+<a name="item88"></a>
+### CreatePlanForm
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+
+	    
+<a name="item89"></a>
+### DateFormatter
 	    
 #### Código
 ```	    
@@ -4864,32 +4887,8 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	
 	    
-<a name="item88"></a>
-### 
-	    
-#### Código
-```	    
-```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
-
-	    
-[Subir](#top)	    
-	    
-<a name="item89"></a>
-### 
-	    
-#### Código
-```	    
-```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
-
-[Subir](#top)
-
-	    
 <a name="item90"></a>
-### 
+### DescriptionChef
 	    
 #### Código
 ```	    
@@ -4898,10 +4897,10 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
 
 [Subir](#top)
-
+	
 	    
 <a name="item91"></a>
-### 
+### FeatureRow
 	    
 #### Código
 ```	    
@@ -4913,7 +4912,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	
 	    
 <a name="item92"></a>
-### 
+### ForgotPasswordForm
 	    
 #### Código
 ```	    
@@ -4925,7 +4924,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	
 	    
 <a name="item93"></a>
-### 
+### GridComponent
 	    
 #### Código
 ```	    
@@ -4937,7 +4936,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	
 	    
 <a name="item94"></a>
-### 
+### ImagenCrudComponent
 	    
 #### Código
 ```	    
@@ -4949,7 +4948,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	
 	    
 <a name="item95"></a>
-### 
+### ImgeUploadInput
 	    
 #### Código
 ```	    
@@ -4958,10 +4957,9 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
 
 [Subir](#top)
-	
 	    
 <a name="item96"></a>
-### 
+### ListComponent
 	    
 #### Código
 ```	    
@@ -4970,10 +4968,9 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
 
 [Subir](#top)
-	
 	    
 <a name="item97"></a>
-### 
+### MobileMenuButton
 	    
 #### Código
 ```	    
@@ -4984,7 +4981,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item98"></a>
-### 
+### ModalFiltre
 	    
 #### Código
 ```	    
@@ -4995,7 +4992,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item99"></a>
-### 
+### MovilMenuSearch
 	    
 #### Código
 ```	    
@@ -5006,7 +5003,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item100"></a>
-### 
+### NotificationTypeCheck
 	    
 #### Código
 ```	    
@@ -5017,7 +5014,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item101"></a>
-### 
+### OrderItemRow
 	    
 #### Código
 ```	    
@@ -5028,7 +5025,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item102"></a>
-### 
+### pagination
 	    
 #### Código
 ```	    
@@ -5039,7 +5036,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item103"></a>
-### 
+### RatingComponent
 	    
 #### Código
 ```	    
@@ -5050,7 +5047,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item104"></a>
-### 
+### RecupeFeatures
 	    
 #### Código
 ```	    
@@ -5061,7 +5058,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item105"></a>
-### 
+### RenderActionsButtons
 	    
 #### Código
 ```	    
@@ -5072,7 +5069,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item106"></a>
-### 
+### RenderCommentable
 	    
 #### Código
 ```	    
@@ -5083,7 +5080,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item107"></a>
-### 
+### Search Movil
 	    
 #### Código
 ```	    
@@ -5094,7 +5091,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item108"></a>
-### 
+### ShowMoreButton
 	    
 #### Código
 ```	    
@@ -5105,7 +5102,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item109"></a>
-### 
+### ShorRecipeRow
 	    
 #### Código
 ```	    
@@ -5116,7 +5113,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item110"></a>
-### 
+### StepFive
 	    
 #### Código
 ```	    
@@ -5127,7 +5124,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item111"></a>
-### 
+### StepOne
 	    
 #### Código
 ```	    
@@ -5138,7 +5135,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item112"></a>
-### 
+### StepSix
 	    
 #### Código
 ```	    
@@ -5149,7 +5146,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item113"></a>
-### 
+### StepThree
 	    
 #### Código
 ```	    
@@ -5160,7 +5157,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 	    
 <a name="item114"></a>
-### 
+### StepTwo
 	    
 #### Código
 ```	    
@@ -5169,6 +5166,3 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
 
 [Subir](#top)
-	    
-
-	    
