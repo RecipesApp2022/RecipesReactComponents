@@ -4853,12 +4853,172 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item87"></a>
 ### CommentsComponent
-	    
+
+Este componente consiste en almacenar la estructura de comentario en el sistema.
+Recibe como parámetro { type, productId } types es el estilo del comentario y productId es una variable de tipo entero que se encarga de almacenar el identificador del producto.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
 #### Código
-```	    
+```
+import { useEffect, useState } from "react";
+import imgUrl from "../helpers/imgUrl";
+import useAxios from "../hooks/useAxios";
+import Button from "./Button";
+import Comment from "./Comment";
+import profile from "../assets/profile.png";
+import useComments from "../hooks/useComments";
+
+const CommentsComponent = ({ type, productId }) => {
+
+    const [comment, setComment] = useState('');
+
+    const [currentComments, setCurrentComments] = useState([]);
+
+    const [filters, setFilters] = useState({
+        recipeId: '',
+        planId: '',
+        comboId: '',
+        page: 1,
+        orderBy: 'createdAt,DESC',
+        perPage: 2
+    })
+
+    const [{ comments, numberOfPages: pages, loading }, getComments] = useComments({ options: { manual: true, useCache: false } });
+
+    const [{ data: commentData, loading: commentLoading }, addComment] = useAxios({ url: '/comments', method: 'POST' }, { manual: true });
+
+    useEffect(() => {
+        if (comments?.length > 0) {
+            setCurrentComments((oldComments) => {
+                return [...oldComments, ...comments]
+            })
+        }
+    }, [comments]);
+
+    useEffect(() => {
+        if (type && productId) {
+            setFilters((oldFilters) => {
+                return {
+                    ...oldFilters,
+                    [`${type}Id`]: productId,
+                    page: 1
+                }
+            });
+        }
+    }, [type, productId]);
+
+    useEffect(() => {
+        if (filters?.comboId || filters?.recipeId || filters?.planId) {
+            getComments({
+                params: {
+                    ...filters
+                }
+            });
+        }
+    }, [filters]);
+
+    useEffect(() => {
+        if (commentData) {
+            setCurrentComments((prevData) => {
+                return [commentData, ...prevData];
+            });
+
+            setComment('');
+        }
+    }, [commentData]);
+
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+
+        if (commentLoading) {
+            return;
+        }
+
+        addComment({
+            data: {
+                [`${type}Id`]: productId,
+                comment
+            }
+        });
+    }
+
+    const handleMore = () => {
+        if (pages > filters?.page) {
+            setFilters((oldFilters) => {
+                return {
+                    ...oldFilters,
+                    page: oldFilters?.page + 1
+                }
+            });
+        }
+    }
+
+
+    return (
+        <>
+            <form onSubmit={handleCommentSubmit}>
+                <textarea
+                    className="
+                    mt-1
+                    block
+                    w-full
+                    rounded-md
+                    border-gray-300
+                    shadow-sm
+                    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+                  "
+                    rows="4"
+                    placeholder="Leave a comment..."
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                ></textarea>
+                <div className="text-right mt-2">
+                    <Button type="submit">Send</Button>
+                </div>
+            </form>
+
+            <ul>
+                {currentComments?.map(comment => <li key={comment.id} className="bg-white rounded p-3 mt-2">
+                    <Comment
+                        comment={comment.comment}
+                        name={comment.name}
+                        createdAt={comment.createdAt}
+                        answer={comment?.answer}
+                        answeredAt={comment?.answeredAt}
+                        imgPath={imgUrl(comment.imgPath, profile)}
+                    />
+                </li>)}
+                {
+                    loading ?
+                        <li className="text-center my-4">
+                            Loading more comments...
+                        </li>
+                        :
+                        pages > filters?.page ?
+                            <li className="text-center">
+                                <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4">
+                                    Load More
+                                </button>
+                            </li>
+                            :
+                            <li className="text-center my-4">
+                                No more comments.
+                            </li>
+                }
+            </ul>
+        </>
+    )
+}
+
+export default CommentsComponent	    
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/qfUNDwU.png)
 
 [Subir](#top)
 
@@ -4867,7 +5027,116 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### CreatePlanForm
 	    
 #### Código
-```	    
+```
+import { useEffect } from "react";
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+import { TabsProvider, useTabs } from "../contexts/TabsContext";
+import StepFive from "./StepFive";
+import StepFour from "./StepFour";
+import StepOne from "./StepOne";
+import StepSix from "./StepSix";
+import StepThree from "./StepThree";
+import StepTwo from "./StepTwo";
+
+import Tab from "./Tab";
+import TabPanel from "./TabPanel";
+import TabsContainer from "./TabsContainer";
+
+const CreatePlanForm = ({ defaultData }) => {
+
+    const { data, setData } = useCreatePlan();
+
+    useEffect(() => {
+        if (defaultData) {
+            console.log(defaultData);
+            const { name, id, fullPlanDays, images, categories, description, ...rest } = defaultData;
+            console.log(defaultData);
+            setData((oldData) => {
+                return {
+                    ...oldData,
+                    name: name,
+                    id: id,
+                    weekDays: fullPlanDays,
+                    categoryIds: categories?.map(category => category?.id),
+                    description
+                }
+            });
+        }
+    }, [defaultData])
+
+    return (
+        <TabsProvider>
+            {/* Tabs */}
+            <TabsContainer className="md:flex flex flex-wrap justify-center md:m-10 m-2 mt-6 text-center">
+                <Tab value={0}>1.- Information</Tab>
+                <Tab canContinue={data?.name && data?.description} value={1}>2.- Categories</Tab>
+                <Tab canContinue={data?.name && data?.description} value={2}>3.- Images</Tab>
+                <Tab canContinue={data?.name && data?.description && data?.images?.length > 0 && data?.images[0]} value={3}>4.- Weeks</Tab>
+                <Tab canContinue={
+                    data?.name &&
+                    data?.images?.length > 0 &&
+                    data?.images[0] &&
+                    data?.weekDays?.length > 13 &&
+                    data?.description
+                } value={4}>5.- Recipes</Tab>
+                <Tab canContinue={
+                    data?.name &&
+                    data?.images?.length > 0 &&
+                    data?.images[0] &&
+                    data?.weekDays?.length > 13 &&
+                    data?.description
+                } value={5}>6.- Confirm</Tab>
+            </TabsContainer>
+
+            {/* TAB PANELS */}
+            <div className="mt-4 md:p-4">
+                <TabPanel
+                    className="animate__animated animate__fadeInUp bg-white rounded-lg p-4"
+                    value={0}
+                >
+                    <StepOne />
+                </TabPanel>
+
+                <TabPanel
+                    className="animate__animated animate__fadeInUp bg-white rounded-lg p-4"
+                    value={1}
+                >
+                    <StepTwo />
+                </TabPanel>
+
+                <TabPanel
+                    className="animate__animated animate__fadeInUp bg-white rounded-lg p-4"
+                    value={2}
+                >
+                    <StepThree defaultImages={defaultData?.images} />
+                </TabPanel>
+
+                <TabPanel
+                    className="animate__animated animate__fadeInUp bg-white rounded-lg p-4"
+                    value={3}
+                >
+                    <StepFour />
+                </TabPanel>
+
+                <TabPanel
+                    className="animate__animated animate__fadeInUp bg-white rounded-lg p-4"
+                    value={4}
+                >
+                    <StepFive />
+                </TabPanel>
+
+                <TabPanel
+                    className="animate__animated animate__fadeInUp bg-white rounded-lg p-4"
+                    value={5}
+                >
+                    <StepSix />
+                </TabPanel>
+            </div>
+        </TabsProvider>
+    )
+}
+
+export default CreatePlanForm;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4879,7 +5148,11 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### DateFormatter
 	    
 #### Código
-```	    
+```
+import { format } from "date-fns";
+
+const DateFormatter = ({ value, dateFormat = 'yyyy-MM-dd' }) => format(new Date(value), dateFormat);
+export default DateFormatter;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4889,9 +5162,33 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item90"></a>
 ### DescriptionChef
-	    
+	      
+Este componente es el encargado de manejar la descripción del seller del sistema.
+	      
+Recibe como parámetro seller es un objetos con toda la información del vendedor.
+	      
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+    
 #### Código
-```	    
+```
+import React from "react";
+import { RiBookReadLine } from "react-icons/ri";
+
+const DescriptionChef = ({ seller }) => {
+  return (
+    <div className="mt-10 p-2">
+      <button className="flex items-center space-x-2 text-black text-xl font-semibold">
+        <RiBookReadLine className="text-main" />
+        <span>Description</span>
+      </button>
+      <div className="p-1 md:text-justify text-justify ">
+        {seller?.description}
+      </div>
+    </div>
+  );
+};
+
+export default DescriptionChef;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4903,7 +5200,17 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### FeatureRow
 	    
 #### Código
-```	    
+```
+import clsx from "clsx";
+
+const FeatureRow = ({ title, content, className, titleClassName, contentClassName }) => {
+    return <div className={clsx('md:flex py-2', className)}>
+        <p className={clsx('w-1/2', titleClassName)}>{title}</p>
+        <div className={clsx('w-1/2', contentClassName)}>{content}</div>
+    </div>
+}
+
+export default FeatureRow;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4913,9 +5220,102 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item92"></a>
 ### ForgotPasswordForm
+	      
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 	    
 #### Código
-```	    
+```
+import { useState } from "react";
+import { IoArrowBackCircleOutline, IoLogInOutline } from "react-icons/io5";
+import useAxios from "../hooks/useAxios";
+import Logo from "../assets/drafts.png";
+import LoginBg from "../assets/img1.jpg";
+
+const ForgotPasswordForm = ({ changeForm }) => {
+
+    const [email, setEmail] = useState('');
+
+    const [showResponseMessage, setShowResponseMessage] = useState(false);
+
+    const [{ error, loading }, sendEmail] = useAxios({ url: `/auth/forgot-password`, method: 'POST' }, { manual: true, useCache: false });
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        sendEmail({
+            data: {
+                email,
+                role: 'CLIENT'
+            }
+        }).then(() => {
+            setShowResponseMessage(true);
+            setEmail('');
+        });
+    }
+
+    return (
+        <div className="m-auto grid md:grid-cols-2 md:w-2/3 bg-main animate__animated animate__fadeInUp">
+            <div style={{ backgroundImage: `url(${LoginBg})`, backgroundPosition: 'center center', backgroundSize: 'cover' }}>
+                <div className="flex h-full w-full bg-black bg-opacity-50 p-4">
+                    <div className="m-auto" >
+                        <img src={Logo} className="m-auto rounded-2xl" alt="RicardoApp" />
+                        <h1 className="text-4xl text-center text-white font-bold">Ricardo App</h1>
+                        <p className="font-light text-sm text-center text-white">the best platform to grow your Recipes.</p>
+                    </div>
+                </div>
+            </div>
+            <div className="p-8">
+                <button className="text-white" onClick={() => changeForm('login')}>
+                    <IoArrowBackCircleOutline className="text-4xl" />
+                </button>
+                <h1 className="text-center text-xl text-white font-bold">
+                    Forgot Password
+                </h1>
+                <br />
+                <form onSubmit={handleSubmit}>
+                    <label className="text-white font-bold mb-4 block">Email Address:</label>
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder="your email address..."
+                        className="border border-slate-100 rounded-md block py-2 px-2 w-full text-black"
+                        onChange={(e) => setEmail(e.target.value)} />
+                    <div className="text-right">
+                        <button type="button" className="text-white mt-8 ml-auto items-center flex space-x-4" onClick={() => changeForm('login')}>
+                            <IoLogInOutline className="text-3xl" /> <span className="text-xl">Back and Login</span>
+                        </button>
+                    </div>
+                    {
+                        error &&
+                        <h1 className="text-2xl text-center text-red-500 mt-4">
+                            An error has occurred.
+                        </h1>
+                    }
+                    {
+                        showResponseMessage &&
+                        <h1 className="text-2xl text-center text-white mt-4">
+                            We have sent you an email please check your email.
+                        </h1>
+                    }
+                    <div className="text-center">
+                        <button disabled={loading} className="bg-slate-50 px-2 py-1 rounded-xl w-1/3 mt-8">
+                            {
+                                loading ?
+                                    'Loading'
+                                    :
+                                    'Send'
+                            }
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+export default ForgotPasswordForm;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4927,7 +5327,35 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### GridComponent
 	    
 #### Código
-```	    
+```
+import imgUrl from "../helpers/imgUrl";
+
+const GridComponent = ({ recipe, onHandleRecipe }) => {
+    return (
+        <li className="text-center my-2">
+            <div style={{
+                backgroundImage: `url(${imgUrl(recipe?.images?.[0]?.path)})`,
+                backgroundSize: 'cover',
+                borderRadius: '10px',
+                backgroundPosition: 'center center'
+            }}
+                className="h-24 sm:h-20 md:h-24 sm:w-20 md:w-24 m-auto"
+            ></div>
+            <p className="py-4 px-2" title={recipe?.name}>
+                {
+                    recipe?.name?.length > 16 ?
+                        `${recipe?.name?.slice(0, 16)}...`
+                        :
+                        recipe?.name
+                }
+            </p>
+            <button className="py-1 rounded-xl bg-main text-white w-full" onClick={() => onHandleRecipe?.(recipe)}>
+                Add
+            </button>
+        </li>
+    )
+}
+export default GridComponent;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4939,7 +5367,107 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### ImagenCrudComponent
 	    
 #### Código
-```	    
+```
+import { useEffect, useState } from "react"
+import useAxios from "../hooks/useAxios";
+import update from 'immutability-helper';
+import ImgUploadInput from "./ImgeUploadInput";
+import SystemInfo from "../util/SystemInfo";
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+
+const ImageCrudComponent = ({ defaultImages, ownerId, title, modelName }) => {
+
+    const { data, setData } = useCreatePlan();
+
+    const [currentImages, setCurrentImages] = useState([]);
+
+    const [{ loading: createLoading }, createImage] = useAxios({ url: `/${modelName}/${ownerId}/images`, method: 'POST' }, { manual: true, useCache: false });
+
+    const [{ loading: deleteLoading }, deleteImage] = useAxios({ method: 'DELETE' }, { manual: true, useCache: false });
+
+    useEffect(() => {
+        setCurrentImages(defaultImages);
+    }, [defaultImages]);
+
+    const handleAddImage = () => {
+        if (createLoading || deleteLoading) return;
+        setCurrentImages((oldImages) => {
+            return [...oldImages, null]
+        });
+    }
+
+    const onImageChange = (e, i, image) => {
+        if (createLoading || deleteLoading) return;
+        const data = new FormData();
+        data.append('image', e.target?.files[0], e.target?.files[0].name)
+        createImage({ data }).then((res) => {
+            const { path, id, ...rest } = res?.data;
+            const imageCreated = {
+                id,
+                path: `${SystemInfo?.api}${path}`
+            }
+            var newArrayValues = update(currentImages, { [i]: { $set: imageCreated } });
+            setCurrentImages(newArrayValues)
+        })
+    }
+
+    const removeImage = (index, imageId) => {
+
+        if (createLoading || deleteLoading) return;
+
+        if (!imageId) {
+            currentImages?.splice(index, 1);
+            setCurrentImages([...currentImages])
+            return;
+        }
+
+        deleteImage({ url: `/${modelName}/${ownerId}/images/${imageId}` })
+            .then((resp) => {
+                currentImages?.splice(index, 1);
+                setCurrentImages([...currentImages]);
+            })
+    }
+
+    return (
+        <div className="w-full mb-4 pb-2" style={{ borderBottom: '1px solid' }}>
+            <h3>
+                {title}
+            </h3>
+            <div className="grid w-full md:grid-cols-3 items-center lg:grid-cols-5 grid-cols-2 gap-4">
+                {
+                    currentImages?.map((image, i) => {
+                        return (
+                            <div className="my-4 text-center m-auto w-full" key={i}>
+                                <ImgUploadInput
+                                    disabled={image?.id}
+                                    previewImage={image?.path}
+                                    description="drag or click"
+                                    name="images"
+                                    className="h-48"
+                                    change={(e) => { onImageChange(e, i, image) }}
+                                />
+                                <button
+                                    disabled={deleteLoading || createLoading}
+                                    type="button" onClick={() => { removeImage(i, image?.id) }}
+                                    className="bg-red-500 px-8 py-2 text-white rounded-xl mt-1"
+                                >
+                                    Remove
+                                </button>
+                            </div>
+                        )
+                    })
+                }
+                <div className="text-center">
+                    <button disabled={createLoading || deleteLoading} onClick={handleAddImage} type="button" className="bg-main px-8 py-2 text-white rounded-xl">
+                        Add Image
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ImageCrudComponent; 
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4951,7 +5479,135 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### ImgeUploadInput
 	    
 #### Código
-```	    
+```
+import { useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import Button from "./Button";
+import { IoClose } from "react-icons/io5";
+
+const ImgUploadInput = (options) => {
+
+    const { multiple, style, accept, icon, button, className, description, change, name, previewImage, deleteButton, disabled } = options;
+
+    const [files, setFiles] = useState([]);
+
+    const [preview, setPreview] = useState(null)
+
+    const [active, setActive] = useState(false);
+
+    useEffect(() => {
+        if (previewImage) {
+            setPreview(previewImage)
+        }
+    }, [previewImage])
+
+    useEffect(() => {
+        if (files.length > 0 && !disabled) {
+            if (preview) {
+                URL.revokeObjectURL(preview);
+            }
+            setPreview(URL.createObjectURL(files[0]));
+            change?.({ target: { name: name, files: files, type: "file" } });
+        }
+    }, [files])
+
+    const handleDelete = (e) => {
+        setFiles([]);
+        setPreview(null);
+        change?.({ target: { name: name, files: null, type: "file" } });
+    }
+
+    const { getInputProps, getRootProps } = useDropzone({
+        accept: accept ? accept : 'image/*',
+        maxFiles: 1,
+        multiple: multiple,
+        onDrop: (acceptedFiles) => {
+            setFiles(
+                acceptedFiles
+            )
+        },
+        onDragEnter: (event) => {
+            setActive(true);
+        },
+        onDragLeave: (event) => {
+            setActive(false);
+        },
+        onDropAccepted: () => {
+            setActive(false);
+        }
+    });
+
+    return (
+        <div style={style} className={`w-full m-auto bg-white rounded relative ${className}`} >
+            {deleteButton ?
+                <Button type="button" onClick={handleDelete} className="rounded-full px-0 py-0 absolute -top-2 -right-2 z-50">
+                    <IoClose></IoClose>
+                </Button>
+                :
+                null
+            }
+            <div
+                {...getRootProps()}
+                className={" cursor-pointer h-full"}
+            >
+                <div className={clsx(["transition duration-300 flex h-full relative"], {
+                    "border border-dashed border-main rounded shadow-2xl": active,
+                    "border border-dashed border-gray-200 rounded": !active,
+                })}>
+                    {
+                        preview ?
+                            <img className="w-full h-full absolute left-0 top-0" src={preview} alt="" />
+                            :
+                            <div className="text-center m-auto px-6">
+                                <div className={clsx({
+                                    "text-main": active,
+                                    "text-gray-200": !active
+                                })}>
+                                    {icon}
+                                </div>
+                                <div className={clsx(["font-bold text-xl"], {
+                                    "text-main": active,
+                                    "text-gray-200": !active
+                                })}>
+                                    {description ? description : "Arrastre una imagen o haga click"}
+                                </div>
+                            </div>
+                    }
+                </div>
+                {
+                    button ?
+                        <div className="text-center mt-2">
+                            <button className="bg-main p-4 rounded text-white">
+                                {button.text}
+                            </button>
+                        </div>
+                        :
+                        null
+                }
+                <input type="file" {...getInputProps()} disabled={disabled} />
+            </div>
+        </div >
+
+    )
+}
+
+ImgUploadInput.propTypes = {
+    multiple: PropTypes.bool,
+    accept: PropTypes.string,
+    icon: PropTypes.element,
+    className: PropTypes.string,
+    description: PropTypes.string,
+    name: PropTypes.string,
+    change: PropTypes.func,
+    button: PropTypes.object,
+    previewImage: PropTypes.string,
+    disabled: PropTypes.bool
+}
+
+export default ImgUploadInput;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4962,7 +5618,36 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### ListComponent
 	    
 #### Código
-```	    
+```
+import imgUrl from "../helpers/imgUrl";
+
+const ListComponent = ({ recipe, onHandleRecipe }) => {
+    return (
+        <li style={{ height: '60px' }} className="bg-gray-200 rounded-xl flex items-center justify-between">
+            <img style={{
+                height: '60px',
+                width: '60px',
+                borderRadius: '10px 10px 10px 10px',
+                border: '2px solid white'
+            }} src={imgUrl(recipe?.images?.[0]?.path)} alt="" />
+            <p className="py-4 px-2" title={recipe?.name}>
+                {
+                    recipe?.name?.length > 25 ?
+                        `${recipe?.name?.slice(0, 25)}...`
+                        :
+                        recipe?.name
+                }
+            </p>
+            <div className="flex items-center py-4 px-2">
+                <button onClick={() => onHandleRecipe?.(recipe)} className="text-main">
+                    Add
+                </button>
+            </div>
+        </li>
+    )
+}
+
+export default ListComponent;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4973,7 +5658,95 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### MobileMenuButton
 	    
 #### Código
-```	    
+```
+import { useState, useRef, useEffect } from "react";
+import { IoMenu, IoApps, IoLogIn } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { GoPerson } from "react-icons/go";
+import { AiOutlineLogout } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { BsFillBookmarkHeartFill, BsFillGearFill, BsFillCalendar2MinusFill } from "react-icons/bs";
+import { RiMessage2Fill } from "react-icons/ri";
+import { FaListAlt } from "react-icons/fa";
+import { IoHeart, IoHelpCircleOutline, IoChatbubbleEllipsesOutline, IoBookmarksSharp } from "react-icons/io5";
+import MenuList from "../util/MenuList";
+
+const MobileMenuButton = () => {
+
+    const { user, setAuthInfo } = useAuth();
+
+    const [showMenuMobile, setShowMenuMobile] = useState(false);
+
+    const modalRef = useRef();
+
+    useEffect(() => {
+        const handleMousedown = (e) => {
+            if (modalRef.current && !modalRef.current.contains(e.target)) {
+                setShowMenuMobile(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleMousedown);
+
+        return () => document.addEventListener('mousedown', handleMousedown);
+    }, [modalRef]);
+    return (
+        <div ref={modalRef} className="relative">
+            <button className="btn text-white md:hidden" onClick={() => setShowMenuMobile((oldShow) => !oldShow)}>
+                <IoMenu className="w-6 h-6 md:text-2xl" />
+            </button>
+            {
+                showMenuMobile &&
+                <ul className="md:hidden absolute right-0 bg-black text-white px-2 py-2 z-20 rounded animate__animated animate__fadeIn" style={{ top: '100%' }}>
+                    {
+                        user ?
+                            MenuList?.map(({ name, Icon, url }, i) => {
+                                return (
+                                    <li className="py-2 border-b" style={{ minWidth: '180px' }} key={i}>
+                                        <Link to={url} className="flex items-center space-x-2 hover:text-main">
+                                            <Icon className="w-6 h-6" />
+                                            <span className="text-lg">{name}</span>
+                                        </Link>
+                                    </li>
+                                )
+                            })
+                            :
+                            <li className="py-2 border-b" style={{ minWidth: '180px' }}>
+                                <Link to={`?showLogin=true`} className="flex items-center space-x-2 hover:text-main">
+                                    <IoLogIn className="w-8 h-8" />
+                                    <span className="text-lg">Log In / Registratión</span>
+                                </Link>
+                            </li>
+                    }
+                    <li className="py-2 border-b" style={{ minWidth: '180px' }}>
+                        <Link to={'/categories'} className="flex items-center space-x-2 hover:text-main">
+                            <IoApps className="w-6 h-6" />
+                            <span className="text-lg">Categories</span>
+                        </Link>
+                    </li>
+                    <li className="py-2 border-b" style={{ minWidth: '180px' }}>
+                        <Link to={'/sellers'} className="flex items-center space-x-2 hover:text-main">
+                            <GoPerson className="w-6 h-6" />
+                            <span className="text-lg">Sellers</span>
+                        </Link>
+                    </li>
+                    {
+                        user &&
+                        <li className="py-2">
+                            <button className="flex items-center space-x-2 " onClick={() => { setAuthInfo({ isAuthenticated: false, user: null, token: null }); }}>
+                                <AiOutlineLogout className="w-6 h-6" />
+                                <span className="text-lg">Log Out</span>
+                            </button>
+                        </li>
+                    }
+                </ul>
+            }
+        </div >
+    )
+}
+
+export default MobileMenuButton;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4984,7 +5757,66 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### ModalFiltre
 	    
 #### Código
-```	    
+```
+import { useRef } from "react";
+import ReactDom from "react-dom";
+import ButtonRank from "./ButtonRank";
+import CategoriesRecipes from "./CategoriesRecipes";
+import SelectCategory from "./SelectCategory";
+import SelectRank from "./SelectRank";
+
+
+const ModalFiltre = ({ show, onClose }) => {
+
+    const modalRef = useRef();
+
+    if (!show) {
+        return null;
+    }
+
+    const handleClose = (e, forceClose) => {
+        if (forceClose) {
+            onClose();
+            return;
+        }
+
+
+        if (modalRef.current === e.target) {
+            onClose();
+        }
+    }
+
+    return ReactDom.createPortal(
+        <div ref={modalRef} onClick={handleClose} className="flex h-screen w-screen bg-black bg-opacity-50 fixed z-10 p-2" style={{ top: 0, left: 0, overflowY: 'auto' }}>
+            <div className="m-auto ">
+                <div className="bg-white p-6 rounded-lg shadow " style={{ width: "80vw" }}>
+                    <CategoriesRecipes />
+                    <div className="mb-6">
+                        <p className="title-medium ">Types</p>
+                        <SelectCategory className="mt-6" title="Breakfast" />
+                        <SelectCategory title="Lunch" />
+                        <SelectCategory title="Dinner" />
+                        <SelectCategory title="Snacks" />
+
+                        <h1 className="title-medium mt-4 mb-6">Rating</h1>
+                        <SelectRank num="2" />
+                        <SelectRank num="3" />
+                        <SelectRank num="4" />
+                        <SelectRank num="5" />
+                        <SelectRank num="6" />
+                        <div className="p-3">
+                            <ButtonRank />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div >
+        ,
+        document.getElementById("portal")
+    );
+
+}
+export default ModalFiltre;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -4995,7 +5827,44 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### MovilMenuSearch
 	    
 #### Código
-```	    
+```
+import { useRef } from "react";
+import SearchMovil from "./SearchMovil";
+import ReactDom from "react-dom";
+import LoginBg from "../assets/img1.jpg";
+
+const MovilMenuSearch = ({ show, onClose }) => {
+
+    const modalRef = useRef();
+
+    if (!show) {
+        return null;
+    }
+
+    const handleClose = (e, forceClose) => {
+        if (forceClose) {
+            onClose?.();
+            return;
+        }
+
+
+        if (modalRef.current === e.target) {
+            onClose?.();
+        }
+    }
+
+    return ReactDom.createPortal(
+        <div ref={modalRef} onClick={handleClose} className="flex h-screen w-screen bg-black bg-opacity-50 fixed z-10 p-2" style={{ top: 0, left: 0, overflowY: 'auto' }}>
+            <div className="w-full m-auto animate__animated animate__fadeInUp">
+                <SearchMovil onClose={() => onClose?.()} />
+            </div>
+        </div>
+        ,
+        document.getElementById("portal")
+    );
+
+}
+export default MovilMenuSearch;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5006,7 +5875,28 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### NotificationTypeCheck
 	    
 #### Código
-```	    
+```
+
+const NotificationTypeCheck = ({ notificationType, values, onChange }) => {
+
+    return (
+        <label className="p-4 space-x-4 flex items-center" htmlFor={`notification-type-${notificationType?.code}`}>
+            <input
+                type="checkbox"
+                checked={values?.includes(notificationType?.code)}
+                onChange={() => onChange?.(notificationType?.code)}
+                id={`notification-type-${notificationType?.code}`}
+            />
+            <p>
+                {
+                    notificationType?.name
+                }
+            </p>
+        </label>
+    )
+}
+
+export default NotificationTypeCheck;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5017,7 +5907,186 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### OrderItemRow
 	    
 #### Código
-```	    
+```
+import { useEffect } from "react";
+import { useState } from "react";
+import imgUrl from "../helpers/imgUrl";
+import useAxios from "../hooks/useAxios";
+import Modal from "./Modal/Modal";
+import RatingComponent from "./RatingComponent";
+
+const OrderItemRow = ({ item, orderStatus }) => {
+
+    const [currentItem, setCurrentItem] = useState(null);
+
+    const [showRatingModal, setShowRatingModal] = useState(false);
+
+    const [ratingData, setRatingData] = useState({
+        value: 1,
+        comment: ''
+    });
+
+    const [showRatingMessage, setShowRatingMessage] = useState(false)
+
+    const [{ data: rating, error: ratingError, loading: ratingLoading }, sendRating] = useAxios({ url: `/ratings`, method: 'POST' }, { manual: true, useCache: false });
+
+    useEffect(() => {
+        if (rating) {
+            setCurrentItem((oldItem) => {
+                return {
+                    ...oldItem,
+                    rating: rating
+                }
+            });
+        }
+
+        if (rating || ratingError) setShowRatingMessage(true);
+    }, [rating, ratingError]);
+
+    useEffect(() => {
+        if (item) {
+            setCurrentItem(item);
+        }
+    }, [item]);
+
+    useEffect(() => {
+        if (currentItem?.rating) {
+            setRatingData((oldRatingData) => {
+                return {
+                    ...oldRatingData,
+                    comment: currentItem?.rating?.comment,
+                    value: currentItem?.rating?.value
+                }
+            })
+        }
+    }, [currentItem])
+
+    useEffect(() => {
+        if (showRatingMessage) {
+            setTimeout(() => {
+                setShowRatingMessage(false);
+            }, 3000);
+        }
+    }, [showRatingMessage])
+
+    const handleRating = (rating) => {
+        setRatingData((oldRating) => {
+            return {
+                ...oldRating,
+                value: rating
+            }
+        });
+    }
+
+    const handleSubmitRating = () => {
+        if (ratingLoading) return;
+
+        sendRating({
+            data: {
+                type: item?.type,
+                "productId": item?.productId,
+                "value": ratingData?.value,
+                "comment": ratingData?.comment
+            }
+        });
+    }
+    return (
+        <tr className="border-b">
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <img src={imgUrl(item?.image)} style={{ width: 60, height: 60 }} className="rounded-xl" />
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <h1>
+                    <b>
+                        <span className="capitalize">
+                            {currentItem?.type}
+                        </span>:
+                        {` ${currentItem?.name}`}
+                    </b>
+                </h1>
+
+                {
+                    orderStatus?.code === 'ors-003' &&
+                    <button onClick={() => setShowRatingModal(true)} className="text-main hover:text-gray-500 transform transition duration-500 hover:translate-x-2">
+                        {
+                            !currentItem?.rating ?
+                                'Send Rating'
+                                :
+                                'Show Rating'
+                        }
+                    </button>
+                }
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                Qty {currentItem?.quantity}
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-medium text-gray-900">
+                {currentItem?.total ? `$${currentItem?.total}` : 'Free'}
+            </td>
+            <Modal onClose={() => setShowRatingModal(false)} show={showRatingModal}>
+                <h1 className="text-xl text-gray-500 font-bold">
+                    {
+                        currentItem?.rating ?
+                            'Your Rating'
+                            :
+                            'Add Rating:'
+                    }
+                </h1>
+                <br />
+                <RatingComponent
+                    onClickStar={handleRating}
+                    value={ratingData?.value}
+                />
+
+                <textarea
+                    name="comment"
+                    className="w-full"
+                    placeholder="What's your experience?"
+                    style={{
+                        border: "1px solid #a9a9a9",
+                        borderRadius: 5,
+                        padding: 10,
+                        margin: "20px 0",
+                        minHeight: 100,
+                    }}
+                    onChange={(e) => {
+                        setRatingData((oldRatingData) => {
+                            return {
+                                ...oldRatingData,
+                                comment: e.target.value
+                            }
+                        })
+                    }}
+                    value={ratingData?.comment}
+                >
+                </textarea>
+                {
+                    showRatingMessage &&
+                    <div className="text-center">
+                        {
+                            ratingError?.response?.data?.message || 'Your rating is send.'
+                        }
+                    </div>
+                }
+                <div className="text-center space-x-8">
+                    <button onClick={() => setShowRatingModal(false)} type="button" className="bg-red-500 text-white mt-8 px-8 py-2 rounded-xl transition duration-500 hover:bg-white hover:text-main">
+                        Cancel
+                    </button>
+                    <button disabled={ratingLoading} onClick={handleSubmitRating} type="submit" className="bg-main text-white mt-8 px-8 py-2 rounded-xl transition duration-500 hover:bg-white hover:text-main">
+                        {
+                            ratingLoading ?
+                                'Loading'
+                                :
+                                'Send Rating'
+                        }
+                    </button>
+                </div>
+            </Modal>
+        </tr>
+    )
+}
+
+export default OrderItemRow;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5028,7 +6097,110 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### pagination
 	    
 #### Código
-```	    
+```
+import { IoChevronForwardSharp, IoChevronBack } from "react-icons/io5";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+
+const PaginationButton = ({ children, active, onClick }) => {
+  return <div
+    onClick={onClick}
+    className={clsx([
+      `inline-flex items-center justify-center cursor-pointer
+      w-6 h-6
+      font-semibold hover:bg-main hover:text-white
+      border border-gray-300
+      transition duration-300
+      p-5
+      rounded-full`,
+      {
+        'bg-main text-white': active,
+        'text-gray-700': !active,
+      }
+    ])}
+  >
+    {children}
+  </div>;
+};
+
+const NavigationButton = ({ icon, color, className, onClick, canNext, hidden }) => {
+  return (
+    <button hidden={hidden} onClick={onClick} className={`text-${color} ${className}`} disabled={canNext}>
+      {icon}
+    </button>
+  )
+};
+
+
+const Pagination = ({ pages, onChange, activePage, className }) => {
+
+  const [canNext, setCanNext] = useState(true);
+  const [canBack, setCanBack] = useState(false);
+
+  const nextPage = (page) => {
+    if (page <= pages) {
+      onChange(page);
+    }
+  }
+  const backPage = (page) => {
+    if (page >= 1) {
+      onChange(page);
+    }
+  }
+
+  useEffect(() => {
+    if (activePage < pages) {
+      setCanNext(true);
+    } else {
+      setCanNext(false);
+    }
+
+    if (activePage > 1) {
+      setCanBack(true);
+    } else {
+      setCanBack(false);
+    }
+  }, [activePage, pages])
+
+  if (pages === 1) {
+    return null;
+  }
+
+  return <ul className={`hidden-scrollbar flex items-center space-x-2 ${className}`} style={{ maxWidth: '100%', overflowX: 'auto', scrollBehavior: 'none' }}>
+    <li>
+      <p>
+        <NavigationButton
+          hidden={!canBack}
+          disable={!canBack}
+          onClick={() => { backPage(activePage - 1) }}
+          color="main"
+          className="text-xl hover:text-gray-500 transition duraion-500 transform hover:scale-150"
+          icon={<IoChevronBack />}
+        />
+      </p>
+    </li>
+    {pages
+      ? Array.from(Array(pages).keys()).map(n =>
+        <li key={n}>
+          <PaginationButton active={n + 1 === activePage} onClick={() => { onChange(n + 1) }}>{n + 1}</PaginationButton>
+        </li>
+      )
+      : null
+    }
+    <li>
+      <NavigationButton
+        hidden={!canNext}
+        disable={!canNext}
+        onClick={() => { nextPage(activePage + 1) }}
+        color="main"
+        className="text-xl hover:text-gray-500 transition duraion-500 transform hover:scale-150"
+        icon={<IoChevronForwardSharp />}
+      />
+    </li>
+  </ul>;
+};
+
+export default Pagination;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5039,7 +6211,77 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### RatingComponent
 	    
 #### Código
-```	    
+```
+import { useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa";
+
+const colors = {
+    orange: "#FFBA5A",
+    grey: "#a9a9a9"
+};
+
+const RatingComponent = ({ numberOfStars = 5, value = 1, onClickStar, disabled = false, size = 'md' }) => {
+
+    const [hoverValue, setHoverValue] = useState(undefined);
+    const [stars, setStars] = useState([]);
+
+    useEffect(() => {
+        setStars(Array(numberOfStars).fill(0));
+    }, [numberOfStars])
+
+    const handleClick = (value) => {
+        if (!disabled) onClickStar?.(value);
+    }
+
+    const handleMouseOver = newHoverValue => {
+        if (!disabled) setHoverValue(newHoverValue);
+    };
+
+    const handleMouseLeave = () => {
+        if (!disabled) setHoverValue(undefined)
+    }
+    return (
+        <div style={styles.stars}>
+            {stars.map((_, index) => {
+                return (
+                    <FaStar
+                        key={index}
+                        size={sizes[size]}
+                        onClick={() => {
+                            if (!disabled) handleClick(index + 1)
+                        }}
+                        onMouseOver={() => {
+                            if (!disabled) handleMouseOver(index + 1)
+                        }}
+                        onMouseLeave={handleMouseLeave}
+                        color={(hoverValue || value) > index ? colors.orange : colors.grey}
+                        style={{
+                            marginRight: 10,
+                            cursor: "pointer"
+                        }}
+                    />
+                )
+            })}
+        </div>
+    )
+}
+
+const sizes = {
+    xl: 96,
+    lg: 48,
+    md: 24,
+    sm: 12,
+    xs: 6
+}
+
+const styles = {
+    stars: {
+        display: "flex",
+        flexDirection: "row",
+    }
+};
+
+export default RatingComponent;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5050,7 +6292,46 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### RecupeFeatures
 	    
 #### Código
-```	    
+```
+import clsx from "clsx";
+import { SiCodechef } from "react-icons/si";
+import generateArray from "../helpers/generateArray";
+import FeatureRow from "./FeatureRow";
+
+const numberOfDifficultyLevels = 3;
+
+const RecipeFeatures = ({ recipe, className }) => {
+    const recipeLevel = recipe?.recipeDifficulty?.value ?? 0;
+    
+    return <div className={className}>
+        <FeatureRow
+            title="Level"
+            content={<>
+                {generateArray(recipeLevel).map(n => <SiCodechef key={n} className='text-gray-700' />)}
+                {generateArray(numberOfDifficultyLevels - recipeLevel).map(n => <SiCodechef key={n} className='text-gray-300' />)}
+            </>}
+            contentClassName="flex space-x-1"
+        />
+
+        <FeatureRow
+            title="Categories"
+            content={recipe?.mealPeriods.map(mp => mp.name).join(' - ')}
+            contentClassName="text-black"
+        />
+
+        <FeatureRow
+            title="Time"
+            content={`${recipe?.preparationTime} minutes`}
+        />
+
+        <FeatureRow
+            title="Ingredients"
+            content={recipe?.recipeIngredients.length}
+        />
+    </div>;
+}
+
+export default RecipeFeatures;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5072,7 +6353,35 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### RenderCommentable
 	    
 #### Código
-```	    
+```
+import { Link } from "react-router-dom";
+
+const RenderCommentable = ({ value }) => {
+
+    var urlTo = '';
+
+    if (value?.commentableType === 'recipe') {
+        urlTo = `/recipes/${value?.commentable?.slug}`;
+    }
+
+    if (value?.commentableType === 'plan') {
+        urlTo = `/plans/${value?.commentable?.slug}`;
+    }
+
+    if (value?.commentableType === 'combo') {
+        urlTo = `/combos/${value?.commentable?.slug}`;
+    }
+
+    return (
+        <div>
+            <Link className="text-main hover:text-gray-400" to={urlTo}>
+                {value?.commentable?.name}
+            </Link>
+        </div>
+    )
+}
+
+export default RenderCommentable;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5083,7 +6392,64 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### Search Movil
 	    
 #### Código
-```	    
+```
+import ButtonSearch from "./ButtonSearch";
+import Logo from "../assets/drafts.png";
+import { BiSearchAlt } from "react-icons/bi";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { IoCloseCircle } from "react-icons/io5";
+
+const SearchMovil = ({ onClose }) => {
+
+    const [category, setCategory] = useState('recipes');
+
+    const [search, setSearch] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        navigate(`/${category}?name=${search}`);
+
+        onClose?.();
+    }
+
+    return (
+        <div style={{ background: 'rgba(0,0,0, .3)' }} className="p-4 rounded-xl relative">
+            <button onClick={() => onClose?.()} type="button" className="rounded-full absolute text-red-400 text-4xl" style={{ top: 0, right: 0 }}>
+                <IoCloseCircle />
+            </button>
+            <div className="m-auto">
+                <img src={Logo} className="m-auto rounded-2xl" alt="RicardoApp" />
+                <h1 className="text-4xl text-center text-white font-bold">Recipes App</h1>
+                <p className="font-light text-sm text-center text-white">Search Recipes, Ingredients, Plans and Combos.</p>
+            </div>
+            <form className="w-full p-2 m-auto" onSubmit={handleSubmit}>
+                <ButtonSearch category={category} onClickCategory={(category) => { setCategory(category) }} />
+                <div className="relative text-white text-center text-base">
+                    <input
+                        className='text-black text-xs h-12 border-gray-300 focus:border-gray-300 focus:ring focus:ring-gray-200 focus:ring-opacity-50 
+                            leading-4 border-0 rounded-bl-lg rounded-r-lg w-full top-0 right-0'
+                        type="text"
+                        placeholder="Enter the item you are looking for or a characteristic..."
+                        value={search}
+                        onChange={(e) => { setSearch(e.target.value) }}
+                    />
+                    <button
+                        className="absolute h-full px-2 text-center bg-main top-0 right-0 rounded-r-lg font-semibold">
+                        <BiSearchAlt
+                            className="h-6 w-6 md:ml-10"
+                        />
+                    </button>
+                </div>
+            </form>
+        </div>
+    )
+}
+
+export default SearchMovil;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5094,7 +6460,35 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### ShowMoreButton
 	    
 #### Código
-```	    
+```
+import { useState } from "react";
+
+const ShowMoreButton = ({ buttonText, content }) => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const contentIsEmpty = !content || (Array.isArray(content) && content.length === 0);
+  
+  if (contentIsEmpty) {
+    return null;
+  }
+  
+  return (
+    <div>
+      <button
+        type="button"
+        className="block underline text-gray-300 text-base cursor-pointer hover:text-main"
+        onClick={(e) => {
+          setShowDetails((oldShow) => !oldShow);
+        }}
+      >
+        {buttonText}
+      </button>
+      {showDetails && <div>{content}</div>}
+    </div>
+  );
+};
+
+export default ShowMoreButton;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5105,7 +6499,64 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### ShorRecipeRow
 	    
 #### Código
-```	    
+```
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import imgUrl from "../helpers/imgUrl";
+import { IoArrowDownCircleSharp, IoArrowUpCircleSharp } from "react-icons/io5";
+
+const ShowRecipeRow = ({ recipe }) => {
+    const [showIngredients, setShowIngredients] = useState(false);
+    console.log(recipe);
+    return (
+        <div className="my-4">
+            <div className="flex items-center justify-between">
+                <Link className="flex items-center space-x-4" to={`/recipes/${recipe?.slug}`} title={recipe?.name}>
+                    <img className="rounded-full" style={{ height: '40px', width: '40px' }} src={imgUrl(recipe?.images?.[0]?.path)} />
+                    <small className="text-center">{recipe?.name}</small>
+                </Link>
+                <button type="button" onClick={() => setShowIngredients((old) => !old)} className="text-main text-4xl">
+                    {
+                        !showIngredients ?
+                            <IoArrowDownCircleSharp />
+                            :
+                            <IoArrowUpCircleSharp />
+                    }
+                </button>
+            </div>
+            {
+                showIngredients &&
+                <div className="animate__animated animate__fadeInLeft bg-gray-100 rounded-xl p-4 mt-4">
+                    <div className="text-main">
+                        Ingredients
+                    </div>
+                    <table className="ml-12 w-full">
+                        <tbody>
+                            {
+                                recipe?.recipeIngredients?.map((ingredient, i) => {
+                                    return (
+                                        <tr key={i} className="ml-10">
+                                            <td colSpan={2}>
+                                                {ingredient?.ingredient?.name}:
+                                            </td>
+                                            <td>
+                                                {ingredient?.value} {ingredient?.measurementUnit?.name}
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                    <ul>
+                    </ul>
+                </div>
+            }
+        </div>
+    )
+}
+
+export default ShowRecipeRow;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5116,7 +6567,317 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### StepFive
 	    
 #### Código
-```	    
+```	
+import { useState } from "react";
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+import { TabsProvider, useTabs } from "../contexts/TabsContext";
+import { Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";// Import Swiper React components
+import TabsContainer from "./TabsContainer";
+import Tab from "./Tab";
+import TabPanel from "./TabPanel";
+import Modal from "./Modal/Modal";
+import update from 'immutability-helper';
+import { IoCloseCircle, IoGridOutline, IoList } from "react-icons/io5";
+import imgUrl from "../helpers/imgUrl";
+import clsx from "clsx";
+import usePurchasedProducts from "../hooks/usePurchasedProducts";
+import { useEffect } from "react";
+import ModalOverlay from "./Modal/ModalOverlay";
+import ModalContainer from "./Modal/ModalContainer";
+import ListComponent from "./ListComponent";
+import GridComponent from "./GridComponent";
+import usePlanRecipes from "../hooks/usePlanRecipes";
+
+const StepFive = () => {
+
+    const { data, setData } = useCreatePlan();
+
+    const [showModal, setShowModal] = useState(false);
+
+    const { value, setValue } = useTabs();
+
+    const [currentDayIndex, setCurrentDayIndex] = useState(0);
+
+    const [isEnd, setIsEnd] = useState(false);
+
+    const [currentPeriod, setCurrentPeriod] = useState(null);
+
+    const [currentRecipes, setCurrentRecipes] = useState([]);
+
+    const [viewType, setViewType] = useState('list');
+
+    const [filters, setFilters] = useState({
+        name: '',
+        page: 1
+    });
+
+    const [{ planRecipes: recipes, numberOfPages, loading: recipeLoading, total }, getRecipes] = usePlanRecipes({ axiosConfig: { params: { ...filters } }, options: { useCache: false } });
+
+    useEffect(() => {
+        if (recipes?.length > 0) {
+            setCurrentRecipes((oldRecipes) => {
+                return [...oldRecipes, ...recipes]
+            });
+        }
+    }, [recipes])
+
+    const handleAddRecipe = (recipe) => {
+        const newData = update(data, {
+            weekDays: {
+                [currentDayIndex]: {
+                    mealPeriods: {
+                        [currentPeriod]: {
+                            recipes: {
+                                $push: [recipe]
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        setData(newData);
+    }
+
+    const handleRemoveRecipe = (recipeIndex, periodIndex) => {
+        const newData = update(data, {
+            weekDays: {
+                [currentDayIndex]: {
+                    mealPeriods: {
+                        [periodIndex]: {
+                            recipes: { $splice: [[recipeIndex, 1]] }
+                        }
+                    }
+                }
+            }
+        });
+        setData(newData);
+    }
+
+    const handleMore = () => {
+        if (numberOfPages > filters?.page) {
+            setFilters((oldFilters) => {
+                return {
+                    ...oldFilters,
+                    page: oldFilters?.page + 1
+                }
+            });
+        }
+    }
+
+    const handleSlideChange = (e) => {
+        setIsEnd(e?.isEnd);
+        setCurrentDayIndex(e?.realIndex);
+    }
+
+    const handleChange = (e) => {
+        setCurrentRecipes([]);
+        setFilters((oldFilters) => {
+            return {
+                ...oldFilters,
+                [e.target.name]: e.target.value,
+                page: 1
+            }
+        })
+    }
+
+    return (
+        <div>
+            <Swiper
+                slidesPerView={1}
+                onSlideChange={handleSlideChange}
+                spaceBetween={30}
+                pagination={{ clickable: true, }}
+                navigation
+                modules={[Pagination, Navigation]}
+            >
+                {
+                    data?.weekDays?.map((day, i) => {
+                        return (
+                            <SwiperSlide className="hover:cursor-grab" key={`swiper-${i}`}>
+                                <div className="w-full" style={{ minHeight: '80px' }}>
+                                    <h1 className="text-center text-gray-400 text-xl font-bold">
+                                        Day {i + 1}
+                                    </h1>
+                                    <TabsProvider>
+                                        <TabsContainer className="justify-center md:flex flex flex-wrap md:m-10 m-2 mt-6 text-center">
+                                            {
+                                                day?.mealPeriods?.map((period, preiodIndexi) => {
+                                                    return (
+                                                        <Tab value={preiodIndexi} key={`period-tab-${preiodIndexi}`}>{period?.name} - {period?.recipes?.length}</Tab>
+                                                    )
+                                                })
+                                            }
+                                        </TabsContainer>
+                                        {
+                                            day?.mealPeriods?.map((period, periodIndex) => {
+                                                return (
+                                                    <TabPanel
+                                                        key={`period-tabPanel-${periodIndex}`}
+                                                        className="animate__animated animate__fadeInUp mb-8 px-8"
+                                                        value={periodIndex}
+                                                    >
+                                                        {
+                                                            period?.recipes?.length > 0 ?
+                                                                <div className="grid w-full md:grid-cols-3 lg:grid-cols-6 grid-cols-2 gap-4 mb-16">
+                                                                    {
+                                                                        period?.recipes?.map((recipe, recipeIndex) => {
+                                                                            return (
+                                                                                <div key={`period-recipe-${recipeIndex}`} className="text-center relative">
+                                                                                    <button onClick={() => {
+                                                                                        handleRemoveRecipe(recipeIndex, periodIndex);
+                                                                                    }} type="button" className="bg-white rounded-full absolute text-red-400 text-4xl" style={{ top: -15, right: -15 }}>
+                                                                                        <IoCloseCircle />
+                                                                                    </button>
+                                                                                    <div
+                                                                                        className="rounded-xl"
+                                                                                        style={{
+                                                                                            height: '100px',
+                                                                                            backgroundSize: 'cover',
+                                                                                            backgroundImage: `url(${imgUrl(recipe?.images?.[0]?.path || recipe?.recipeImages?.[0]?.path)})`
+                                                                                        }}
+                                                                                    >
+                                                                                    </div>
+                                                                                    {recipe?.name}
+                                                                                </div>
+                                                                            )
+                                                                        })
+                                                                    }
+                                                                </div>
+                                                                :
+                                                                <div className="text-center text-2xl font-semibold text-red-500 mb-16">
+                                                                    No recipes yet.
+                                                                </div>
+                                                        }
+                                                        <div className="text-center mb-16">
+                                                            <button
+                                                                onClick={() => {
+                                                                    setShowModal((old) => !old);
+                                                                    setCurrentPeriod(periodIndex);
+                                                                }}
+                                                                type="button"
+                                                                className="px-8 py-2 bg-main rounded-xl text-white"
+                                                            >
+                                                                Add Recipe
+                                                            </button>
+                                                        </div>
+                                                    </TabPanel>
+                                                )
+                                            })
+                                        }
+                                    </TabsProvider>
+                                </div>
+                            </SwiperSlide>
+                        )
+                    })
+                }
+            </Swiper>
+
+            <div className="mt-8 text-center space-x-4">
+                <button onClick={(e) => setValue(value - 1)} type="button" className="bg-main px-8 py-2 rounded-xl text-white">
+                    Back
+                </button>
+                <button
+                    className={clsx(["transition duration-300 rounded-xl px-8 py-2"], {
+                        "bg-main text-white": isEnd,
+                        "text-main": !isEnd
+                    })}
+                    disabled={!isEnd}
+                    onClick={(e) => setValue(value + 1)}
+                >
+                    Confirm
+                </button>
+            </div>
+
+            <ModalOverlay show={showModal} onClose={() => setShowModal(false)}>
+                <ModalContainer onClose={() => setShowModal(false)} className="custom-scrollbar custom-scrollbar-main w-full md:w-8/12">
+                    <h1 className="text-center text-gray-400 font-semibold text-xl">
+                        Recipes
+                    </h1>
+                    <br />
+                    <div className="flex items-center justify-center md:justify-between mb-4">
+                        <div className="hidden md:block">
+                            Filters:
+                        </div>
+                        <div className="flex items-center space-x-4">
+                            <div className="hidden md:block">
+                                Results: {total}
+                            </div>
+                            <div>
+                                <input type="text"
+                                    style={{ width: '100%' }}
+                                    placeholder="Search..."
+                                    onChange={handleChange}
+                                    value={filters?.name}
+                                    name="name"
+                                    className="block m-auto appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                />
+                            </div>
+                            <div className="flex items-center space-x-4 text-2xl">
+                                <IoGridOutline onClick={() => setViewType('grid')} className={clsx("cursor-pointer", {
+                                    "text-main": viewType === 'grid'
+                                })} />
+                                <IoList onClick={() => setViewType('list')} className={clsx("cursor-pointer", {
+                                    "text-main": viewType === 'list'
+                                })} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="text-center mb-4 md:hidden">
+                        Results: {total}
+                    </div>
+                    {
+                        currentRecipes?.length === 0 && !recipeLoading ?
+                            <div className="text-center text-2xl font-semibold text-red-500">
+                                No recipes found
+                            </div>
+                            :
+                            <ul className={clsx({
+                                "grid grid-cols-1 md:grid-cols-2 gap-4": viewType === 'list',
+                                "grid grid-cols-2 sm:grid-cols-3 items-end justify-center lg:grid-cols-4 gap-4": viewType === 'grid'
+                            })}>
+                                {
+                                    currentRecipes?.map((recipe, i) => {
+                                        if (viewType === 'grid') return <GridComponent
+                                            recipe={recipe}
+                                            key={i}
+                                            onHandleRecipe={handleAddRecipe}
+                                        />
+                                        if (viewType === 'list') return <ListComponent
+                                            recipe={recipe}
+                                            key={i}
+                                            onHandleRecipe={handleAddRecipe}
+                                        />
+                                    })
+                                }
+                            </ul>
+                    }
+                    {
+
+                        recipeLoading ?
+                            <div className="text-center text-xl">
+                                Loading Recipes...
+                            </div>
+                            :
+                            numberOfPages > filters?.page ?
+                                <div className="text-center">
+                                    <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4">
+                                        Load More
+                                    </button>
+                                </div>
+                                :
+                                <div className="text-center my-4">
+                                    No more recipes.
+                                </div>
+                    }
+                </ModalContainer>
+            </ModalOverlay>
+        </div>
+    )
+}
+
+export default StepFive;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5127,7 +6888,58 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### StepOne
 	    
 #### Código
-```	    
+```
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+import { useTabs } from "../contexts/TabsContext";
+
+const StepOne = () => {
+
+    const { data, setData } = useCreatePlan();
+
+    const { value, setValue } = useTabs();
+
+    const handleChange = (e) => {
+        setData((oldData) => {
+            return {
+                ...oldData,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+
+    return (
+        <div>
+            <label>Name</label>
+            <input style={{ backgroundColor: '#F0F0F0', border: 'none', outline: 'none' }}
+                type="text"
+                name="name"
+                value={data?.name}
+                onChange={handleChange}
+                placeholder="Plan name..."
+                className="w-full mb-4 rounded-xl focus:outline-none focus:ring-main"
+            />
+            <br />
+            <br />
+            <label>Description</label>
+            <textarea style={{ backgroundColor: '#F0F0F0', border: 'none', outline: 'none' }}
+                type="text"
+                name="description"
+                value={data?.description}
+                rows={8}
+                onChange={handleChange}
+                placeholder="Plan description..."
+                className="w-full mb-4 rounded-xl focus:outline-none focus:ring-main"
+            />
+            <div className="text-right">
+                <button disabled={!data?.name && !data?.description} onClick={(e) => setValue(1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                    Next
+                </button>
+            </div>
+        </div>
+    )
+}
+
+export default StepOne;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5138,7 +6950,131 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### StepSix
 	    
 #### Código
-```	    
+```
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+import { useTabs } from "../contexts/TabsContext";
+import useAxios from "../hooks/useAxios";
+import { IoCheckmarkCircleSharp } from "react-icons/io5";
+import clsx from "clsx";
+
+const StepSix = () => {
+
+    const { value, setValue } = useTabs();
+
+    const { data, setData } = useCreatePlan();
+
+    const [{ data: createPlanData, loading: createPlanLoading }, createPlan] = useAxios({ url: `plans`, method: 'POST' }, { manual: true, useCache: false });
+
+    useEffect(() => {
+        if (createPlanData) {
+            console.log(createPlanData);
+        }
+    }, [createPlanData])
+
+    const handleCreate = () => {
+        const planDays = [];
+
+        data?.weekDays?.forEach((day, i) => {
+            day?.mealPeriods?.forEach((period, periodIndex) => {
+                period?.recipes?.forEach((recipe, recipeIndex) => {
+                    planDays.push({
+                        day: i + 1,
+                        mealPeriodId: period?.id,
+                        recipeId: recipe?.id
+                    });
+                });
+            });
+        });
+
+        var dataToSend = {
+            name: data?.name,
+            description: data?.description,
+            planDays: planDays,
+            categoryIds: data?.categoryIds,
+            numberOfDays: data?.weekDays?.length
+        };
+
+        if (!data?.id) {
+            dataToSend = new FormData();
+
+            dataToSend.append('name', data?.name);
+
+            dataToSend.append('description', data?.description);
+
+            data?.categoryIds?.forEach((categoryId, i) => {
+                dataToSend.append(`categoryIds[${i}]`, categoryId);
+            });
+
+            dataToSend.append('numberOfDays', data?.weekDays?.length);
+            planDays?.forEach((planDay, i) => {
+                dataToSend?.append(`planDays[${i}][day]`, planDay?.day);
+                dataToSend?.append(`planDays[${i}][mealPeriodId]`, planDay?.mealPeriodId);
+                dataToSend?.append(`planDays[${i}][recipeId]`, planDay?.recipeId);
+            });
+
+            data?.images?.forEach((image, i) => {
+                if (image) {
+                    dataToSend?.append(`images`, image, image?.name);
+                }
+            });
+        }
+
+        createPlan({
+            data: dataToSend,
+            url: data?.id ? `plans/${data?.id}` : `plans`,
+            method: data?.id ? 'PUT' : 'POST'
+        });
+
+    }
+
+    return (
+        <div>
+            {
+                !createPlanData &&
+                <h1 className="text-center text-xl font-semibold">
+                    All is ok?
+                </h1>
+            }
+            <p className={clsx(["text-gray-400 text-center"], {
+                "mt-8": !createPlanData
+            })}>
+                {
+                    !createPlanData ?
+                        "Please make sure all the data is correct."
+                        :
+                        <IoCheckmarkCircleSharp className="m-auto text-main animate__animated animate__fadeInUp" style={{ fontSize: '80px' }} />
+                }
+            </p>
+
+            <div className="mt-8 text-center space-x-4">
+                {
+                    !createPlanData ?
+                        createPlanLoading ?
+                            <button disabled type="button" className="bg-main px-8 py-2 rounded-xl text-white">
+                                Loading...
+                            </button>
+                            :
+                            <>
+                                <button onClick={(e) => setValue(value - 1)} type="button" className="bg-main px-8 py-2 rounded-xl text-white">
+                                    I want to check
+                                </button>
+                                <button onClick={handleCreate} type="button" className="bg-main px-8 py-2 rounded-xl text-white">
+                                    Confirm
+                                </button>
+                            </>
+                        :
+                        <a href="/my-plans" className="bg-main animate__animated animate__fadeInUp px-8 py-2 rounded-xl text-white">
+                            The plan has been {data?.id ? "updated" : "created"}.
+                        </a>
+                }
+            </div>
+        </div>
+    )
+}
+
+export default StepSix;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5149,7 +7085,161 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### StepThree
 	    
 #### Código
-```	    
+```
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+import { useTabs } from "../contexts/TabsContext";
+import update from 'immutability-helper';
+import ImgUploadInput from "./ImgeUploadInput";
+import { useEffect } from "react";
+import imgUrl from "../helpers/imgUrl";
+import ImageCrudComponent from "./ImageCrudComponent";
+import { useState } from "react";
+
+const StepThree = ({ defaultImages }) => {
+
+    const { data, setData } = useCreatePlan();
+
+    const { value, setValue } = useTabs();
+
+    const [isUpdating, setIsUpdating] = useState(false);
+
+    useEffect(() => {
+        if (defaultImages?.length > 0) {
+            setIsUpdating(true);
+        }
+    }, [defaultImages])
+
+    const handleAddImage = () => {
+        setData((oldData) => {
+            return {
+                ...oldData,
+                images: [...oldData?.images, null]
+            }
+        });
+    }
+
+    const handleArrayChange = (e, index, arrayName) => {
+        var newArrayValues = [];
+        if (e.target.name === 'images') {
+            newArrayValues = update(data?.[arrayName], { [index]: { $set: e.target.files[0] } });
+        } else {
+            newArrayValues = update(data?.[arrayName], { [index]: { [e.target.name]: { $set: e.target.type === 'file' ? e.target.files[0] : e.target.value } } });
+        }
+        setData((oldData) => {
+            return {
+                ...oldData,
+                [arrayName]: newArrayValues
+            }
+        });
+    }
+
+    const removeFromArray = (index, arrayName) => {
+
+        data?.[arrayName]?.splice(index, 1);
+
+        setData((oldData) => {
+            return {
+                ...oldData,
+                [arrayName]: data?.[arrayName]
+            }
+        });
+    }
+
+    return (
+        <div>
+            <h1 className="text-center text-xl font-semibold">
+                Images
+            </h1>
+            {
+                isUpdating ?
+                    <>
+                        <ImageCrudComponent
+                            title={`📸 Images`}
+                            modelName={"plans"}
+                            defaultImages={defaultImages?.map((image) => {
+                                return {
+                                    id: image?.id,
+                                    path: imgUrl(image?.path)
+                                }
+                            })}
+                            ownerId={data?.id}
+                        />
+                        <br /><br />
+                        <div className="text-center space-x-8">
+                            <button onClick={(e) => setValue(value - 1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                                Back
+                            </button>
+                            <button onClick={(e) => setValue(value + 1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                                Next
+                            </button>
+                        </div>
+                    </>
+                    :
+                    <>
+                        <br />
+                        <div className="grid w-full md:grid-cols-3 items-center lg:grid-cols-6 sm:grid-cols-2 grid-cols-1 gap-10">
+                            {
+                                data?.images?.map((image, i) => {
+                                    return (
+                                        <div key={i} className="text-center space-y-4">
+                                            {
+                                                image ?
+                                                    <ImgUploadInput
+                                                        previewImage={URL.createObjectURL(image)}
+                                                        className="h-44 w-44"
+                                                        description="drag or click"
+                                                        name="images"
+                                                        change={(e) => { handleArrayChange(e, i, 'images') }}
+                                                    />
+                                                    :
+                                                    <ImgUploadInput
+                                                        previewImage={image?.path && imgUrl(image?.path)}
+                                                        className="h-44 w-44"
+                                                        description="drag or click"
+                                                        name="images"
+                                                        change={(e) => { handleArrayChange(e, i, 'images') }}
+                                                    />
+                                            }
+                                            <button type="button" onClick={() => { removeFromArray(i, 'images') }}
+                                                className="bg-red-500 rounded px-8 py-2 text-white"
+                                            >
+                                                Remove
+                                            </button>
+                                        </div>
+                                    )
+                                })
+                            }
+
+                            <div className="text-center">
+                                <button onClick={handleAddImage} className="bg-main px-8 py-2 rounded text-white">
+                                    Add Image
+                                </button>
+                            </div>
+                        </div>
+                        <br /><br />
+                        {
+                            data?.images?.length < 1 || !data?.images?.[0] ?
+                                <div className="text-center text-red-500 my-8">
+                                    At least one image is needed
+                                </div>
+                                :
+                                null
+                        }
+                        <div className="text-center space-x-8">
+                            <button onClick={(e) => setValue(value - 1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                                Back
+                            </button>
+                            <button disabled={data?.images?.length < 1 || !data?.images?.[0]} onClick={(e) => setValue(value + 1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                                Next
+                            </button>
+                        </div>
+                    </>
+            }
+        </div>
+    )
+}
+
+export default StepThree;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
@@ -5160,7 +7250,148 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### StepTwo
 	    
 #### Código
-```	    
+```
+import clsx from "clsx";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useCreatePlan } from "../contexts/CreatePlanContext";
+import { useTabs } from "../contexts/TabsContext";
+import useCategories from "../hooks/useCategories";
+
+const StepTwo = () => {
+    const { data, setData } = useCreatePlan();
+
+    const { value, setValue } = useTabs();
+
+    const [categoriesFilters, setCategoriesFilters] = useState({
+        page: 1,
+        name: ''
+    });
+
+    const [currentCategories, setCurrentCategories] = useState([]);
+
+    const [{ categories, numberOfPages, loading: categoriesLoading }, getCategories] = useCategories({ axiosConfig: { params: { ...categoriesFilters } } });
+
+    useEffect(() => {
+        if (categories?.length > 0) {
+            setCurrentCategories((oldCategories) => {
+                return [...oldCategories, ...categories];
+            });
+        }
+    }, [categories])
+
+    const handleMore = () => {
+        if (numberOfPages > categoriesFilters?.page) {
+            setCategoriesFilters((oldFilters) => {
+                return {
+                    ...oldFilters,
+                    page: oldFilters?.page + 1
+                }
+            });
+        }
+    }
+
+    const handleCategory = (e) => {
+        const value = data?.[e.target.name]?.includes(e.target.value);
+        if (value) {
+            const newValues = data?.[e.target.name]?.filter(n => n !== e.target.value);
+            setData((oldData) => {
+                return {
+                    ...oldData,
+                    [e.target.name]: newValues
+                }
+            });
+        } else {
+            setData((oldData) => {
+                return {
+                    ...oldData,
+                    [e.target.name]: [...data?.[e.target.name], e.target.value]
+                }
+            });
+        }
+        return;
+    }
+
+    const handleChange = (e) => {
+
+        setCurrentCategories([]);
+
+        setCategoriesFilters((oldFilters) => {
+            return {
+                ...oldFilters,
+                [e.target.name]: e.target.value,
+                page: 1
+            }
+        })
+    }
+
+    return (
+        <div>
+            <label className="text-xl">
+                Select the plan´s categories:
+            </label>
+            <br />
+            <input style={{ backgroundColor: '#F0F0F0', border: 'none', outline: 'none' }}
+                type="text"
+                name="name"
+                onChange={handleChange}
+                placeholder="Category name..."
+                className="w-full mt-4 rounded-xl focus:outline-none focus:ring-main"
+                value={categoriesFilters?.name}
+            />
+            <div className="my-4 bg-gray-200 p-4 rounded-xl custom-scrollbar custom-scrollbar-main" style={{ height: '300px', overflowY: 'auto' }}>
+                {
+                    currentCategories?.length > 0 ?
+                        currentCategories?.map((category, i) => {
+                            return (
+                                <div onClick={(e) => handleCategory({ target: { name: 'categoryIds', value: category?.id } })} className={clsx(["w-full my-4 p-2 rounded-xl flex items-center cursor-pointer"], {
+                                    'bg-main text-white': data?.categoryIds?.includes(category?.id)
+                                })} key={i}>
+                                    {category?.name}
+                                </div>
+                            )
+                        })
+                        :
+
+                        <div className="text-red-500 text-center">
+                            not found results.
+                        </div>
+                }
+                <div>
+
+                </div>
+                {
+                    categoriesLoading ?
+                        <div className="text-center my-4">
+                            Loading more categories...
+                        </div>
+                        :
+                        numberOfPages > categoriesFilters?.page ?
+                            <div className="text-center">
+                                <button onClick={handleMore} className="bg-white px-8 py-2 rounded-full shadow mt-4">
+                                    Load More
+                                </button>
+                            </div>
+                            :
+                            <div className="text-center my-4">
+                                No more categories.
+                            </div>
+                }
+
+            </div>
+            <div className="text-right space-x-4">
+                <button onClick={(e) => setValue(value - 1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                    Back
+                </button>
+                <button onClick={(e) => setValue(value + 1)} type="button" className="bg-main px-8 py-2 rounded text-white">
+                    Next
+                </button>
+            </div>
+        </div>
+    )
+}
+
+export default StepTwo;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![]()
