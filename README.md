@@ -39,6 +39,7 @@
 * [DescriptionChef](#item35)
 * [ButtonImage](#item36)
 * [Details](#item37)
+* [Comment](#item38)
 * [Tab](#item39)
 * [TabButton](#item40)
 * [TabPanel](#item41)
@@ -87,7 +88,34 @@
 * [Checkbox](#item84)
 * [CheckboxConfig](#item85)
 * [WaPay](#item86)
-
+* [CommentsComponent](#item87)
+* [CreatePlanForm](#item88)
+* [DateFormatter](#item89)
+* [DescriptionChef](#item90)
+* [FeatureRow](#item91)
+* [ForgotPasswordForm](#item92)
+* [GridComponent](#item93)
+* [ImagenCrudComponent](#item94)
+* [ImgeUploadInput](#item95)
+* [ListComponent](#item96)
+* [MobileMenuButton](#item97)
+* [ModalFiltre](#item98)
+* [MovilMenuSearch](#item99)
+* [NotificationTypeCheck](#item100)
+* [OrderItemRow](#item101)
+* [pagination](#item102)
+* [RatingComponent](#item103)
+* [RecupeFeatures](#item104)
+* [RenderActionsButtons](#item105)
+* [RenderCommentable](#item106)
+* [Search Movil](#item107)
+* [ShowMoreButton](#item108)
+* [ShorRecipeRow](#item109)
+* [StepFive](#item110)
+* [StepOne](#item111)
+* [StepSix](#item112)
+* [StepThree](#item113)
+* [StepTwo](#item114)
 
 
 <a name="item1"></a>
@@ -2473,10 +2501,54 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 
 
 <a name="item38"></a>
-### 
+### Commet
+Este componente esta encargado de mostrar el texto del comentario de respuesta de usuario y cliente.
 
-![]()
+Recibe como parámetro { imgPath, name, comment, createdAt, answer, answeredAt } imgPath es de tipo string y recibe la imagen de la persona encargada del comentario agregado en la vista correspondiente, name también es de tipo string es donde recibe el nombre del usuario que envio el texto, createAt es de tipo DateTime que es la fecha y hora del comentario colocado acerca del combo, plans o recetas, answer y answeredAT es de tipo string.
 
+#### Código
+```
+import { useState } from 'react';
+import DateFormatter from './DateFormatter';
+
+const Comment = ({ imgPath, name, comment, createdAt, answer, answeredAt }) => {
+
+    const [showResponse, setShowResponse] = useState(false);
+
+    return <>
+        <div className="flex items-center space-x-2 font-semibold">
+            <img src={imgPath} alt="" className="inline-block w-12 h-12 rounded-full" />
+            <span>{name ?? 'Guest'}</span>
+        </div>
+        <p className="mb-1">{comment} -
+            <span className="ml-2 text-xs font-semibold italic">
+                <DateFormatter value={createdAt} dateFormat="hh:mm:ss yyyy-MM-dd" />
+            </span>
+        </p>
+        {
+            answer &&
+            <div className='text-right'>
+                <button type='button' className='text-main' onClick={() => setShowResponse(oldShow => !oldShow)}>
+                    {showResponse ? 'Hide' : 'Show'} Response
+                </button>
+            </div>
+        }
+        {
+            answer && showResponse ?
+                <div className=''>
+                    {answer}
+                </div>
+                :
+                null
+        }
+    </>
+}
+export default Comment;
+```
+Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
+![](https://i.imgur.com/kUgveoG.png)
+
+[Subir](#top)
 
 
 <a name="item39"></a>
@@ -4504,8 +4576,6 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 
 
-
-
 <a name="item81"></a>
 ### CardRecipes
 
@@ -4741,15 +4811,12 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 [Subir](#top)
 
 
-
-
 <a name="item86"></a>
 ### WaPay
 Componente encargado de mostrar la informacion de la lista de comparador de precio.
 	    
 #### Código
 ```	    
-Componente encargado de mostrar la informacion de la lista de comparador de precio
 import Instacart from "../assets/Img-button/instacart.jpg"
 import AmazonFresh from "../assets/Img-button/amazon-fresh.jpg"
 import Wallmart from "../assets/Img-button/wallmart.jpeg"
@@ -4784,4 +4851,324 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 [Subir](#top)
 
+<a name="item87"></a>
+### WaPay
+Componente encargado de mostrar la informacion de la lista de comparador de precio.
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
 
+[Subir](#top)
+	
+	    
+<a name="item88"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+	    
+[Subir](#top)	    
+	    
+<a name="item89"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+
+	    
+<a name="item90"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+
+	    
+<a name="item91"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	
+	    
+<a name="item92"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	
+	    
+<a name="item93"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	
+	    
+<a name="item94"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	
+	    
+<a name="item95"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	
+	    
+<a name="item96"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	
+	    
+<a name="item97"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item98"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item99"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item100"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item101"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item102"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item103"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item104"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item105"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item106"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item107"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item108"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item109"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item110"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item111"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item112"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item113"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+<a name="item114"></a>
+### 
+	    
+#### Código
+```	    
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![]()
+
+[Subir](#top)
+	    
+
+	    
