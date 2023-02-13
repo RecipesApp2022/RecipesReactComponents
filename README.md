@@ -4695,7 +4695,21 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### Checkbox
 
 Componente del checkbok cuadrado.
-
+	    
+#### Código
+```
+import clsx from "clsx";
+const Checkbox = ({ className, props }) => {
+    return <input
+        type="checkbox"
+        className={clsx("rounded border-gray-300 text-main shadow-sm focus:border-teal-300 focus:ring focus:ring-offset-0 focus:ring-teal-200 focus:ring-opacity-50", className)}
+        {...props}
+    />;
+}
+export default Checkbox;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+	    
 ![](https://i.imgur.com/D2ZuNwI.jpg)
 
 [Subir](#top)
@@ -4708,6 +4722,21 @@ Componente del checkbok cuadrado.
 
 Componente del checkbok circular.
 
+#### Código
+```
+import clsx from "clsx";
+
+const Checkbox = ({ className, props }) => {
+    return <input
+        type="checkbox"
+        className={clsx(" rounded-full border-gray-300 text-main shadow-sm focus:border-teal-300 focus:ring focus:ring-offset-0 focus:ring-teal-200 focus:ring-opacity-50", className)}
+        {...props}
+    />;
+}
+export default Checkbox;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+
 ![](https://i.imgur.com/tBic1Xs.jpg)
 
 [Subir](#top)
@@ -4717,9 +4746,41 @@ Componente del checkbok circular.
 
 <a name="item86"></a>
 ### WaPay
-
+Componente encargado de mostrar la informacion de la lista de comparador de precio.
+	    
+#### Código
+```	    
 Componente encargado de mostrar la informacion de la lista de comparador de precio
+import Instacart from "../assets/Img-button/instacart.jpg"
+import AmazonFresh from "../assets/Img-button/amazon-fresh.jpg"
+import Wallmart from "../assets/Img-button/wallmart.jpeg"
+import IngredientRow from "./IngredientRow";
 
+const WaPay = () => {
+    return (
+        <IngredientRow colsNumber={3} >
+            <div className='p-3 text-center border-b'>
+                <p className='text-gray-400 font-medium'>InstaCart</p>
+                <img className='m-auto h-20 w-50 ' src={Instacart} alt="Instacart" />
+                <p className='text-xl font-bold'>$ 102.03</p>
+            </div>
+            <div className='p-3 text-center border-b'>
+                <p className='text-gray-400 font-medium'>Amazon Fresh</p>
+                <img className='m-auto h-20 w-40' src={AmazonFresh} alt="AmazonFresh" />
+                <p className='text-xl font-bold'>$ 102.03</p>
+            </div>
+            <div className='p-3 text-center border-b'>
+                <p className='text-gray-400 font-medium'>Walmart</p>
+                <img className='m-auto h-20 w-50 ' src={Wallmart} alt="Wallmart" />
+                <p className='text-xl font-bold'>$ 102.03</p>
+            </div>
+        </IngredientRow>
+    );
+}
+
+export default WaPay;
+```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/tvnn47v.png)
 
 [Subir](#top)
