@@ -1077,7 +1077,7 @@ Cómo ejecución se observa lo siguiente.
 [Subir](#top)
  
 <a name="item13"></a>
-* ### SesionCategory
+### SesionCategory
  ---
 Select de las categorías.  
 
@@ -1108,7 +1108,7 @@ Cómo ejecución se observa lo siguiente.
 [Subir](#top)
  
 <a name="item14"></a>
-* ### VideoCategory
+### VideoCategory
  ---
 Descripción del vídeo, contiene imagen y nombre del vendedor, nombre de la receta.  
 
@@ -1281,6 +1281,7 @@ imgFlag: Imagen de la bandera.
 name: Nombre del chef.
 sname: Apellido del chef.
 
+#### Código
 ```
 const ChefsCountries = ({ imgChefs, LogoBackg, imgFlag, name, sname }) => {
     return (
@@ -1394,6 +1395,8 @@ Cómo ejecución se observa lo siguiente.
 Componente con las dos opciones de vista (Grid View, ListView). en las pantallas de resultados de busqueda.
 
 Cómo parámetro no recibe ninguno.
+
+#### Código
 ```
 import { IoList, IoGridOutline } from "react-icons/io5";
 
@@ -1421,7 +1424,6 @@ Cómo ejecución se observa lo siguiente.
 ![](https://i.imgur.com/oblMl0x.jpg)
 
 [Subir](#top)
-
 
 
 <a name="item20"></a>
@@ -1912,6 +1914,8 @@ Cómo ejecución del código, es la llamada al componente donde contiene el dise
 Componente con botones de paginación que se repite en varias secciones.
 Cómo parámetro no recibe ningun tipo de datos.
 
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
 #### Código
 ```
 import React from "react";
@@ -1959,6 +1963,7 @@ const ButtomButton = () => {
 
 export default ButtomButton;
 ```
+Cómo resultado de ejecución se muestra el siguiente resultado.
 ![](https://i.imgur.com/7UNmpRB.jpg)
  
 [Subir](#top)
@@ -2028,8 +2033,6 @@ Cómo resultado de la ejecución del componente es el resultado final que se pue
 [Subir](#top)
 
 
-
-
 <a name="item28"></a>
 ### Matches
  
@@ -2044,7 +2047,6 @@ Importación de la líbreria react-icons que utiliza importaciones de ES6 que le
 import React from 'react'
 import {AiOutlineClose, AiOutlineCheck} from 'react-icons/ai'
 import {BsFillEmojiLaughingFill} from "react-icons/bs"
-
 
 const Matches = () => {
   return (
@@ -2166,7 +2168,6 @@ Cómo resultado de la ejecución del componente es el resultado final que se pue
 
 
 
-
 <a name="item30"></a>
 ### MyAccountLayout
  
@@ -2249,8 +2250,6 @@ Cómo ejecución del código su resultado final es lo que se puede visualizar en
 ![](https://i.imgur.com/ftYgUpz.png)
  
 [Subir](#top)
-
-
 
 
 <a name="item31"></a>
@@ -2501,7 +2500,7 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 
 
 <a name="item38"></a>
-### Commet
+### Comment
 Este componente esta encargado de mostrar el texto del comentario de respuesta de usuario y cliente.
 
 Recibe como parámetro { imgPath, name, comment, createdAt, answer, answeredAt } imgPath es de tipo string y recibe la imagen de la persona encargada del comentario agregado en la vista correspondiente, name también es de tipo string es donde recibe el nombre del usuario que envio el texto, createAt es de tipo DateTime que es la fecha y hora del comentario colocado acerca del combo, plans o recetas, answer y answeredAT es de tipo string.
@@ -2614,7 +2613,6 @@ const TabPanel = ({ children, className, value }) => {
 export default TabPanel;
 ```
 Cómo ejecución del código del resultado final es lo que se muestra en la imagen.}
-
 ![](https://i.imgur.com/EjGCgq4.jpg)
 
 [Subir](#top)
@@ -2677,6 +2675,8 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 Componente  encargado de mostrar precio en la vista del detalle del producto unico.
 
 Recibe como parámetro { price } de ese producto, el tipo de dato de este parámetro es decimal.
+
+#### Código
 ```
 const TotalShoppingPrecio = ({ price }) => {
     return (
@@ -2753,6 +2753,7 @@ Componente encargado de mostra del detalle de la descripcion de post del blog
 
 Recibe como parámetro { title } es el objeto del post del vendedor.
 
+#### Código
 ```
 import React from "react";
 
@@ -2861,6 +2862,7 @@ Componente encargado del diseño del calendario
 
 Recibe Cómo parámetro { week, onDayClick } week es la semana que recibe de tipo objeto, donde recibe un objeto con un array de dias, onDayClick en el encargado de guardar en click del dia seleccionado.
 
+#### Código
 ```
 import CalendarDay from "./CalendarDay";
 
@@ -4698,6 +4700,7 @@ Recibe como parámetros	{ title, total, price }   title y total es de tipo strin
 Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 	      
 #### Código
+```
 import React, { useState } from "react";
 import paypal from "../assets/paypaltransp.png";
 import PaypalModal from "./PaypalModal";
@@ -4783,8 +4786,6 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/D2ZuNwI.jpg)
 
 [Subir](#top)
-
-
 
 
 <a name="item85"></a>
