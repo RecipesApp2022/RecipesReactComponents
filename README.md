@@ -3464,6 +3464,8 @@ const IngredientRowDetails = ({ imageSource, title, subtitle, subtitle2, price }
 }
 
 export default IngredientRowDetails;
+```
+Como resultado de ejecución se muestra los siguiente resultado.
 ![](https://i.imgur.com/NZWLwnL.jpg)
 ![]( https://i.imgur.com/menOJPW.png)
 
