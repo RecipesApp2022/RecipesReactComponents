@@ -5749,13 +5749,21 @@ const MobileMenuButton = () => {
 export default MobileMenuButton;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/qkzT2u9.png)
 
 [Subir](#top)
 	    
 <a name="item98"></a>
 ### ModalFiltre
-	    
+Este componente se encarga del diseño de boton de Filter que s epuede observar cuando colocamo el markepl. movil "Boton que contien el menu lateral izquierdo de manera modal donde muestra "Categories, Types y Rating". 
+Recibe como parámetro el show y onclose que son valores logicos para saber si esta visible el ventanal de filter en su vista de manera dispositivo movil.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
 #### Código
 ```
 import { useRef } from "react";
@@ -5819,13 +5827,21 @@ const ModalFiltre = ({ show, onClose }) => {
 export default ModalFiltre;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/emKoPk9.png)
 
 [Subir](#top)
 	    
 <a name="item99"></a>
 ### MovilMenuSearch
-	    
+Este componente es el encargado que motrar un button de lupa ubicada en la ventana superior que al seleccionarla aparece la barra de busqueda por sellers, recipes, plans y combos.
+
+Recibe por parámetro el show y onclose que es para abrir y cerrar la ventada y show es para la parte de vista oculta o no a su tamaño adecuado.
+		
+Importación de la librería useRef en React nos devuelve un objeto ref mutable, cuya propiedad current se inicializa en el argumento pasado como initialValue:
+const refContainer = useRef (initialValue)
+		
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
 #### Código
 ```
 import { useRef } from "react";
@@ -5867,7 +5883,7 @@ const MovilMenuSearch = ({ show, onClose }) => {
 export default MovilMenuSearch;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/OwXDqQF.png)
 
 [Subir](#top)
 	    
