@@ -3044,7 +3044,7 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 
 
 <a name="item52"></a>
-* ### ButtonSearch
+### ButtonSearch
  
 Componente encargado del selector de busqueda por sus categorias.
 
