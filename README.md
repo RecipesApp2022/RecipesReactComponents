@@ -2545,7 +2545,7 @@ const Comment = ({ imgPath, name, comment, createdAt, answer, answeredAt }) => {
 export default Comment;
 ```
 Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
-![](https://i.imgur.com/kUgveoG.png)
+![](https://i.imgur.com/XgMEG3K.png)
 
 [Subir](#top)
 
@@ -5021,7 +5021,7 @@ const CommentsComponent = ({ type, productId }) => {
 export default CommentsComponent	    
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![](https://i.imgur.com/qfUNDwU.png)
+![](https://i.imgur.com/kUgveoG.png)
 
 [Subir](#top)
 
