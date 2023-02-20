@@ -5028,7 +5028,13 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item88"></a>
 ### CreatePlanForm
-	    
+Consiste en la creación de un plan en el sistema.
+Recibe como parámetro una data que es un objetos de dato del sistema.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
 #### Código
 ```
 import { useEffect } from "react";
@@ -5142,7 +5148,7 @@ const CreatePlanForm = ({ defaultData }) => {
 export default CreatePlanForm;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/PpuCTxt.png)
 
 [Subir](#top)
 
@@ -5195,7 +5201,7 @@ const DescriptionChef = ({ seller }) => {
 export default DescriptionChef;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/hViSxch.png)
 
 [Subir](#top)
 	
@@ -5661,7 +5667,17 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item97"></a>
 ### MobileMenuButton
-	    
+Componente encargado de mostrar el menu de botón de la forma responsive movil donde se desplegara un menú con las opciones de Login,  Registratión, seller y categories.
+Este componente no recibe ningún parámetro.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
 #### Código
 ```
 import { useState, useRef, useEffect } from "react";
@@ -5901,7 +5917,6 @@ Recibe como parámetro { notificationType, values, onChange } notificationType e
 
 #### Código
 ```
-
 const NotificationTypeCheck = ({ notificationType, values, onChange }) => {
 
     return (
@@ -5925,6 +5940,7 @@ export default NotificationTypeCheck;
 ```
 
 También tenemos el Código.
+
 ### NotificationRow
 Este código es encargado del diseño de la parte de la fila del la notificacion que se muestra al selecionar el boton de notificaciones en este caso sera al escuchar el onclick de la campanita en el sistema.
 
@@ -6474,7 +6490,10 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item106"></a>
 ### RenderCommentable
-	    
+Este componente es un render de la parte del comentable del sistema en la parte de recipes, plan y combos, donde recibe por paremetro el objeto del seller de valor del comentable, haciendo referencia al componente commentableType.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
 #### Código
 ```
 import { Link } from "react-router-dom";
