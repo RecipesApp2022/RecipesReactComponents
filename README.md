@@ -5208,7 +5208,8 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item91"></a>
 ### FeatureRow
-	    
+Consiste en almacenar la información por fila requerida por el usuario.
+Cómo parámetro recibe todo lo referente a la iformación que quiero obtener array.
 #### Código
 ```
 import clsx from "clsx";
@@ -5223,8 +5224,8 @@ const FeatureRow = ({ title, content, className, titleClassName, contentClassNam
 export default FeatureRow;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
-
+![](https://i.imgur.com/uKrpu8b.png)
+![](https://i.imgur.com/Qyw11Uv.png)
 [Subir](#top)
 	
 	    
@@ -5328,8 +5329,7 @@ const ForgotPasswordForm = ({ changeForm }) => {
 
 export default ForgotPasswordForm;
 ```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+Cómo el componente te hace que recibas un correo en tu gmail configurado, para el restablecimiento de contraseña no posee imagen este componentes
 
 [Subir](#top)
 	
@@ -5376,7 +5376,15 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item94"></a>
 ### ImagenCrudComponent
-	    
+Este componente es el encargado del diseño de agregar o remover la imagen que se colocara en la categoria o plan a crear.
+Recibe por parámetro identificadores titulos módelo de la imagen relacionada que se insertara en el plan, recipes o combos a crear.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
 #### Código
 ```
 import { useEffect, useState } from "react"
@@ -5481,14 +5489,21 @@ const ImageCrudComponent = ({ defaultImages, ownerId, title, modelName }) => {
 export default ImageCrudComponent; 
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/cwOrlCi.png)
 
 [Subir](#top)
 	
 	    
 <a name="item95"></a>
 ### ImgeUploadInput
-	    
+El componente ImageCrudComponent tiene mucha relacion con este ya que este recibe un array de objeto con la options  de la imagen a ejecutarse.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
 #### Código
 ```
 import { useState } from "react";
@@ -5621,13 +5636,15 @@ ImgUploadInput.propTypes = {
 export default ImgUploadInput;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/cwOrlCi.png)
 
 [Subir](#top)
 	    
 <a name="item96"></a>
 ### ListComponent
-	    
+Este componente es el encargado del diseño de caja de día de la configuración de los planes a creace para un dia en particular. 
+Recibe como parámetro un objeto de recipes y un objetos de ingrediente de la recipes a mostrar por listra a en cuadritos.
+
 #### Código
 ```
 import imgUrl from "../helpers/imgUrl";
@@ -5661,7 +5678,7 @@ const ListComponent = ({ recipe, onHandleRecipe }) => {
 export default ListComponent;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/DnPe4C0.png)
 
 [Subir](#top)
 	    
@@ -6044,7 +6061,16 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item101"></a>
 ### OrderItemRow
-	    
+Consiste en almacenar las filar de información de las orden  como la orden date, el número de orden, la imagen, titulo, subtotal, taxes, descuento y total de la orden a realizar.
+
+Recibe como parámetro el item de la orden y el estado de esa orden, el item es valor numerico, y el estado es un string.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
 #### Código
 ```
 import { useEffect } from "react";
@@ -6228,13 +6254,19 @@ const OrderItemRow = ({ item, orderStatus }) => {
 export default OrderItemRow;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/rL0ZWdz.png)
 
 [Subir](#top)
 	    
 <a name="item102"></a>
 ### pagination
-	    
+Consiste en almacenar la paginación del sistema.
+Recibe como parámetro { children, active, onClick } children es el texto extra en colcocar, active en el valor logico del activación si se muestra o no la paginación del onclick de la paginación. 
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
 #### Código
 ```
 import { IoChevronForwardSharp, IoChevronBack } from "react-icons/io5";
@@ -6342,13 +6374,19 @@ const Pagination = ({ pages, onChange, activePage, className }) => {
 export default Pagination;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/MgCyBCC.png)
 
 [Subir](#top)
 	    
 <a name="item103"></a>
 ### RatingComponent
-	    
+Consiste en almacenar el rating de cada plan creado en el sistema.
+recibe como parámetros { numberOfStars = 5, value = 1, onClickStar, disabled = false, size = 'md' } son valores de tipo numerico y string y logicos para saber el valor de rating del componente.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
 #### Código
 ```
 import { useEffect, useState } from "react";
@@ -6423,13 +6461,14 @@ const styles = {
 export default RatingComponent;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/npWaH7H.png)
 
 [Subir](#top)
 	    
 <a name="item104"></a>
 ### RecupeFeatures
-	    
+Consiste en el diseño de otro componente donde recibe por parametro la receta y la clases, la recetas es el objeto que contiene toda la información necesaria para la recipe y className es el estilo de la clase que se visualizara en el sistema en esa parte.
+
 #### Código
 ```
 import clsx from "clsx";
@@ -6472,8 +6511,6 @@ const RecipeFeatures = ({ recipe, className }) => {
 
 export default RecipeFeatures;
 ```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
 
 [Subir](#top)
 	    
@@ -6481,10 +6518,175 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ### RenderActionsButtons
 	    
 #### Código
-```	    
 ```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+import { useEffect } from "react";
+import { useState } from "react"
+import { Link } from "react-router-dom";
+import useAxios from "../hooks/useAxios";
+import Modal from "./Modal/Modal";
+import RatingComponent from "./RatingComponent";
+
+const RenderActionsButtons = ({ product }) => {
+
+    const [currentProduct, setCurrentProduct] = useState(null);
+
+    const [productType, setProductType] = useState('');
+
+    const [showRatingModal, setShowRatingModal] = useState(false);
+
+    const [ratingData, setRatingData] = useState({
+        value: 1,
+        comment: ''
+    });
+
+    const [showRatingMessage, setShowRatingMessage] = useState(false);
+
+    const [{ data: rating, error: ratingError, loading: ratingLoading }, sendRating] = useAxios({ url: `/ratings`, method: 'POST' }, { manual: true, useCache: false });
+
+    useEffect(() => {
+        if (currentProduct?.clientRating) {
+            setRatingData((oldData) => {
+                return {
+                    ...oldData,
+                    value: currentProduct?.clientRating?.value,
+                    comment: currentProduct?.clientRating?.comment
+                }
+            })
+        }
+    }, [currentProduct?.clientRating])
+
+    useEffect(() => {
+        if (rating) {
+            setCurrentProduct((oldItem) => {
+                return {
+                    ...oldItem,
+                    clientRating: rating
+                }
+            });
+        }
+
+        if (rating || ratingError) setShowRatingMessage(true);
+    }, [rating, ratingError]);
+
+    useEffect(() => {
+        if (product) {
+            if (product?.recipe) {
+                setCurrentProduct(product?.recipe);
+                setProductType('recipe');
+            }
+            if (product?.combo) {
+                setCurrentProduct(product?.combo);
+                setProductType('combo');
+            }
+
+            if (product?.plan) {
+                setCurrentProduct(product?.plan);
+                setProductType('plan');
+            }
+        }
+    }, [product])
+
+    const handleRating = (rating) => {
+        setRatingData((oldRating) => {
+            return {
+                ...oldRating,
+                value: rating
+            }
+        });
+    }
+
+    const handleSubmitRating = () => {
+        if (ratingLoading) return;
+
+        sendRating({
+            data: {
+                type: productType,
+                "productId": currentProduct?.id,
+                "value": ratingData?.value,
+                "comment": ratingData?.comment
+            }
+        });
+    }
+
+    return (
+        <>
+            <button className="font-bold text-main hover:text-gray-400" onClick={() => setShowRatingModal(true)}>
+                {
+                    currentProduct?.clientRating ?
+                        'Show Rating'
+                        :
+                        'Send Rating'
+                }
+            </button>
+            <Link className="font-bold text-yellow-500 hover:text-gray-400" to={`#`}>
+                View Details
+            </Link>
+
+            <Modal onClose={() => setShowRatingModal(false)} show={showRatingModal}>
+                <h1 className="text-xl text-gray-500 font-bold">
+                    {
+                        currentProduct?.clientRating ?
+                            `Your Rating ${currentProduct?.clientRating?.isEdited ? '(Edited)' : ''}`
+                            :
+                            'Add Rating:'
+                    }
+                </h1>
+                <br />
+                <RatingComponent
+                    onClickStar={handleRating}
+                    value={ratingData?.value}
+                />
+
+                <textarea
+                    name="comment"
+                    className="w-full"
+                    placeholder="What's your experience?"
+                    style={{
+                        border: "1px solid #a9a9a9",
+                        borderRadius: 5,
+                        padding: 10,
+                        margin: "20px 0",
+                        minHeight: 100,
+                    }}
+                    onChange={(e) => {
+                        setRatingData((oldRatingData) => {
+                            return {
+                                ...oldRatingData,
+                                comment: e.target.value
+                            }
+                        })
+                    }}
+                    value={ratingData?.comment}
+                >
+                </textarea>
+                {
+                    showRatingMessage &&
+                    <div className="text-center">
+                        {
+                            ratingError?.response?.data?.message || 'Your rating is send.'
+                        }
+                    </div>
+                }
+                <div className="text-center space-x-8">
+                    <button onClick={() => setShowRatingModal(false)} type="button" className="bg-red-500 text-white mt-8 px-8 py-2 rounded-xl transition duration-500 hover:bg-white hover:text-main">
+                        Cancel
+                    </button>
+                    <button disabled={ratingLoading} onClick={handleSubmitRating} type="submit" className="bg-main text-white mt-8 px-8 py-2 rounded-xl transition duration-500 hover:bg-white hover:text-main">
+                        {
+                            ratingLoading ?
+                                'Loading'
+                                :
+                                'Send Rating'
+                        }
+                    </button>
+                </div>
+            </Modal>
+        </>
+    )
+}
+
+export default RenderActionsButtons
+```
 
 [Subir](#top)
 	    
