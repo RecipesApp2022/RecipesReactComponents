@@ -5336,7 +5336,8 @@ Cómo el componente te hace que recibas un correo en tu gmail configurado, para 
 	    
 <a name="item93"></a>
 ### GridComponent
-	    
+
+Cosiste el la división de espacion para la visualización de otros componentes en el diseño.
 #### Código
 ```
 import imgUrl from "../helpers/imgUrl";
@@ -5368,14 +5369,12 @@ const GridComponent = ({ recipe, onHandleRecipe }) => {
 }
 export default GridComponent;
 ```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
-
 [Subir](#top)
 	
 	    
 <a name="item94"></a>
 ### ImagenCrudComponent
+
 Este componente es el encargado del diseño de agregar o remover la imagen que se colocara en la categoria o plan a crear.
 Recibe por parámetro identificadores titulos módelo de la imagen relacionada que se insertara en el plan, recipes o combos a crear.
 
@@ -5496,6 +5495,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item95"></a>
 ### ImgeUploadInput
+
 El componente ImageCrudComponent tiene mucha relacion con este ya que este recibe un array de objeto con la options  de la imagen a ejecutarse.
 
 Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
@@ -5871,6 +5871,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item99"></a>
 ### MovilMenuSearch
+
 Este componente es el encargado que motrar un button de lupa ubicada en la ventana superior que al seleccionarla aparece la barra de busqueda por sellers, recipes, plans y combos.
 
 Recibe por parámetro el show y onclose que es para abrir y cerrar la ventada y show es para la parte de vista oculta o no a su tamaño adecuado.
@@ -5959,6 +5960,7 @@ export default NotificationTypeCheck;
 También tenemos el Código.
 
 ### NotificationRow
+
 Este código es encargado del diseño de la parte de la fila del la notificacion que se muestra al selecionar el boton de notificaciones en este caso sera al escuchar el onclick de la campanita en el sistema.
 
 Importación de la librería useEffect los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
@@ -6061,6 +6063,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item101"></a>
 ### OrderItemRow
+
 Consiste en almacenar las filar de información de las orden  como la orden date, el número de orden, la imagen, titulo, subtotal, taxes, descuento y total de la orden a realizar.
 
 Recibe como parámetro el item de la orden y el estado de esa orden, el item es valor numerico, y el estado es un string.
@@ -6260,6 +6263,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item102"></a>
 ### pagination
+
 Consiste en almacenar la paginación del sistema.
 Recibe como parámetro { children, active, onClick } children es el texto extra en colcocar, active en el valor logico del activación si se muestra o no la paginación del onclick de la paginación. 
 
@@ -6380,6 +6384,7 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item103"></a>
 ### RatingComponent
+
 Consiste en almacenar el rating de cada plan creado en el sistema.
 recibe como parámetros { numberOfStars = 5, value = 1, onClickStar, disabled = false, size = 'md' } son valores de tipo numerico y string y logicos para saber el valor de rating del componente.
 
@@ -6511,12 +6516,23 @@ const RecipeFeatures = ({ recipe, className }) => {
 
 export default RecipeFeatures;
 ```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![](https://i.imgur.com/7RxgI0F.png)
 
 [Subir](#top)
 	    
 <a name="item105"></a>
 ### RenderActionsButtons
-	    
+Componente de rederización de Actions de botones.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
 #### Código
 ```
 import { useEffect } from "react";
@@ -6687,6 +6703,9 @@ const RenderActionsButtons = ({ product }) => {
 
 export default RenderActionsButtons
 ```
+Cómo ejecución del código el resultado es lo que se observa en la imagen.
+![](https://i.imgur.com/SOtZuG3.png)
+![](https://i.imgur.com/bJmcTVF.png)
 
 [Subir](#top)
 	    
@@ -6728,13 +6747,23 @@ const RenderCommentable = ({ value }) => {
 export default RenderCommentable;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/2yqEl6C.png)
 
 [Subir](#top)
 	    
 <a name="item107"></a>
 ### Search Movil
-	    
+Componente encargado de la forma de la busqueda cuando el sistema esta de manera movil.
+Recibe como parámetro el onClose, es el valor logico que me indicar lo de abrir y cerral el modal.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria react-icons que utiliza importaciones de ES6 que le permiten incluir solo los íconos que usa su proyecto.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
 #### Código
 ```
 import ButtonSearch from "./ButtonSearch";
@@ -6796,7 +6825,7 @@ const SearchMovil = ({ onClose }) => {
 export default SearchMovil;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/ASgl0Bl.png)
 
 [Subir](#top)
 	    
@@ -6834,13 +6863,15 @@ const ShowMoreButton = ({ buttonText, content }) => {
 
 export default ShowMoreButton;
 ```
-Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
 
 [Subir](#top)
 	    
 <a name="item109"></a>
 ### ShorRecipeRow
+Consiste en almacenar el 
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 	    
 #### Código
 ```
