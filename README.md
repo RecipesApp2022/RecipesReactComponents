@@ -6701,12 +6701,16 @@ const ShowRecipeRow = ({ recipe }) => {
 export default ShowRecipeRow;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/PeXo6oW.png)
 
 [Subir](#top)
 	    
 <a name="item110"></a>
 ### StepFive
+Consiste en almacenar la configuarcion de los dias a aplicar los planes. que se podra mostrar los parámetros.
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 	    
 #### Código
 ```	
@@ -7022,13 +7026,15 @@ const StepFive = () => {
 export default StepFive;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/PeXo6oW.png)
 
 [Subir](#top)
 	    
 <a name="item111"></a>
 ### StepOne
-	    
+Consiste  en almacenar la información sobre el plan a crear en el sistema.
+No recibe parámetro.
+
 #### Código
 ```
 import { useCreatePlan } from "../contexts/CreatePlanContext";
@@ -7084,12 +7090,18 @@ const StepOne = () => {
 export default StepOne;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/PpuCTxt.png)
 
 [Subir](#top)
 	    
 <a name="item112"></a>
 ### StepSix
+Este componente es el encargado de mostrar y configurar todo lo referente al plan creado para los días seleccionados.
+No recibe parámetros en particular.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 	    
 #### Código
 ```
@@ -7219,12 +7231,17 @@ const StepSix = () => {
 export default StepSix;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/ZNWnLqF.png)
 
 [Subir](#top)
 	    
 <a name="item113"></a>
 ### StepThree
+Consiste en almacenar las imagen relacionadas con el plan a crear en el sitema, recibe un parámetro defaultImagens. 
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 	    
 #### Código
 ```
@@ -7384,13 +7401,19 @@ const StepThree = ({ defaultImages }) => {
 export default StepThree;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/PuglAzT.png)
 
 [Subir](#top)
 	    
 <a name="item114"></a>
 ### StepTwo
-	    
+Este Componente consiste en colocar la categoria del plan q se esta creando en el sistema.
+No recibe parámetro.
+
+Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
 #### Código
 ```
 import clsx from "clsx";
@@ -7536,6 +7559,6 @@ const StepTwo = () => {
 export default StepTwo;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/T4BC43N.png)
 
 [Subir](#top)
