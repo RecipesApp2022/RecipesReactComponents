@@ -5149,7 +5149,8 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item89"></a>
 ### DateFormatter
-	    
+Componente encargado de mostrar la fecha en formado de DateTime yyyy-mm-dd 
+
 #### Código
 ```
 import { format } from "date-fns";
@@ -5158,7 +5159,7 @@ const DateFormatter = ({ value, dateFormat = 'yyyy-MM-dd' }) => format(new Date(
 export default DateFormatter;
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/RDoODpM.png)
 
 [Subir](#top)
 	
@@ -5223,7 +5224,8 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item92"></a>
 ### ForgotPasswordForm
-	      
+Componente encargado de cambiar contraseña en nuestro App.
+
 Importación de la libreria useEffect, los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
 
 Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
@@ -5892,7 +5894,11 @@ Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	    
 <a name="item100"></a>
 ### NotificationTypeCheck
-	    
+
+Este componente es el encargado de mostrar el contador de items de notoficaciones con un valor númerico donde al seleccionar el icono se muestra el cuadrado de notificaciones que contiene el cuadrado de lista de notificaciones que es "nombre, tiempo y la palabra reservada nueva que indica si la nofificación es nueva o no en la App.
+
+Recibe como parámetro { notificationType, values, onChange } notificationType es de tipo string donde me indica que tipo de notificación es y values es el valor de la notificación y onChange es el parámetro que me indica la visualización de la ventana de notificaciones a mostrar.
+
 #### Código
 ```
 
@@ -5917,8 +5923,106 @@ const NotificationTypeCheck = ({ notificationType, values, onChange }) => {
 
 export default NotificationTypeCheck;
 ```
+
+También tenemos el Código.
+### NotificationRow
+Este código es encargado del diseño de la parte de la fila del la notificacion que se muestra al selecionar el boton de notificaciones en este caso sera al escuchar el onclick de la campanita en el sistema.
+
+Importación de la librería useEffect los efectos en esta librería de JavaScript nos permiten ejecutar un trozo de código según el momento en el que se encuentre el ciclo de vida de nuestro componente.
+
+Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
+
+Importación de la líbreria useAxios es un cliente HTTP basado en promesasnode.js para el navegador. Es isomorfo (= puede ejecutarse en el navegador y nodejs con la misma base de código). En el lado del servidor usa el httpmódulo nativo node.js, mientras que en el cliente (navegador) usa XMLHttpRequests.
+
+Importación de la libreria react-router-dom Consulte la guía de inicio para obtener más información sobre cómo comenzar con El paquete react-router-dom contiene enlaces para usar React Router en aplicaciones web.
+
+```
+import { formatDistance } from "date-fns";
+import { useEffect, useState } from "react";
+import useAxios from "../../hooks/useAxios";
+import {
+    SELLER_REGISTERED,
+    COMMENT_ANSWERED,
+} from "../../util/NotificationsTypes";
+import { Link } from "react-router-dom";
+
+const NotificationRow = ({ notification, onReadNotification, onClickNotification }) => {
+
+    const [currentNotification, setCurrentNotification] = useState(null);
+
+    const [{ }, setReadNotification] = useAxios({ url: `/notifications/${currentNotification?.id}/mark-as-read`, method: 'put' }, { manual: true, useCache: false });
+
+    useEffect(() => {
+        if (notification) {
+            setCurrentNotification(notification);
+        }
+    }, [notification]);
+
+    var notificationUrl = '#';
+
+    switch (notification?.type) {
+        case COMMENT_ANSWERED:
+            notificationUrl = `/comments`
+            break;
+        case SELLER_REGISTERED:
+            notificationUrl = `/sellers/${notification?.additionalData?.sellerSlug}/recipes`
+            break;
+    }
+
+    const timeDistance = (date, length) => {
+        if (date) {
+            const dateDistance = formatDistance(new Date(date), new Date());
+
+            if (dateDistance?.length > length) {
+                return `${dateDistance?.slice(0, length)}...`
+            }
+
+            return dateDistance;
+        }
+    }
+
+    const handleClick = () => {
+        setTimeout(() => {
+            onClickNotification?.()
+            if (!currentNotification?.readAt) {
+                setCurrentNotification((oldNotification) => {
+                    return {
+                        ...oldNotification,
+                        readAt: true
+                    }
+                });
+                onReadNotification?.();
+                setReadNotification();
+            }
+        }, [100])
+    }
+
+    return (
+        <li className="my-4 border-b">
+            <Link to={notificationUrl} onClick={handleClick}>
+                <div className="flex items-center justify-between">
+                    <h4 className="font-bold">
+                        {currentNotification?.message?.length > 30 ?
+                            `${currentNotification?.message?.slice(0, 30)}...`
+                            :
+                            currentNotification?.message
+                        }
+                    </h4>
+                    {
+                        !currentNotification?.readAt &&
+                        <p className="text-main">Nueva</p>
+                    }
+                </div>
+                <p>{timeDistance(currentNotification?.createdAt, 20)} ago</p>
+            </Link>
+        </li>
+    )
+}
+
+export default NotificationRow;
+```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
-![]()
+![](https://i.imgur.com/WBdt2N1.png)
 
 [Subir](#top)
 	    
