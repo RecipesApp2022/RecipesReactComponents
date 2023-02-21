@@ -972,6 +972,7 @@ Importación de la libreria useEffect, los efectos en esta librería de JavaScri
 
 Importación de la líbreria useState es un React Hook que le permite agregar una variable de estado a su componente.
 
+
 #### Código
 
 ```
