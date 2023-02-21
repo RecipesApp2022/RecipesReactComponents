@@ -2566,7 +2566,9 @@ export default Details
 Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
 
 ![](https://i.imgur.com/ICEzwHy.jpg)
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332117810_537872651851767_7241493981408442250_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0debeb&_nc_ohc=iI4WaWXhVQMAX81dun8&_nc_ht=scontent-mia3-2.xx&oh=00_AfAU0ZMNKLu_Hd11APdO5_myADwrzyXGtw6hfVIcl-TOQA&oe=63FA9351
+
 [Subir](#top)
 
 
@@ -2618,6 +2620,8 @@ export default Comment;
 Cómo ejecución del código del resultado final es lo que se muestra en la imagen.
 ![](https://i.imgur.com/XgMEG3K.png)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332129358_1915774775443128_6516912521740016317_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0debeb&_nc_ohc=4zfXH-mJZeoAX8ihIRV&_nc_ht=scontent-mia3-1.xx&oh=00_AfCuVTMXeonRSTEJwsZj7TI-5bN9B_UaWJrZr5c3cxhsHQ&oe=63F917A3
+
 [Subir](#top)
 
 
@@ -2658,6 +2662,8 @@ Cómo ejecución del código del resultado final es lo que se muestra en la imag
 
 ![](https://i.imgur.com/EjGCgq4.jpg)
 
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332121625_514865264062821_5554440247789854742_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0debeb&_nc_ohc=QJ0dHPkT6pkAX9gn9OG&_nc_ht=scontent-mia3-2.xx&oh=00_AfBeRkXQfaWDEmhJXoGGpv_QrzBivvHYkO_OzcszQth6lA&oe=63FA232B
+
 [Subir](#top)
 
 
@@ -2685,6 +2691,8 @@ export default TabPanel;
 ```
 Cómo ejecución del código del resultado final es lo que se muestra en la imagen.}
 ![](https://i.imgur.com/EjGCgq4.jpg)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332121625_514865264062821_5554440247789854742_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0debeb&_nc_ohc=QJ0dHPkT6pkAX9gn9OG&_nc_ht=scontent-mia3-2.xx&oh=00_AfBeRkXQfaWDEmhJXoGGpv_QrzBivvHYkO_OzcszQth6lA&oe=63FA232B
 
 [Subir](#top)
 
