@@ -3252,6 +3252,8 @@ Cómo resultado de ejecución de código es el cuadro informativo del plan mostr
 
 ![](https://i.imgur.com/zz5z3jo.jpg)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332337283_1611385635949514_6834192783407995024_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=4YD-TegCu1wAX9Qcfdp&_nc_ht=scontent-mia3-1.xx&oh=00_AfAtVon84XP6anpNgngirkUO8GVAVLiY6DfE90QQ94Y6zA&oe=63FABA8B
+
 [Subir](#top)
 
 
@@ -3308,6 +3310,8 @@ Cómo resultado de ejecución de código es el cuadro informativo del plan mostr
 
 ![](https://i.imgur.com/EABaJmL.png)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332122127_716593473350079_8780292395714955431_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=I9cdD9undzsAX_8Xff2&_nc_ht=scontent-mia3-1.xx&oh=00_AfCP-3JbdTnva94tQPA9csCW0Fo8q27mu0WAh5DDvbAvPA&oe=63F93076
+
 [Subir](#top)
 
 
@@ -3343,7 +3347,9 @@ export default DescriptionChef;
 Cómo resultado de ejecución de código es el cuadro informativo del plan mostrado en el home de la página.
 
 ![](https://i.imgur.com/Z317Uop.jpg)
- 
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332223699_580485110639713_5885388813672929775_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0debeb&_nc_ohc=1qnHeUQvSAMAX-5rJNz&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfCSwMGMHDsGiM6L-Rkor9LVp7k02cQF55QWQLfGoLxptg&oe=63F9CED1
+
 [Subir](#top)
 
 
@@ -3378,6 +3384,8 @@ export default DescriptionChef;
 Cómo resultado de ejecución de código es el cuadro informativo del plan mostrado en el home de la página.
 
 ![](https://i.imgur.com/lbnWbfI.jpg)
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332239854_747446666957818_8167097454733591882_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=mTF_DOkzcQ4AX_SqsGj&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfAjf3ySbHT3P9pDmJ8UpDA70tocC52Vzijgqn1bUCseEw&oe=63FAEA2A
 
 [Subir](#top)
 
@@ -3464,6 +3472,8 @@ export default FormAccount
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 ![](https://i.imgur.com/oBI4w4l.jpg)
 
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332307999_1405231966903304_6072831496931747349_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0debeb&_nc_ohc=PpmUdhKemYMAX9RegNB&_nc_oc=AQkPQiAV1sPBBft0lMacWBeRyG175PbRdphkbBuupIxfYbZTOZkfhDawe3-n0xPzdt0&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-2.xx&oh=00_AfCAdvokJR0viGyJwJzyOsFQb71PkUL3iiUs0xWG8hVqvQ&oe=63F9A890
+
 [Subir](#top)
 
 
@@ -3513,6 +3523,8 @@ export default InformationChef
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/KmzMHy8.jpg)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332113259_1574562443045806_1069284634291405396_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0debeb&_nc_ohc=Q6qzEChEIfUAX_uc1hN&_nc_ht=scontent-mia3-2.xx&oh=00_AfBMjKCv7-04g7BpMwNI3fB5dac_PjcBILxm4_d8Z6HUEA&oe=63FA69D4
 
 [Subir](#top)
 
@@ -3572,6 +3584,10 @@ Como resultado de ejecución se muestra los siguiente resultado.
 ![](https://i.imgur.com/NZWLwnL.jpg)
 ![]( https://i.imgur.com/menOJPW.png)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332239394_526591052920674_5787721233983626511_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=OofY1e6dfQoAX8PFNfY&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfDgsBBu0XvPQKsSX1cTVmPoAdLwiYnid1fvaJjy3wxxxA&oe=63FA4D0D
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332109295_726820155742109_461528549491913067_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0debeb&_nc_ohc=SRDpRXZcy2sAX91jFZe&_nc_oc=AQkOVwFe59LMVjRQUb-WO3nbKPpCTzfY18kkNFo4h_99VlsaiH8Pzyl3gG7Ef3X-s74&_nc_ht=scontent-mia3-2.xx&oh=00_AfDV3w3MTYIB8geoneyiYDFB3VW0OQ5AY_pymj3nZUsQCQ&oe=63F95F72
+
 [Subir](#top)
 
 
@@ -3596,6 +3612,8 @@ export default LyOverview;
 cómo ejecución del código se puede observar el resultado en la imagen publicada.
 
 ![](https://i.imgur.com/PwvSgsV.jpg)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332148602_1817531145298390_3386987648849172619_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0debeb&_nc_ohc=ohb1Tetxb0wAX8-bjMq&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-2.xx&oh=00_AfBnlTGrnad3ZOljQfz9ZfAR2ctnsqltaFujhLx1mLZEeA&oe=63FA03F4
 
 [Subir](#top)
 
@@ -3803,7 +3821,9 @@ export default PasswordUser
 ```
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 ![](https://i.imgur.com/R2OqFUW.png)
- 
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332106710_588711112810283_7458818181991069840_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=mT-kwiXRZ-UAX8KXchG&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfDQ_p_f1sNplyos8jm43soo2DMJavrjbfaSCoTyFLYDbA&oe=63F9DC1C
+
 [Subir](#top)
 
 <a name="item65"></a>
@@ -3863,7 +3883,9 @@ export default PaypalLogin;
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 ![](https://i.imgur.com/Ohu20I5.png)
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332120248_1074915143490045_4072378575845987630_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0debeb&_nc_ohc=kwCYMMlvHC8AX_vY2Jp&_nc_ht=scontent-mia3-2.xx&oh=00_AfDInYEL5i_bL9a1cldqXzqxDhtmpJyOizCrDp0gjkIrYQ&oe=63F91C30
+
 [Subir](#top)
 
 
@@ -3914,6 +3936,8 @@ export default PaypalUser
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 
 ![](https://i.imgur.com/Ua3GKRL.jpg)
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332252591_733896491456077_1723108097180217735_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0debeb&_nc_ohc=J2glxHR3xHAAX8N6pWp&_nc_ht=scontent-mia3-1.xx&oh=00_AfAI9uPcpOsdGKEQTcXBydpHVLwcPsUMYKMd_b_odOEkaQ&oe=63F99097
 
 [Subir](#top)
 
@@ -4274,6 +4298,8 @@ Su ejecución es la union de otro componentes y como resultado se ve en la image
 
 ![](https://i.imgur.com/hrAdSWM.png)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332355869_957254395682432_4787085175902261933_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=CZcqvYusl68AX_w_ljg&_nc_ht=scontent-mia3-1.xx&oh=00_AfDckSIs21_nYC-FuqfjVi51JPSPjNtf5PETrFAYMn7ipA&oe=63F92BDF
+
 [Subir](#top)
 
 
@@ -4307,6 +4333,8 @@ export default BannerPage;
 Cómo ejecución del código el resultado es lo que se observa en la imagen.
 	
 ![](https://i.imgur.com/aG1xRyc.png)
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332109986_1183665445684767_6184952751129086157_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_ohc=sy5-kLUF0l0AX9pS0m6&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfAH1pib0tKcfuAlUSD5ibqRtacq-LHR7cEQH5Cw6-NcOQ&oe=63FA92A3
 
 [Subir](#top)
 
