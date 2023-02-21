@@ -959,6 +959,8 @@ Cómo ejecución del código se muestra su resultado en pantalla.
 
 ![](https://i.imgur.com/epl8lQh.jpg)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332257465_1877745692597584_8244327119897749878_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=gv9ZgKj13NkAX_EZJvs&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfBRx6THKlcYRoE1j3FS7lcc5mMbg6jpQI5fxMTWO0DI7w&oe=63F9E683
+
 [Subir](#top)
 
 <a name="item11"></a>
@@ -1042,6 +1044,8 @@ export default SwiperWeightPlan;
 Cómo ejecución de código se muestra lo que se vera en la imagen.
 ![](https://i.imgur.com/XTwqKMq.jpg)
  
+ Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332275006_1380201562796622_3887094368824970884_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0debeb&_nc_ohc=ELY9wlXqZzwAX-RMgLZ&_nc_ht=scontent-mia3-2.xx&oh=00_AfAH9lbUZLZTLkMon5HENij9Bl_RJiTc5QoQEnwzvpa20w&oe=63F9C684
+ 
  [Subir](#top)
 
 
@@ -1093,6 +1097,8 @@ Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/OcBFt3l.jpg)
 
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332105446_932789457854534_5383016567819943780_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0debeb&_nc_ohc=BH30d9ebSlkAX-6ALDu&_nc_ht=scontent-mia3-2.xx&oh=00_AfDvwMQ6FkLbKwSgzTSG9mRzRgbum6wyUnP1ukfht1g23Q&oe=63F9F998
+
 [Subir](#top)
  
 <a name="item13"></a>
@@ -1123,6 +1129,8 @@ export default SesionCategory;
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/lVviHpJ.jpg)
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332361585_1504105743453521_1349464247674945760_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=ayA_cgkbHSwAX_L2ipc&_nc_ht=scontent-mia3-1.xx&oh=00_AfA8I3pTEHwh2JLfiRhzDpbCwTM_nHTqqMSE1jzRUyDluw&oe=63FA7BC7
 
 [Subir](#top)
  
@@ -1155,6 +1163,8 @@ export default VideoCategory;
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/BlF8cca.jpg) 
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332109993_590648409263599_931391857247788759_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0debeb&_nc_ohc=PgP8h7twvf8AX-pC5Rr&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfBnligcU2vIECCIscv7iAGq4xa2p0hY7HRnV2ShcJPprA&oe=63FAEDEA
 
 [Subir](#top)
 
@@ -1201,6 +1211,8 @@ export default Video;
 
 Cómo ejecución se observa lo siguiente.
 ![](https://i.imgur.com/GTLA87F.png)
+ 
+ Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332649800_1556689881478881_8599846398015405633_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=maEAa1SWRoYAX9As76W&_nc_oc=AQnP-gKX62OWvxgwJFSDCTXGx-ZLXMm4bDQ6-jMxzr3EMjmdK6beDxeE9FJYVxuxInk&_nc_ht=scontent-mia3-1.xx&oh=00_AfD7P4iZfG-yRsXPQdqnhoQrXQeOlZFnfSloKTU3F_NtHw&oe=63FA074A
  
 [Subir](#top)
 
@@ -1285,7 +1297,9 @@ const Recipes = ({ title, descsh, desccost, cost, img, level, time, ing, withDef
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/R1kSxvW.jpg) 
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332114015_513433360940038_1674676328969696757_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0debeb&_nc_ohc=zUwB1Xs_1sYAX-AnqH5&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-2.xx&oh=00_AfDxjOFbGJMZHA3c87FezvaIonN9f8RmzzApRq6xFSP3-w&oe=63F9A912
+
 [Subir](#top)
 
 <a name="item17"></a>
