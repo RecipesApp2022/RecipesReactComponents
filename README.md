@@ -2716,7 +2716,9 @@ export default TabsContainer;
 Cómo ejecución del código del resultado final es lo que se muestra en la imagen.}
 
 ![](https://i.imgur.com/XmcMSTW.jpg)
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332111020_870525630927598_3288202580154736187_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0debeb&_nc_ohc=99OTgcmfwP0AX-JCSVv&_nc_ht=scontent-mia3-2.xx&oh=00_AfDg003rvvNYxNbvrbOaGTpibFSEq5JaBZa2_etZvsJJpQ&oe=63F91D83
+
 [Subir](#top)
 
 
@@ -2745,6 +2747,8 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 
 ![](https://i.imgur.com/fUptzyn.jpg)
 
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332108248_745949520236234_1466143118341510146_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0debeb&_nc_ohc=ESNbZN3bw7UAX_UphFM&_nc_ht=scontent-mia3-2.xx&oh=00_AfDq9dZ0SiA76vP4vsYn_bdsWI0Kyck592dN3oCQgnHmMg&oe=63F9D865
+
 [Subir](#top)
 
 
@@ -2769,7 +2773,9 @@ export default TotalShoppingPrecio;
 ```
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 ![](https://i.imgur.com/W5vbfBG.jpg)
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332105327_860359291925837_6518765375102868227_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0debeb&_nc_ohc=eBBFX-x6kL4AX_NaOK4&_nc_ht=scontent-mia3-2.xx&oh=00_AfAxSEZ1ql2Tr-jbIIDRFJtr-q9--Xz5ue5qV7VWmWMgGw&oe=63F9A196
+
 [Subir](#top)
 
 
@@ -2821,7 +2827,9 @@ export default InformationChef
 Cómo resultado d ela ejecución del componente se observa que puedo obtener toda la información necesario del vendedor, para el diseño creado en el frontend.
 
 ![](https://i.imgur.com/7BfR5Ig.jpg)
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332113259_1574562443045806_1069284634291405396_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0debeb&_nc_ohc=Q6qzEChEIfUAX_uc1hN&_nc_ht=scontent-mia3-2.xx&oh=00_AfBMjKCv7-04g7BpMwNI3fB5dac_PjcBILxm4_d8Z6HUEA&oe=63FA69D4
+
 [Subir](#top)
 
 
@@ -2878,6 +2886,8 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 
 ![](https://i.imgur.com/PNWKOmO.jpg)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332239854_747446666957818_8167097454733591882_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=mTF_DOkzcQ4AX_SqsGj&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfAjf3ySbHT3P9pDmJ8UpDA70tocC52Vzijgqn1bUCseEw&oe=63FAEA2A
+
 [Subir](#top)
 
 
@@ -2931,6 +2941,9 @@ export default CalendarDay;
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/Pk9IoEx.png)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332136927_790711449349251_6114393181996880228_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=0debeb&_nc_ohc=dbK8pff144UAX8oHm7X&_nc_ht=scontent-mia3-2.xx&oh=00_AfBTrrMs5B5dKhOFHyHZRLQ78PbcYelfMdcj63GQvgrdJw&oe=63F9BFF7
+
 [Subir](#top)
 
 
@@ -2962,6 +2975,9 @@ export default Calendar;
 ```
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 ![](https://i.imgur.com/pPh6blH.jpg) 
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332109293_1239812853288459_3565962244366075660_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0debeb&_nc_ohc=ESOquXCR-UsAX9AdSOW&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfBgo7m7qotzq8vS615mlrOxd2qPeEoY5z_h1F0-skgmFQ&oe=63FA23B0
+
 [Subir](#top)
 
 
@@ -3064,6 +3080,8 @@ Cómo ejecución del componente como resultado final muestra la visualización d
 
 ![](https://i.imgur.com/axBDP5H.png)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332165395_1708228502913186_8444272074264388082_n.jpg?stp=cp0_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=2Zrf5AdutpgAX8kltV7&_nc_ht=scontent-mia3-1.xx&oh=00_AfCIO0TC1Sqi69tcQLspowuKKucRYcZuQIUxnyxa563DWg&oe=63F976DD
+
 [Subir](#top)
 
 
@@ -3120,7 +3138,9 @@ export default SearchHome;
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/VUipCHj.jpg)
- 
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332100741_883669692872939_3155194868397461590_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=0debeb&_nc_ohc=Ur8dSUP0lp4AX_BbDAK&_nc_ht=scontent-mia3-1.xx&oh=00_AfBBOQWsThUNWiN7TyOsj1wvfWWf84oc1nyEVeC_r3V2Ig&oe=63F9B442
+
 [Subir](#top)
 
 
@@ -3172,6 +3192,8 @@ export default ButtonSearch;
 Cómo ejecución del componente como resultado final muestra la visualización de la imagen.
 
 ![](https://i.imgur.com/x56RUVb.png)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332271768_3486438691679670_3540180719872540593_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0debeb&_nc_ohc=H128m2UrspMAX8DYlUu&_nc_ht=scontent-mia3-2.xx&oh=00_AfBzyHE_fFsDjVIq-AdG4Tno6ixU2keMupX-k3gSXz_3Ew&oe=63F926CA
 
 [Subir](#top)
 
