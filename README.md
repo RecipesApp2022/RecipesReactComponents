@@ -1345,7 +1345,9 @@ export default ChefsCountries;
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/s8M3PYt.jpg) 
- 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332115850_743846264022532_5586696279337232910_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0debeb&_nc_ohc=pIidc8W-r3MAX8JKCnx&_nc_ht=scontent-mia3-2.xx&oh=00_AfDRMxpnYbQebjFk4OYmUndVYgSyrNdGXDnhN6J0BCga1g&oe=63F98AFE
+
 [Subir](#top)
 
 <a name="item18"></a>
@@ -1419,6 +1421,8 @@ Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/sv9LjAY.jpg)  
  
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332109091_941850283615387_327018625768123603_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0debeb&_nc_ohc=3cE4be0mxAIAX-bwtqF&_nc_ht=scontent-mia3-2.xx&oh=00_AfDaqjsZ-XGoMYxjypLW8cS6ePE4O2Mml6Hkbx-KuxbrWg&oe=63FA4247
+
 [Subir](#top)
 
 
@@ -1455,6 +1459,8 @@ const ButtonSupr = () => {
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/oblMl0x.jpg)
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332263700_595634282075491_8116534206599578776_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=0debeb&_nc_ohc=sqK-yzEKfAkAX-Lw4B8&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-1.xx&oh=00_AfBAUv8bk_NE9EVmHrLrGtXGmpxcnplAJYX3k8ghk2rOiw&oe=63F9B46C
 
 [Subir](#top)
 
@@ -1522,7 +1528,9 @@ const MenuLeft = ({ filters, onClickCategory, onChangeRating, className, style }
 Cómo ejecución se observa lo siguiente.
 
 ![](https://i.imgur.com/25UWgjQ.png) 
- 
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332105900_502503322090653_5947616179429005247_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=0debeb&_nc_ohc=IY53wzAyGW4AX-JtNdf&_nc_ht=scontent-mia3-1.xx&oh=00_AfBPiZEHpgOUSK5XwuWlRBtFOLAkCUCFqubIC_rK4F14Kw&oe=63FA2274
+
 [Subir](#top)
 
 
