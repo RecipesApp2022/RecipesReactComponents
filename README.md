@@ -159,6 +159,8 @@ La compilación del código es el diseño de la unión de 3 componente para la c
 
 ![](https://i.imgur.com/pikOfoH.png)
 
+Imagen: https://scontent.fccs9-1.fna.fbcdn.net/v/t39.30808-6/332105893_571688134988228_7567254641319604101_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=0debeb&_nc_ohc=xO55b0ICJ5kAX8PkEhg&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent.fccs9-1.fna&oh=00_AfCfQTykikRZgCGq4vQfnrtBQ7ALC9hDcD9H_Avs0DCn5A&oe=63F9FA00
+
 [Subir](#top)
 
 <a name="item2"></a>
@@ -276,6 +278,8 @@ Cómo resultado de la ejecución de código es:
 
 ![](https://i.imgur.com/5uM6FpB.png)
 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332274267_1161422954569262_1301031061174043758_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0debeb&_nc_ohc=RBGkARXlk4UAX_0dmNc&_nc_ht=scontent-mia3-1.xx&oh=00_AfBgtONGVHqI8cdGfiKo0rTLmk2kHTc3eWcQHSe-4ePjiw&oe=63F9FD94
+
 [Subir](#top)
 
 <a name="item3"></a>
@@ -347,6 +351,8 @@ const NavInfo = () => {
     }export default NavInfo;
 ```
 ![](https://i.imgur.com/hP1OO0n.png)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332110445_3437056286532161_575513844286388048_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=0debeb&_nc_ohc=o7Fzv8nyIWUAX9wWxIE&_nc_ht=scontent-mia3-2.xx&oh=00_AfCJ_wIU-EGA78N83yDlhqShgu344kj8LLklZIliCJhiOA&oe=63F94809
 
 [Subir](#top)
 
@@ -447,6 +453,8 @@ export default function Footer() {
 ```
     
 ![](https://i.imgur.com/69B1bHz.png) 
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332126007_6368893116477240_180531535879690746_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0debeb&_nc_ohc=Bh0HUxpbY5cAX92Y6p9&_nc_oc=AQkQZOrKItqElHOc-LNDrX7cFuURQ_yZP3BBdXxhWI4c_04y0m6eYV9gQxEXntB7q80&tn=5Ngj2IPh4mTGoNTm&_nc_ht=scontent-mia3-2.xx&oh=00_AfCKl-FP4ypUxqTmYEcqcpBzL2MTWcY57gcxHhfE0rBDqg&oe=63F9A6D3
 
 [Subir](#top)
 
@@ -565,6 +573,8 @@ const LoginForm = ({ changeForm, onClose }) => {
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/hWaV5bx.png)
+
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332110354_1611769569270181_5463522915416439833_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=0debeb&_nc_ohc=XdkUL9saGzYAX9a1npI&_nc_ht=scontent-mia3-2.xx&oh=00_AfAhuPKslowO7B_4_rDcww8MeEJCwMayNyYB8zenjdwGFA&oe=63F9CACD
 
 [Subir](#top)
 
@@ -742,6 +752,8 @@ const RegisterForm = ({ changeForm, onClose }) => {
 ```
 ![](https://i.imgur.com/T8lMgYk.png)
 
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332171967_898802374654148_2386646936628945946_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0debeb&_nc_ohc=-sqQ_c9C0AsAX9TQ3dq&_nc_ht=scontent-mia3-2.xx&oh=00_AfB-pM_HV4SO8BgUDiiTz5B6n_9ZaJcx3DIVF7mOXiFzkg&oe=63F9BAD3
+
 [Subir](#top)
 
 <a name="item7"></a>
@@ -806,6 +818,8 @@ Cómo ejecución el resultado obtenido del código es lo que se visualiza en la 
 
 ![](https://i.imgur.com/Glk2nCD.jpg) 
 
+Imagen: https://scontent-mia3-2.xx.fbcdn.net/v/t39.30808-6/332137465_1657445614706697_8030691292918565056_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=0debeb&_nc_ohc=gnjQ7DQgrjcAX-FmrPe&_nc_ht=scontent-mia3-2.xx&oh=00_AfAshrbTTB8S0ooDAkjzUGEaMMIGKWskWr8J5uMvAUNj8A&oe=63FA3FE0
+
 [Subir](#top)
 
 <a name="item8"></a>
@@ -837,6 +851,8 @@ export default Card;
 Cómo ejecución el resultado obtenido del código es lo que se visualiza en la imagen.
 
 ![](https://i.imgur.com/oKX0UsN.jpg)
+ 
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332354607_723360009336794_3247911787846244153_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=0debeb&_nc_ohc=h0pY1ODDpX0AX98dMnL&_nc_ht=scontent-mia3-1.xx&oh=00_AfBwcOiufzuoYTPaB1y7sFKdyH0pQn2DBFYEJ5vCHcQ6QA&oe=63F918DD
  
  [Subir](#top)
 
@@ -898,6 +914,8 @@ const CategorySectionCard = forwardRef(({
 Cómo ejecución del código se muestra su resultado en pantalla.
 
 ![](https://i.imgur.com/X0b6gXh.jpg)
+
+Imagen: https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/332151264_593649105602796_8064920684669346111_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=0debeb&_nc_ohc=GtLBMkDgUDgAX9VRt2i&_nc_ht=scontent-mia3-1.xx&oh=00_AfC8BBz-9HHAFpGu27IlP5WBmo70_sUP9PHE2XcHjQsfzA&oe=63F8FA33
 
 [Subir](#top)
 
