@@ -3,7 +3,7 @@
 * [Node.js](#item001)
 * [React JS](#item002)
 * [TailwindCSS](#item003)
-* 
+
 ## Instalación
 ```
 git clone https://github.com/FJardim/recipes-clients.git
