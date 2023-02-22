@@ -3,17 +3,19 @@
 * [Node.js](#item001)
 * [React JS](#item002)
 * [TailwindCSS](#item003)
+* 
 ## Instalación
 ```
-git clone https://github.com/Tecsoe/beneficiosi-clients-front.git
-cd beneficiosi-clients-front
+git clone https://github.com/FJardim/recipes-clients.git
+cd nombre de la carpeta
 npm install
 cp .env-example .env
 ```
 Configurar variables de entorno en el archivo .env
 ```
 npm run start
- ```
+```
+
 ## Componentes
 * [AppLayout](#item1)
 	 * [NavBar](#item2)
